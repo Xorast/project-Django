@@ -1,5 +1,4 @@
-from django.db import models
-
+from django.db  import models
 
 
 class Event_Type(models.Model):
@@ -77,7 +76,7 @@ class Event(models.Model):
     event_subtype   = models.ForeignKey(Event_Subtype, related_name="event", on_delete=models.SET_DEFAULT, default= 1, null=False)
     name            = models.CharField(max_length=100)
     description     = models.TextField()
-    image           = models.ImageField(upload_to="images", default = "noimage.jpg")
+    image           = models.ImageField(upload_to="images/events/", default = "noimage.jpg")
     day             = models.CharField(max_length=10, choices=WEEKDAY_CHOICES)
     time_start      = models.TimeField(null=True)
     time_end        = models.TimeField(null=True)
