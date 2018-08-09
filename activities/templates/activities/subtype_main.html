@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<section>
+    
+    <!-- Page Content -->
+    <div class="container">
+    
+        <h1 class="mt-4 mb-3">{{ event_type.title }}</h1>   
+    
+        <img class="img-fluid rounded mb-4" src="{{ event_type.img_src }}" alt="">
+        
+      </h1>
+    
+        <div class="row">
+            
+            {% for event_subtype in event_subtypes %}
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <h4 class="card-header"> {{ event_subtype.event_subtype }}</h4>
+                        <div class="card-body">
+                            <p class="card-text">{{ event_subtype.description }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{% url 'list' event_type.event_type event_subtype.event_subtype %}" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+                
+        </div>
+        <!-- /.row -->
+        
+    </div>
+    <!-- /.container -->
+    
+</section>
+
+{% endblock %}

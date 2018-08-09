@@ -1,5 +1,5 @@
 from django.contrib     import admin
-from .models            import Event, Event_Type, Event_Subtype,Age_Group,Level,Venue, Room
+from .models            import Event, Event_Type, Event_Subtype,Age_Group,Level,Venue, Room, Period, Host, Weekday
 
 
 admin.site.register(Event)
@@ -9,3 +9,6 @@ admin.site.register(Age_Group)
 admin.site.register(Level)
 admin.site.register(Venue)
 admin.site.register(Room)
+admin.site.register(Period)
+admin.site.register(Host)
+admin.site.register(Weekday)

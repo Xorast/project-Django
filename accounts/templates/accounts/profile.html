@@ -5,10 +5,13 @@
 {% block content %}
 <h3>PROFILE</h3>
 
-<h4><p>You are logged in as : {{ user }}</p></h4>
+<h4>You are logged in as : {{ user }}</h4>
 
 
+<h3>Profile</h3>
 
-
+<p>adherent_number:         {{ user.Profile.adherent_number  }}</p>
+<p>rate_coefficient:        {{ user.Profile.rate_coefficient }}</p>
+<p>events registered to:    {{ user.Profile.events.all }}</p>
 
 {% endblock content%}
