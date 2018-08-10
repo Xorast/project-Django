@@ -3,13 +3,18 @@
 
 {% block content %}
 
-<h3>Register</h3>
+    <!-- Page Content -->
+    <div class="container">
 
-     <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {{ profile_form.as_p }}
-        <input type="submit" value="Register">        
-    </form>
+        <h3>Register</h3>
+        
+             <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form    | as_bootstrap }}
+                {{ profile_form | as_bootstrap }}
+                <input type="submit" value="Register">        
+            </form>
+
+    </div>
 
 {% endblock content %}

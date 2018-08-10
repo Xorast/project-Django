@@ -7,8 +7,10 @@ from .forms              import UserLoginForm, UserRegistrationForm, ProfileRegi
 
 
 def login(request):
+    
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
+        
         if login_form.is_valid():
             u = login_form.cleaned_data['username']
             p = login_form.cleaned_data['password']
@@ -18,13 +20,15 @@ def login(request):
                 auth.login(request, user)
                 next = request.GET.get('next', "/")
                 return redirect(next)
+                
             else:
                 login_form.add_error(None, "Your username or password are incorrect")
     else:
         login_form = UserLoginForm()
 
     return render(request, 'accounts/login.html', {'form': login_form})
-    
+
+
 
 def register(request):
     
@@ -52,13 +56,15 @@ def register(request):
         user_form = UserRegistrationForm()
         profile_form = ProfileRegistrationForm()
 
-    return render(request, "accounts/register.html", {'form': user_form, 'profile_form': profile_form})
+    return render(request, "accounts/register.html", {'user_form': user_form, 'profile_form': profile_form})
     
+
 
 def logout(request):
     auth.logout(request)
     return redirect('/')
     
+ 
     
 def profile(request):
     return render(request, "accounts/profile.html")
