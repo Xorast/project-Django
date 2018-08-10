@@ -39,8 +39,9 @@
                 <p>****** {{ event.level            }}</p>
                 <p>****** {{ event.number_max       }}</p>
                 <p>****** {{ event.room             }}</p>
-    
                 
+                <hr>
+                <a href="{% url 'register_to_event' event.event_type event.event_subtype event.id %}">Register</a>
                 <hr>
                 
                 <!-- Post Content -->

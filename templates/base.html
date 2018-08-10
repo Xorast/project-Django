@@ -33,13 +33,13 @@
             
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'news_list'                 %}"  >News</a>          </li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'ACTIVITY'       %}"  >Activities</a>    </li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'TRAININGCOURSE' %}"  >Courses</a>       </li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'EVENT'          %}"  >Events</a>        </li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'about'                     %}"  >About</a>         </li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'news_list'                 %}"  >News        </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'ACTIVITY'       %}"  >Activities  </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'TRAININGCOURSE' %}"  >Courses     </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'EVENT'          %}"  >Events      </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'about'                     %}"  >About       </a></li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Profile' %}" > Profile     </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'Profile' %}" > Profile   </a></li>
                     <li class="nav-item"><a class="nav-link"    href="{% url 'Logout' %}"  > Logout    </a></li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link"    href="{% url 'Login' %}"   > Login     </a></li>

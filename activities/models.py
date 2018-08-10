@@ -1,10 +1,13 @@
 from django.db                      import models
 from django.contrib.auth.models     import User
+from accounts.models                import Profile
 
 # Comments :
 # <!> Make the distinction between "Event" and "OneTimeEvent" :
 # <!> All entries are events, some of them are "activities", other "TrainingCourse" and others "OneTimeEvent"
 # <!> The app is named "activities", it should have been named "Events".
+
+
 
 class Event_Type(models.Model):
     
@@ -18,15 +21,14 @@ class Event_Type(models.Model):
         (ONETIMEEVENT,     'EVENT'          ),
     )
     
-    
     event_type      = models.CharField(max_length=50, choices=TYPE)
     description     = models.TextField(null=True)
-    title           = models.CharField(max_length=100, null=True) # Create an automated title for each case
     img_src         = models.URLField(max_length=200, null=True)  # Put this image as a static file
-    
     
     def __str__(self):
         return self.event_type
+
+
 
 class Event_Subtype(models.Model):
     
@@ -36,6 +38,8 @@ class Event_Subtype(models.Model):
     
     def __str__(self):
         return self.event_subtype
+
+
         
 class Weekday(models.Model):
     
@@ -62,12 +66,16 @@ class Weekday(models.Model):
     def __str__(self):
         return self.day
 
+
+
 class Period(models.Model):
     
     period          = models.CharField(max_length=20, null=False)
     
     def __str__(self):
         return self.period
+
+
 
 class Host(models.Model):
     
@@ -79,6 +87,8 @@ class Host(models.Model):
     def __str__(self):
         return '%s %s' % (self.firstname, self.lastname)
 
+
+
 class Age_Group(models.Model):
     
     age_group       = models.CharField(max_length=100, null=False)
@@ -86,12 +96,16 @@ class Age_Group(models.Model):
     def __str__(self):
         return self.age_group
 
+
+
 class Level(models.Model):
     
     level           = models.CharField(max_length=100, null=False)
     
     def __str__(self):
         return self.level
+
+
 
 class Venue(models.Model):
     
@@ -105,6 +119,8 @@ class Venue(models.Model):
     
     def __str__(self):
         return self.name
+
+
 
 class Room(models.Model):
     
@@ -137,6 +153,22 @@ class Event(models.Model):
     
     def __str__(self):
         return self.name
+        
+        
+        
+class EventRegistration(models.Model):
+    
+    participant         = models.ForeignKey(User, related_name="RegistrationList", on_delete=models.SET_DEFAULT, default= 1, null=False)
+    event               = models.ForeignKey(Event, related_name="RegistrationList", on_delete=models.SET_DEFAULT, default= 1, null=False)
+    
+    class Meta:
+        unique_together = ["participant", "event"]
+    
+    def __str__(self):
+        return 'Event Registration N° %s' % (self.id)
+        
+        
+# ----------------------------------------------------------------------
 
     # It's possible to define a function to automatically fill a field : 
     # @property

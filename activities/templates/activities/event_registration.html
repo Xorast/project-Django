@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<section>
+
+    <!-- Page Content -->
+    <div class="container">
+    
+    =)
+    <a href="{% url 'register_confirm_request' event.event_type event.event_subtype event.id %}">Confirm Registration Request</a>
+        
+    </div>
+    <!-- /.container --> 
+
+</section>
+{% endblock %}
