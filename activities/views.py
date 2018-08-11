@@ -51,15 +51,24 @@ def register_confirm_request(request, event_type, event_subtype, event_id):
     event   = get_object_or_404(Event, pk=event_id)
     ER      = EventRegistration(participant=request.user,event=event)
     
-    try:
-        # Constraint on the model : user / event combination must be unique
-        ER.save()
-
-        event.number_available += -1
-        event.save()
-        
-    except:
-        # If the combination already exists, the user is already registered
-        return render(request, "activities/event_registration_request_failed.html")
+    error   = ""
+    
+    if event.number_available > 0 :
+    
+        try:
+            # Constraint on the model : user / event combination must be unique
+            # If the user is already registered : will throw an error
+            ER.save()
+    
+            event.number_available += -1
+            event.save()
+            
+        except:
+            error = "E01"
+            return render(request, "activities/event_registration_request_failed.html", {"error":error})
+    
+    else:
+        error = "E02"
+        return render(request, "activities/event_registration_request_failed.html", {"error":error})
         
     return render(request, "activities/event_registration_request_successful.html")

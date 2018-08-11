@@ -6,9 +6,14 @@
 
     <!-- Page Content -->
     <div class="container">
-    
-    Your request has been denied: you are already registered to this event ! If you want to register someone else, please login under with his/her session.
-    < Login > 
+        
+        {% if error == "E01" %}
+            <p> Your request has been denied: you are already registered to this event ! If you want to register someone else, please login under with his/her session.< Login ></p> 
+        {% elif error == "E02" %}
+            <p>There is no place available for this event.</p>
+        {% else %}
+            <p>An error occured. Please contact the admin.</p>
+        {% endif %}
         
     </div>
     <!-- /.container --> 

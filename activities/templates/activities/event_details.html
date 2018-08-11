@@ -41,7 +41,12 @@
                 <p>****** {{ event.room             }}</p>
                 
                 <hr>
-                <a href="{% url 'register_to_event' event.event_type event.event_subtype event.id %}">Register</a>
+                {% if event.number_available > 0 %}
+                    <a href="{% url 'register_to_event' event.event_type event.event_subtype event.id %}">Register</a>
+                {% else %}
+                    <p>There is no place available for this event.</p>
+                {% endif %}
+                
                 <hr>
                 
                 <!-- Post Content -->
