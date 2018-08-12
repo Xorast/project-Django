@@ -7,8 +7,20 @@
     <!-- Page Content -->
     <div class="container">
     
-    =)
-    <a href="{% url 'register_confirm_request' event.event_type event.event_subtype event.id %}">Confirm Registration Request</a>
+    <p>Display information about the fare, the discount and ask if wish to proceed.</p>
+    <p>One registration at a time, one registration = one payment.</p>
+    <p>Make sure to register with the RIGHT account : the account of the one you register for (participant of the activity).</p>
+
+    <hr>
+    <hr>
+
+    <form method="POST" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <input type="hidden" name="event_id" value="{{ event.id }}"/>
+        <input type="submit" value="Proceed to payment"/>
+    </form>
+    
+    <a href="{% url 'home' %}">Cancel & Go back to home page</a>
         
     </div>
     <!-- /.container --> 

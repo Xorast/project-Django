@@ -39,36 +39,22 @@ def get_event_details(request, event_type, event_subtype, event_id):
 @login_required
 def register_to_event(request, event_type, event_subtype, event_id):
     
-    event           = get_object_or_404(Event, pk=event_id)
-
-    return render(request, "activities/event_registration.html", {"event": event})
-
-
-
-@login_required
-def register_confirm_request(request, event_type, event_subtype, event_id):
-    
     event   = get_object_or_404(Event, pk=event_id)
-    ER      = EventRegistration(participant=request.user,event=event)
-    
-    error   = ""
     
     if event.number_available > 0 :
     
-        try:
-            # Constraint on the model : user / event combination must be unique
-            # If the user is already registered : will throw an error
-            ER.save()
-    
-            event.number_available += -1
-            event.save()
-            
-        except:
-            error = "E01"
-            return render(request, "activities/event_registration_request_failed.html", {"error":error})
-    
-    else:
-        error = "E02"
-        return render(request, "activities/event_registration_request_failed.html", {"error":error})
+        check   = EventRegistration.objects.filter(participant=request.user,event=event).count()
         
-    return render(request, "activities/event_registration_request_successful.html")
+        if check == 0:
+            
+            return render(request, "activities/event_registration.html", {"event": event})
+            
+        else:
+            
+            error = "You are already registered to this event. If you want to register someone else, please login under with his/her session. < Login link >"
+            return render(request, "activities/event_registration_request_failed.html", {"error":error})
+            
+    else:
+        
+        error = "There are no place available."
+        return render(request, "activities/event_registration_request_failed.html", {"error":error})
