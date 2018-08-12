@@ -3,6 +3,7 @@ from django.http         import HttpResponse
 from django.contrib.auth import authenticate
 from django.contrib      import auth
 from .forms              import UserLoginForm, UserRegistrationForm, ProfileRegistrationForm
+from activities.models   import EventRegistration
 
 
 
@@ -67,4 +68,7 @@ def logout(request):
  
     
 def profile(request):
-    return render(request, "accounts/profile.html")
+    
+    eventsRegisteredTo   = EventRegistration.objects.filter(participant=request.user)
+    
+    return render(request, "accounts/profile.html", {'eventsRegisteredTo':eventsRegisteredTo})

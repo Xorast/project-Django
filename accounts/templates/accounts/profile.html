@@ -7,16 +7,24 @@
     <!-- Page Content -->
     <div class="container">
 
-        <h3>PROFILE</h3>
-
-        <h4>You are logged in as : {{ user }}</h4>
-        
-        
         <h3>Profile</h3>
+        <hr>
+        <h4>You are logged in as : {{ user }}</h4>
+        <br>
+        <p>Adherent_number:         {{ user.Profile.adherent_number  }}</p>
+        <p>Rate_coefficient:        {{ user.Profile.rate_coefficient }}</p>
+        <p>Events registered to:    </p>
+        <ol>
+            {% for eventRegisteredto in eventsRegisteredTo %} 
+                <li class="text-uppercase"> {{ eventRegisteredto.event.name }} 
+                     (age:    {{ eventRegisteredto.event.age_group }} /
+                     level :  {{ eventRegisteredto.event.level }} /
+                     day:     {{ eventRegisteredto.event.day }} / 
+                     id:      {{ eventRegisteredto.event.id }})
+                </li>
+            {% endfor %}
+        </ol>
         
-        <p>adherent_number:         {{ user.Profile.adherent_number  }}</p>
-        <p>rate_coefficient:        {{ user.Profile.rate_coefficient }}</p>
-        <p>events registered to:    {{ user.Profile.events.all }}</p>
 
     </div>
     
