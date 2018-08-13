@@ -10,6 +10,11 @@
     <h1 class="mt-4 mb-3">News
         <small>Subheading</small>
     </h1>
+    
+    <!-- Create News if you are a superuser -->
+    {% if user.is_superuser %}
+        <a href="{% url 'create_news' %}" class="btn btn-default">Create News</a><br>
+    {% endif %}
 
     <!-- Blog Post -->
     {% for n in news %}
@@ -25,7 +30,7 @@
                     <div class="col-lg-6">
                         <h2 class="card-title">{{ n.title    }}</h2>
                         <p class="card-text">  {{ n.content  }}</p>
-                        <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                        <a href="{% url 'news_details' n.id %}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,10 @@
         <!-- Page Content -->
         <div class="container">
             
+            {% if user.is_superuser %}
+                <a href="{% url 'edit_news' news.id %}" class="btn btn-default">Edit News</a><br>
+            {% endif %}
+            
             {{ news.title        }}<br>
             {{ news.content      }}<br>
             {{ news.image        }}<br>
