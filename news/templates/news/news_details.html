@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+<section>
+        
+        <!-- Page Content -->
+        <div class="container">
+            
+            {{ news.title        }}<br>
+            {{ news.content      }}<br>
+            {{ news.image        }}<br>
+            {{ news.created_date }}<br>
+            
+            
+            <img class="img-fluid" src="{{MEDIA_URL}}{{ news.image }}">
+            
+
+         </div>
+        <!-- /.container -->
+      
+    </section>
+    
+{% endblock %}
