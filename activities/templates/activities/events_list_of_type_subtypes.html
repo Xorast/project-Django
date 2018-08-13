@@ -7,9 +7,9 @@
     <!-- Page Content -->
     <div class="container">
     
-        <h1 class="mt-4 mb-3">{{ event_type.title }}</h1>   
-    
-        <img class="img-fluid rounded mb-4" src="{{ event_type.img_src }}" alt="">
+        <div class="header rounded mt-4 mb-3" style="background-image: url({{ MEDIA_URL }}{{ event_type.image }})">
+            <h1 class="txt-white center text-uppercase"> {{ event_type.title }} </h1>
+        </div>
         
       </h1>
     

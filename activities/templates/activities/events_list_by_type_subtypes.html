@@ -7,9 +7,13 @@
     <!-- Page Content -->
     <div class="container">
     
-        <h1 class="mt-4 mb-3">{{ event_subtype.event_subtype }}</h1>   
-    
-        <img class="img-fluid rounded mb-4" src="{{ event_subtype.img_src }}" alt="">
+        <div class="header rounded mt-4 mb-3" style="background-image: url({{ MEDIA_URL }}{{ event_subtype.image }})">
+            <h1 class="txt-white center text-uppercase"> {{ event_subtype.event_subtype }} </h1>
+        </div>
+        
+        <div class="img-container mb-4">
+            <img class="img-fluid rounded mb-4" src="{{ MEDIA_URL }}{{ event_subtype.image }}" alt="">
+        </div>
         
       </h1>
     

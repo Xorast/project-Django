@@ -5,7 +5,7 @@ from accounts.models                import Profile
 # Comments :
 # <!> Make the distinction between "Event" and "OneTimeEvent" :
 # <!> All entries are events, some of them are "activities", other "TrainingCourse" and others "OneTimeEvent"
-# <!> The app is named "activities", it should have been named "Events".
+# <!> The app is named "activities", it should have been named "Events".EVENT
 
 
 
@@ -22,8 +22,9 @@ class Event_Type(models.Model):
     )
     
     event_type      = models.CharField(max_length=50, choices=TYPE)
+    title           = models.CharField(max_length=50, null=True)
     description     = models.TextField(null=True)
-    img_src         = models.URLField(max_length=200, null=True)  # Put this image as a static file
+    image           = models.ImageField(upload_to="images/event_type", blank=True, null=True)
     
     def __str__(self):
         return self.event_type
@@ -34,7 +35,7 @@ class Event_Subtype(models.Model):
     
     event_subtype   = models.CharField(max_length=100, null=False)
     description     = models.TextField(null=True)
-    img_src         = models.URLField(max_length=200, null=True)  # Put this image as a static file
+    image           = models.ImageField(upload_to="images/event_subtype", blank=True, null=True)
     
     def __str__(self):
         return self.event_subtype

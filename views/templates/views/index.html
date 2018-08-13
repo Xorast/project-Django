@@ -65,69 +65,94 @@
         
         <!-- News section -->
         <h2>News & Upcoming events</h2>
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <a href="#">
-                            <img class="img-fluid rounded" src="{{ STATIC_URL }}images/chain-close-up-display-1036857.jpg">
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <h2 class="card-title">Registrations are now open !</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                        <a href="#" class="btn btn-primary">Read More →</a>
+        
+        {% for news in last_news %}
+        
+            <div class="card mb-4">
+                
+                <div class="card-body">
+                    <div class="row">
+                        
+                        <div class="col-md-6 img rounded" style="background-image:url('{{ MEDIA_URL }}{{ news.image }}')"></div>
+                
+                        <div class="col-md-6">
+                            <h2 class="card-title">{{ news.title }}</h2>
+                            <p class="card-text">{{ news.content|truncatewords:60 }}</p>
+                            <a href="{% url 'news_details' news.id %}" class="btn btn-primary">Read More →</a>
+                        </div>
+                
                     </div>
                 </div>
+                
+                <div class="card-footer text-muted">
+                      Posted on {{ news.created_date }} by
+                      <a href="{% url 'about' %}#team">a loving Team !</a>
+                </div>
+                
             </div>
-            <div class="card-footer text-muted">
-                  Posted on September 1, 2018 by
-                  <a href="{% url 'about' %}#team">a loving Team !</a>
-            </div>
-        </div>
+        {% endfor %}
+    
     
         <!-- Offer Section -->
         <h2>Join us!</h2>
     
         <div class="row">
             
+            <!-- Activities -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
+                
                 <div class="card h-100">
-                    <a href="{% url 'subtypes' 'ACTIVITY' %}"><img class="card-img-top" src="{{ STATIC_URL }}images/community-diversity-feet-53958.jpg" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{% url 'subtypes' 'ACTIVITY' %}">Activities</a>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                    <div class="row m-0">    
+                        <div class="col-md-12 img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ activities.image }}')"></div>    
                     </div>
+                        
+                    <div class="card-body">
+                        <h4 class="card-title text-capitalize">
+                            <a href="{% url 'subtypes' activities.event_type %}">{{ activities.title }}</a>
+                        </h4>
+                        <p class="card-text">{{ activities.description|truncatewords:30 }}</p>
+                    </div>
+                    
                 </div>
             </div>
             
+            <!-- Courses -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
+                
                 <div class="card h-100">
-                    <a href="{% url 'subtypes' 'TRAININGCOURSE' %}"><img class="card-img-top" src="{{ STATIC_URL }}images/exercise-feet-fitness-892682.jpg" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{% url 'subtypes' 'TRAININGCOURSE' %}">Courses</a>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                    <div class="row m-0">    
+                        <div class="col-md-12 img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ courses.image }}')"></div>    
                     </div>
-                </div>
-            </div>
-    
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <a href="{% url 'subtypes' 'EVENT' %}"><img class="card-img-top" src="{{ STATIC_URL }}images/blur-bokeh-close-up-164879.jpg" alt=""></a>
+                        
                     <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{% url 'subtypes' 'EVENT' %}">Events</a>
+                        <h4 class="card-title text-capitalize">
+                            <a href="{% url 'subtypes' courses.event_type %}">{{ courses.title }}</a>
                         </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                        <p class="card-text">{{ courses.description|truncatewords:30 }}</p>
                     </div>
+                    
                 </div>
             </div>
             
-        </div>
+            <!-- Event -->
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                
+                <div class="card h-100">
+                    <div class="row m-0">
+                        <div class="col-md-12 img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ events.image }}')"></div>    
+                    </div>
+                        
+                    <div class="card-body">
+                        <h4 class="card-title text-capitalize">
+                            <a href="{% url 'subtypes' events.event_type %}">{{ events.title }}</a>
+                        </h4>
+                        <p class="card-text">{{ events.description|truncatewords:30 }}</p>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>    
         <!-- /.row -->
     
     </div>
