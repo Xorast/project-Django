@@ -7,24 +7,30 @@
     <!-- Page Content -->
     <div class="container">
     
+        <!-- Page Title -->
         <div class="header rounded mt-4 mb-3" style="background-image: url({{ MEDIA_URL }}{{ event_subtype.image }})">
             <h1 class="txt-white center text-uppercase"> {{ event_subtype.event_subtype }} </h1>
         </div>
-        
-        <div class="img-container mb-4">
-            <img class="img-fluid rounded mb-4" src="{{ MEDIA_URL }}{{ event_subtype.image }}" alt="">
-        </div>
-        
-      </h1>
     
+        <!-- Description -->
+        <hr>
+        <div class="col-md-10 offset-md-1 col-md-8 p-2">
+            <p class="text-center text-muted">{{ event_subtype.description }}</p>
+        </div>
+        <hr>
+        
+        <!-- Data -->
         <div class="row">
             
             {% for event in events %}
                 <div class="col-lg-4 mb-4">
                     <div class="card h-100">
                         <h4 class="card-header"> {{ event.name }}</h4>
+                        <div class="row m-0">    
+                            <div class="col-md-12 img" style="background-image:url('{{ MEDIA_URL }}{{ event.image }}')"></div>    
+                        </div>
                         <div class="card-body">
-                            <p class="card-text">{{ event.description }}</p>
+                            <p class="card-text">{{ event.description|truncatewords:20 }}</p>
                         </div>
                         <div class="card-footer">
                             <a href="{% url 'details' event_type.event_type event_subtype.event_subtype event.id %}" class="btn btn-primary">Learn More</a>

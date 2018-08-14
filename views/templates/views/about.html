@@ -3,24 +3,25 @@
 
 {% block content %}
 <!-- Page Content -->
-    <div class="container">
+<div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">About
-        <small>Subheading</small>
-      </h1>
+      <h1 class="mt-4 mb-3">About<small></small></h1>
 
-      <!-- Intro Content -->
+      <!-- Mission description -->
       <div class="row">
-        <div class="col-lg-6">
-          <img class="img-fluid rounded mb-4" src="{{ STATIC_URL }}images/Mauguio-Carnon.jpg" alt="">
-        </div>
-        <div class="col-lg-6">
-          <h2>Our Mission</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, magni, aperiam vitae illum voluptatum aut sequi impedit non velit ab ea pariatur sint quidem corporis eveniet. Odit, temporibus reprehenderit dolorum!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis?</p>
-        </div>
+        
+          <div class="col-lg-6">
+              <img class="img-fluid rounded mb-4" src="{{ STATIC_URL }}images/Mauguio-Carnon.jpg" alt="">
+          </div>
+          
+          <div class="col-lg-6">
+              <h2>Our Mission</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
+              <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.</p>
+              <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu.</p>
+          </div>
+          
       </div>
       <!-- /.row -->
 
@@ -28,49 +29,79 @@
       <h2><a id="team"></a>Our Team</h2>
 
       <div class="row">
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 text-center">
-            <img class="card-img-top" src="http://placehold.it/750x450" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Team Member</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#">name@example.com</a>
-            </div>
+        
+          <!-- Team Member X -->
+          <div class="col-lg-4 mb-4">
+              
+                <div class="card h-100 text-center">
+              
+                    <div class="row m-0">
+                            <div class="img rounded-top" style="background-image:url('{{ STATIC_URL }}images/team_members/warren-wong-242286-unsplash.jpg')"></div>    
+                    </div>
+                  
+                    <div class="card-body">
+                        <h4 class="card-title">Team Member</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Position</h6>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+                    </div>
+                  
+                    <div class="card-footer">
+                        <a href="#">name@example.com</a>
+                    </div>
+                  
+                </div>
+              
           </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 text-center">
-            <img class="card-img-top" src="http://placehold.it/750x450" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Team Member</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#">name@example.com</a>
-            </div>
+              
+          <!-- Team Member X -->
+          <div class="col-lg-4 mb-4">
+              
+                <div class="card h-100 text-center">
+              
+                    <div class="row m-0">
+                            <div class="img rounded-top" style="background-image:url('{{ STATIC_URL }}images/team_members/aatik-tasneem-138230-unsplash.jpg')"></div>    
+                    </div>
+                  
+                    <div class="card-body">
+                        <h4 class="card-title">Team Member</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Position</h6>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+                    </div>
+                  
+                    <div class="card-footer">
+                        <a href="#">name@example.com</a>
+                    </div>
+                  
+                </div>
+              
           </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 text-center">
-            <img class="card-img-top" src="http://placehold.it/750x450" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Team Member</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#">name@example.com</a>
-            </div>
+      
+          <!-- Team Member X -->
+          <div class="col-lg-4 mb-4">
+              
+                <div class="card h-100 text-center">
+              
+                    <div class="row m-0">
+                            <div class="img rounded-top" style="background-image:url('{{ STATIC_URL }}images/team_members/joe-gardner-149699-unsplash.jpg')"></div>    
+                    </div>
+                  
+                    <div class="card-body">
+                        <h4 class="card-title">Team Member</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Position</h6>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+                    </div>
+                  
+                    <div class="card-footer">
+                        <a href="#">name@example.com</a>
+                    </div>
+                  
+                </div>
+              
           </div>
-        </div>
-      </div>
-      <!-- /.row -->
-
+        
     </div>
-    <!-- /.container -->
-    
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
 {% endblock %}
