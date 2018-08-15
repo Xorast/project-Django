@@ -62,13 +62,13 @@
                     </li>
                     
                     <!-- Courses -->
-                    <li id="dropdown_1A" class="nav-item dropdown">
+                    <li id="dropdown_2A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Courses
                         </a>
                         
-                        <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
                           <a class="dropdown-item txt-white" href="{% url 'subtypes' 'TRAININGCOURSE' %}">Overview</a>
                           {% for n in event_subtypes_COURSE  %}
@@ -80,17 +80,17 @@
                     </li>
                     
                     <!-- Events -->
-                    <li id="dropdown_1A" class="nav-item dropdown">
+                    <li id="dropdown_3A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Events
                         </a>
                         
-                        <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <div id="dropdown_3B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
                           <a class="dropdown-item txt-white" href="{% url 'subtypes' 'EVENT' %}">Overview</a>
                           {% for n in event_subtypes_EVENT  %}
-                          <a class="dropdown-item txt-white" href={% url 'list' 'EVENT' n.event_subtype %}>{{ n.event_subtype }}</a>  
+                          <a class="dropdown-item txt-white" href="{% url 'list' 'EVENT' n.event_subtype %}">{{ n.event_subtype }}</a>  
                           {% endfor %}
                           
                         </div>
@@ -102,11 +102,72 @@
                     
                     <!-- Login features -->
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Profile'  %}" > Profile   </a></li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" > Logout    </a></li>
+                        
+                        <!-- Profile -->
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Profile'  %}"><svg class="svg-white svg-mini-1"
+                                                                                                    enable-background="new 0 0 128 128"
+                                                                                                    viewBox="0 0 128 128">
+                                                                                                    <circle   fill="#000000" cx="64" cy="64"  id="circle" r="64"/>
+                                                                                                    <g id="icon">
+                                                                                                        <path fill="currentColor" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20" id="right"/>
+                                                                                                        <path fill="currentColor" d="M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35" id="left"/>
+                                                                                                    </g>
+                                                                                                </svg>
+                                                                                                </a>
+                                                                                                
+                        </li>
+                        
+                        <!-- Logout -->
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge badge-pill badge-danger">Logout</span>
+                                                                                                <!--<svg   class="svg-white svg-mini-1"-->
+                                                                                                <!--        viewBox="0 0 24 24">-->
+                                                                                                <!--        <g fill="none" fill-rule="evenodd" id="miu" stroke="none" stroke-width="1">-->
+                                                                                                <!--        <g id="Artboard-1" transform="translate(-359.000000, -407.000000)">-->
+                                                                                                <!--        <g id="slice" transform="translate(215.000000, 119.000000)"/>-->
+                                                                                                <!--        <path fill="currentColor" id="common-logout-signout-exit-outline-stroke" d="M360,408 L360,430 L375,430 L375,423.5 L374,423.5 L374,429 L361,429 L361,409 L374,409 L374,414.5 L375,414.5 L375,408 L360,408 Z M377.050253,415.464466 L377.757359,414.757359 L382,419 L377.757359,423.242641 L377.050253,422.535534 L380.087349,419.498437 L367.00472,419.498437 L367.00472,418.5 L380.085786,418.5 L377.050253,415.464466 Z"/>-->
+                                                                                                <!--        </g>-->
+                                                                                                <!--        </g>-->
+                                                                                                <!--</svg>-->
+                                                                                                </a>
+                        </li>
+                    
                     {% else %}
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Login'    %}" > Login     </a></li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" > Register  </a></li>
+                        
+                        <!-- Login -->
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Login'    %}" ><span class="badge badge-pill badge-warning">Login</span>
+                                                                                                <!-- <svg   class= ""
+                                                                                                <!--        aria-hidden="true" -->
+                                                                                                <!--        data-prefix="fas" -->
+                                                                                                <!--        data-icon="sign-in-alt" -->
+                                                                                                <!--        class="svg-white svg-mini-1" -->
+                                                                                                <!--        role="img" -->
+                                                                                                <!--        xmlns="http://www.w3.org/2000/svg" -->
+                                                                                                <!--        viewBox="0 0 512 512">-->
+                                                                                                <!--        <path fill="currentColor" d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"></path>-->
+                                                                                                <!--</svg>-->
+                                                                                                </a>
+                        </li>
+                        
+                        <!-- Register -->
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge badge-pill badge-warning">Register</span>
+                                                                                                <!--<svg   class="svg-white svg-mini-1"-->
+                                                                                                <!--        enable-background="new 0 0 512 512" -->
+                                                                                                <!--        id="Layer_1" -->
+                                                                                                <!--        version="1.1" -->
+                                                                                                <!--        viewBox="0 0 512 512" -->
+                                                                                                <!--        xml:space="preserve" -->
+                                                                                                <!--        xmlns="http://www.w3.org/2000/svg" -->
+                                                                                                <!--        xmlns:xlink="http://www.w3.org/1999/xlink">-->
+                                                                                                <!--        <g>-->
+                                                                                                <!--            <path fill="currentColor" d="M185.9,272.4c-57.4,0-104.1-46.7-104.1-104.1S128.5,64.2,185.9,64.2S290,110.9,290,168.3   S243.3,272.4,185.9,272.4z M185.9,85.3c-45.8,0-83,37.2-83,83s37.2,83,83,83s83-37.2,83-83S231.7,85.3,185.9,85.3z"/>-->
+                                                                                                <!--            <path fill="currentColor" d="M361.3,447.8c-5.8,0-10.5-4.7-10.5-10.5c0-90.9-73.9-164.8-164.8-164.8S21.1,346.3,21.1,437.2   c0,5.8-4.7,10.5-10.5,10.5S0,443,0,437.2c0-102.5,83.4-185.9,185.9-185.9s185.9,83.4,185.9,185.9   C371.8,443,367.1,447.8,361.3,447.8z"/>-->
+                                                                                                <!--            <path fill="currentColor" d="M501.5,239.7H337.8c-5.8,0-10.5-4.7-10.5-10.5s4.7-10.5,10.5-10.5h163.7c5.8,0,10.5,4.7,10.5,10.5   S507.3,239.7,501.5,239.7z"/>-->
+                                                                                                <!--            <path fill="currentColor" d="M419.6,321.5c-5.8,0-10.5-4.7-10.5-10.5V147.3c0-5.8,4.7-10.5,10.5-10.5c5.8,0,10.5,4.7,10.5,10.5V311   C430.2,316.8,425.4,321.5,419.6,321.5z"/>-->
+                                                                                                <!--        </g>-->
+                                                                                                <!--</svg>  -->
+                                                                                                </a>
+                        </li>
+                    
                     {% endif %}
                     
                 </ul>

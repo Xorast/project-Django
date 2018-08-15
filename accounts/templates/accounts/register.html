@@ -5,16 +5,22 @@
 
     <!-- Page Content -->
     <div class="container">
-
-        <h3>Register</h3>
         
-             <form method="post" enctype="multipart/form-data">
+        <div class="col-md-8 offset-md-2"> 
+            
+            <h1 class="mt-4 mb-3">Register</h1>
+            
+            <form method="post" enctype="multipart/form-data">
+                    
                 {% csrf_token %}
                 {{ user_form    | as_bootstrap }}
                 {{ profile_form | as_bootstrap }}
-                <input type="submit" value="Register">        
+                <input type="submit" value="REGISTER">        
+                
             </form>
-
+            
+        </div>
+        
     </div>
 
 {% endblock content %}
