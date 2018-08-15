@@ -51,7 +51,7 @@ def register_to_event(request, event_type, event_subtype, event_id):
             
         else:
             
-            error = "You are already registered to this event. If you want to register someone else, please login under with his/her session. < Login link >"
+            error = "You are already registered to this event. If you want to register someone else, please login under with his/her session."
             return render(request, "activities/event_registration_request_failed.html", {"error":error})
             
     else:

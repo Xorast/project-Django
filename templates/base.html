@@ -37,12 +37,55 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                
                 <ul class="navbar-nav ml-auto">
+                    
                     <li class="nav-item"><a class="nav-link"    href="{% url 'news_list'                 %}"  >News        </a></li>
                     <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'ACTIVITY'       %}"  >Activities  </a></li>
+                    
+                   
+                    <li id="dropdown_1A" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown link
+                        </a>
+                        
+                        <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item txt-white" href="#">Action</a>
+                          <a class="dropdown-item txt-white" href="#">Action</a>
+                        </div>
+                    </li>
+                    
+                    <li id="dropdown_2A" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown link
+                        </a>
+                        
+                        <div id="dropdown_2B" class="submenu dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item txt-white" href="#">Action</a>
+                          <a class="dropdown-item txt-white" href="#">Action</a>
+                        </div>
+                    </li>
+                    
+                    <li id="dropdown_3A" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown link
+                        </a>
+                        
+                        <div id="dropdown_3B" class="submenu dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item txt-white" href="#">Action</a>
+                          <a class="dropdown-item txt-white" href="#">Action</a>
+                        </div>
+                    </li>
+                 
+                
+ 
+                
                     <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'TRAININGCOURSE' %}"  >Courses     </a></li>
                     <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'EVENT'          %}"  >Events      </a></li>
+                    
                     <li class="nav-item"><a class="nav-link"    href="{% url 'about'                     %}"  >About       </a></li>
+                    
+                    <!-- Login features -->
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link"    href="{% url 'Profile' %}" > Profile   </a></li>
                     <li class="nav-item"><a class="nav-link"    href="{% url 'Logout' %}"  > Logout    </a></li>
@@ -50,6 +93,7 @@
                     <li class="nav-item"><a class="nav-link"    href="{% url 'Login' %}"   > Login     </a></li>
                     <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}"> Register  </a></li>
                     {% endif %}
+                    
                 </ul>
             </div>
             
@@ -61,7 +105,7 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="footer-bottom py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">MJC Mauguio Carnon &copy; 2018</p>
         </div>
@@ -71,8 +115,107 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    
+    <!-- Dropdown menu when hovered -->
+    <!-- Bugg when mouseleave on the side (trigger two animations and it buggs) -->
+    <script type="text/javascript">
+        
+            // var timer;
+            
+            // // Dropdown 1
+            // $("#dropdown_1A").on("mouseover", function() {
+            //   clearTimeout(timer);
+            // 	openSubmenu_1();
+            // }).on("mouseleave", function() {
+            //   timer = setTimeout(
+            //   	closeSubmenu_1
+            //   , 300);
+            // });
+            
+            // function openSubmenu_1() {
+            //   $("#dropdown_1B").addClass("show");
+            // }
+            // function closeSubmenu_1() {
+            //   $("#dropdown_1B").removeClass("show");
+            // };
+            
+            // // Dropdown 2
+            // $("#dropdown_2A").on("mouseover", function() {
+            //   clearTimeout(timer);
+            // 	openSubmenu_2();
+            // }).on("mouseleave", function() {
+            //   timer = setTimeout(
+            //   	closeSubmenu_2
+            //   , 300);
+            // });
+            
+            // function openSubmenu_2() {
+            //   $("#dropdown_2B").addClass("show");
+            // }
+            // function closeSubmenu_2() {
+            //   $("#dropdown_2B").removeClass("show");
+            // };
+            
+            // // Dropdown 3
+            // $("#dropdown_3A").on("mouseover", function() {
+            //   clearTimeout(timer);
+            // 	openSubmenu_3();
+            // }).on("mouseleave", function() {
+            //   timer = setTimeout(
+            //   	closeSubmenu_3
+            //   , 300);
+            // });
+            
+            // function openSubmenu_3() {
+            //   $("#dropdown_3B").addClass("show");
+            // }
+            // function closeSubmenu_3() {
+            //   $("#dropdown_3B").removeClass("show");
+            // };
+                
+            // ------------------------------------
+            // ------------------------------------
+
+            // Working function - missing the "select only the child of THAT element".
+            // 1. Initial function
+            //
+            // $(".dropdown").on("mouseover", function() {
+            //   clearTimeout(timer);
+            // 	openSubmenu();
+            // }).on("mouseleave", function() {
+            //   timer = setTimeout(
+            //   	closeSubmenu
+            //   , 300);
+            // });
+            //
+            // function openSubmenu() {
+            //   $(".submenu").addClass("show");
+            // }
+            // function closeSubmenu() {
+            //   $(".submenu").removeClass("show");
+            // };
+            // 
+            // 2. Try to select only the child (to avoid having x functions)
+            // 
+            // $('.dropdown').hover(function () {
+            //     clearTimeout(timer);
+            //     openSubmenu(this);
+            //     }, function () {
+            //         timer = setTimeout(
+            //         closeSubmenu
+            //         , 300);
+            // });
+            //
+            // function openSubmenu() {
+            //   $(this).find('.submenu').addClass('show');
+            // }
+            // function closeSubmenu() {
+            //   $(this).find('.submenu').removeClass('show');
+            // };
+            
+                
+        </script>
 
 </body>
-  
 </html>
 

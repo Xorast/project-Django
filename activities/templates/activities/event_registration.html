@@ -6,22 +6,36 @@
 
     <!-- Page Content -->
     <div class="container">
-    
-    <p>Display information about the fare, the discount and ask if wish to proceed.</p>
-    <p>One registration at a time, one registration = one payment.</p>
-    <p>Make sure to register with the RIGHT account : the account of the one you register for (participant of the activity).</p>
-
-    <hr>
-    <hr>
-
-    <form method="POST" action="{% url 'checkout' %}">
-        {% csrf_token %}
-        <input type="hidden" name="event_id" value="{{ event.id }}"/>
-        <input type="submit" value="Proceed to payment"/>
-    </form>
-    
-    <a href="{% url 'home' %}">Cancel & Go back to home page</a>
         
+        <div class="col-md-8 offset-md-2">  
+        
+            <h1 class="mt-4 mb-3 text-success">Registration</h1>
+            
+            <p>You are about to register to the following event : 
+            <strong><span class="text-nowrap"> {{ event.name }} - [Event reference: {{ event.id }}].</span></strong></br>
+            
+            <span class="text-danger">The participant that will be registered is the current user: 
+            <strong><span class="text-nowrap">{{ user.first_name }} {{ user.last_name  }}</span></strong>.
+            
+            <br>If you wish to register your child, please login with her or his account. </br> If you wish to register several people, please register through every participant's account.</span></br>
+            
+            The fare for this event is : <span class="text-nowrap">{{ event.rate }} €.</span> If you wish to proceed, click on "Proceed to payment".</p>
+            
+            <div class="mt-3">
+                <a href="{% url 'home' %}">
+                    <button type="button" class="btn btn-outline-danger text-uppercase mr-3">Go back to home page</button>
+                </a>
+            </div>
+            
+            <div class="mt-3">
+                <form method="POST" action="{% url 'checkout' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="event_id" value="{{ event.id }}"/>
+                    <input class="btn btn-outline-success text-uppercase" type="submit" value="Proceed to payment"/>
+                </form>
+            </div>
+            
+        </div>
     </div>
     <!-- /.container --> 
 

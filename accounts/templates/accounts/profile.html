@@ -7,25 +7,86 @@
     <!-- Page Content -->
     <div class="container">
 
-        <h3>Profile</h3>
-        <hr>
-        <h4>You are logged in as : {{ user }}</h4>
-        <br>
-        <p>Adherent_number:         {{ user.Profile.adherent_number  }}</p>
-        <p>Rate_coefficient:        {{ user.Profile.rate_coefficient }}</p>
-        <p>Events registered to:    </p>
-        <ol>
-            {% for eventRegisteredto in eventsRegisteredTo %} 
-                <li class="text-uppercase"> {{ eventRegisteredto.event.name }} 
-                     (age:    {{ eventRegisteredto.event.age_group }} /
-                     level :  {{ eventRegisteredto.event.level }} /
-                     day:     {{ eventRegisteredto.event.day }} / 
-                     id:      {{ eventRegisteredto.event.id }})
-                </li>
-            {% endfor %}
-        </ol>
-        
+        <!--<div class="col-md-8 offset-md-2"> -->
 
+            <h1 class="mt-4 mb-3">Profile</h1>
+            
+            <p><span class="text-capitalize"><strong>{{ user.first_name }}</strong></span>, welcome to your profile page.</p>
+            
+            <h4>Your personal information:</h4>
+            <p>
+                First name: <strong>{{ user.first_name               }}</strong></br>
+                Last name:  <strong>{{ user.last_name                }}</strong></br>
+                Adherent #: <strong>{{ user.Profile.adherent_number  }}</strong></br>
+                Rate coeff: <strong>{{ user.Profile.rate_coefficient }}</strong>
+            </p>
+    
+            <h4>Your registrations:</h4>
+            
+        <div class="row">    
+            {% for eventRegisteredto in eventsRegisteredTo %} 
+            <div class="col-md-4">
+                
+                <div class="card card text-white bg-danger mb-3" style="max-width: 20rem;">
+                    
+                    <div class="card-header text-center text-uppercase"><strong>{{ eventRegisteredto.event.name }}</strong></div>
+                    
+                    <div class="card-body">
+                        
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                  <th scope="row">Category</th>
+                                  <td>{{ eventRegisteredto.event.event_subtype }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Period</th>
+                                  <td>{{ eventRegisteredto.event.period        }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Age</th>
+                                  <td>{{ eventRegisteredto.event.age_group     }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Level</th>
+                                  <td>{{ eventRegisteredto.event.level         }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Max group size</th>
+                                  <td>{{ eventRegisteredto.event.number_max    }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Host</th>
+                                  <td>{{ eventRegisteredto.event.host          }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Day</th>
+                                  <td>{{ eventRegisteredto.event.day }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Time</th>
+                                  <td>{{ eventRegisteredto.event.time_start }} / {{ eventRegisteredto.event.time_end }}</td>
+                                  
+                                </tr>
+                                <tr>
+                                  <th scope="row">Venue</th>
+                                  <td> <a href="{{ eventRegisteredto.event.room.venue.url_map }}" target="_blank"><img src="{{ STATIC_URL }}/svg/mappin.svg"></a></br>
+                                      {{ eventRegisteredto.event.room          }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                    </div>
+                    
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+        <!-- .row -->
+        
+        <!--</div>-->
+        
     </div>
     
 {% endblock content%}

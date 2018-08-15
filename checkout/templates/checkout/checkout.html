@@ -21,35 +21,48 @@
 
 
 {% block content %}
-      <section>
+    <section>
         
         <!-- Page Content -->
         <div class="container">
           
-              <form role="form" method="post" id="payment-form" action="{% url 'payment' %}">
-                  
-                  <legend>Payment Details</legend>
-              
-                  <div id="credit-card-errors" style="display:none">
-                    <div class="alert-message block-message error" id="stripe-error-message"></div>
-                  </div>
-              
-                  <div class="form-group col-md-6">
-                      {{ payment_form|as_bootstrap }}
-                  </div>
-              
-                  {% csrf_token %}
-                  <div class="form-group col-md-12">
-                    <input type="hidden" name="event_id" value="{{ event.id }}"/>
-                    <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-                  </div>
-              
-              </form>
-          
-          </div>
+            <div class="col-md-8 offset-md-2">  
+                
+                    <h1 class="mt-4 mb-3">Payment Details</h1>
+                    
+                    <p>Event : <strong> {{ event.name }} - [Event number: {{ event.id }}].</strong></br>
+                    Participant : <strong>{{ user.first_name }} {{ user.last_name  }}</strong>.</br>
+                    Price : <strong>{{ event.rate }} €<strong></p>
+                    
+            
+                    <form role="form" method="post" id="payment-form" action="{% url 'payment' %}">
+                    
+                        <div id="credit-card-errors" style="display:none">
+                            <div class="alert-message block-message error" id="stripe-error-message"></div>
+                        </div>
+                    
+                        <div class="form-group">
+                            {{ payment_form|as_bootstrap }}
+                        </div>
+                    
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="hidden" name="event_id" value="{{ event.id }}"/>
+                            <input class="btn btn-outline-success text-uppercase" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+                        </div>
+                    
+                    </form>
+                    
+                    <a href="{% url 'home' %}">
+                        <button type="button" class="btn btn-outline-danger text-uppercase"> CANCEL </button>
+                    </a>
+                
+            </div>
+            
+        </div>
         <!-- /.container -->
       
-      </section>
+    </section>
 
 {% endblock %}
 
