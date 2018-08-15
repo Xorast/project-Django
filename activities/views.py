@@ -15,7 +15,7 @@ def get_type_subtypes(request, event_type):
     event_subtypes  = Event_Subtype.objects.filter(Event__event_type = event_type.id).distinct()
     
     return render(request, "activities/events_list_of_type_subtypes.html", {"event_type" : event_type, "event_subtypes" : event_subtypes})
-
+    
 
     
 def get_subtype_list(request, event_type, event_subtype):

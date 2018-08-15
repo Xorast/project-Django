@@ -40,58 +40,73 @@
                 
                 <ul class="navbar-nav ml-auto">
                     
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'news_list'                 %}"  >News        </a></li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'ACTIVITY'       %}"  >Activities  </a></li>
+                    <!-- News -->
+                    <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}" >News</a></li>
                     
-                   
+                    <!-- Activities -->
                     <li id="dropdown_1A" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown link
+                        
+                        <a class="nav-link dropdown-toggle" href="{% url 'subtypes' 'ACTIVITY'       %}" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Activities
                         </a>
                         
                         <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item txt-white" href="#">Action</a>
-                          <a class="dropdown-item txt-white" href="#">Action</a>
+                          
+                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'ACTIVITY' %}">Overview</a>
+                          {% for n in event_subtypes_ACTIVITY  %}
+                          <a class="dropdown-item txt-white" href="{% url 'list' 'ACTIVITY' n.event_subtype %}">{{ n.event_subtype }}</a>  
+                          {% endfor %}
+                        
                         </div>
+                        
                     </li>
                     
-                    <li id="dropdown_2A" class="nav-item dropdown">
+                    <!-- Courses -->
+                    <li id="dropdown_1A" class="nav-item dropdown">
+                        
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown link
+                          Courses
                         </a>
                         
-                        <div id="dropdown_2B" class="submenu dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item txt-white" href="#">Action</a>
-                          <a class="dropdown-item txt-white" href="#">Action</a>
+                        <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                          
+                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'TRAININGCOURSE' %}">Overview</a>
+                          {% for n in event_subtypes_COURSE  %}
+                          <a class="dropdown-item txt-white" href="{% url 'list' 'TRAININGCOURSE' n.event_subtype %}">{{ n.event_subtype }}</a>  
+                          {% endfor %}
+                          
                         </div>
+                        
                     </li>
                     
-                    <li id="dropdown_3A" class="nav-item dropdown">
+                    <!-- Events -->
+                    <li id="dropdown_1A" class="nav-item dropdown">
+                        
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown link
+                          Events
                         </a>
                         
-                        <div id="dropdown_3B" class="submenu dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item txt-white" href="#">Action</a>
-                          <a class="dropdown-item txt-white" href="#">Action</a>
+                        <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                          
+                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'EVENT' %}">Overview</a>
+                          {% for n in event_subtypes_EVENT  %}
+                          <a class="dropdown-item txt-white" href={% url 'list' 'EVENT' n.event_subtype %}>{{ n.event_subtype }}</a>  
+                          {% endfor %}
+                          
                         </div>
+                        
                     </li>
-                 
-                
- 
-                
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'TRAININGCOURSE' %}"  >Courses     </a></li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'subtypes' 'EVENT'          %}"  >Events      </a></li>
                     
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'about'                     %}"  >About       </a></li>
+                    <!-- About -->
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'about'    %}" >About      </a></li>
                     
                     <!-- Login features -->
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Profile' %}" > Profile   </a></li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Logout' %}"  > Logout    </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'Profile'  %}" > Profile   </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" > Logout    </a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Login' %}"   > Login     </a></li>
-                    <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}"> Register  </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'Login'    %}" > Login     </a></li>
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" > Register  </a></li>
                     {% endif %}
                     
                 </ul>
@@ -99,6 +114,7 @@
             
         </div>
     </nav>
+
 
     <!-- Content -->
     {% block content %}
