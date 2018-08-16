@@ -1,19 +1,30 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 
+{% block specific_js %}
+    
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+    
+{% endblock specific_js %}
+
 {% block content %}
 <section>
 
+  
     <!-- Page Content -->
     <div class="container">
         
-        
-        
         <div class="row">
-        
+              
+            </div>
             <!-- Post Content Column -->
             <div class="col-lg-8 offset-lg-2">
-                
+            
+                <button class="btn btn-primary mt-3" onclick="goBack()">Go Back</button>
                 
                 <!-- Image -->
                 <div class="row m-0 mt-3">    
@@ -99,6 +110,6 @@
         <!-- /.row -->
     </div>
             
-
+    
 </section>
 {% endblock %}

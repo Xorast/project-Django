@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
+{% block specific_js %}
+    
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+    
+{% endblock specific_js %}
+
 {% block content %}
 
 <section>
@@ -10,7 +20,7 @@
             
             <div class="col-md-8 offset-md-2"> 
             
-                <a href="{% url 'news_list' %}" class="btn btn-primary btn-lg mt-4">Back</a>
+                <button class="btn btn-primary mt-3" onclick="goBack()">Go Back</button>
             
                 <h1 class="mt-4 mb-3">{{ news.title        }}</h1>
             
