@@ -8,12 +8,12 @@
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">News
-        <small>Subheading</small>
+        <small>Keep informed about what's happening !</small>
     </h1>
     
     <!-- Create News if you are a superuser -->
     {% if user.is_superuser %}
-        <a href="{% url 'create_news' %}" class="btn btn-default">Create News</a><br>
+        <a href="{% url 'create_news' %}" class="btn btn-info mb-4">Create News</a><br>
     {% endif %}
 
     <!-- Blog Post -->
@@ -22,14 +22,14 @@
             
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="rounded col-lg-6">
                         <a href="#">
-                            <img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
+                            <img class="img-fluid rounded" src="{{MEDIA_URL}}{{ n.image }}" alt="">
                         </a>
                     </div>
                     <div class="col-lg-6">
                         <h2 class="card-title">{{ n.title    }}</h2>
-                        <p class="card-text">  {{ n.content  }}</p>
+                        <p class="card-text">  {{ n.content|truncatewords:100  }}</p>
                         <a href="{% url 'news_details' n.id %}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ from .forms                 import NewsForm
 
 def get_news_list(request):
     
-    news    = News.objects.all
+    news    = News.objects.order_by('-published_date')
     
     return render(request, "news/news_list.html", {"news" : news})
 
@@ -49,7 +49,8 @@ def edit_news(request, pk):
     if not request.user.is_superuser:
         return HttpResponseForbidden()
     
-    news = get_object_or_404(News, pk=pk)
+    news   = get_object_or_404(News, pk=pk)
+    newsId = pk
     
     if request.method == "POST":
         
@@ -64,5 +65,18 @@ def edit_news(request, pk):
     else:
         
          form = NewsForm(instance=news)
+         edit = "True"
     
-    return render(request, 'news/news_form.html', {'form': form})
+    return render(request, 'news/news_form.html', {'form': form, 'newsId':newsId, 'edit':edit})
+
+
+
+def delete_news(request, pk):
+   
+    if not request.user.is_superuser:
+        return HttpResponseForbidden()
+    
+    news = get_object_or_404(News, pk=pk)
+    news.delete()
+    
+    return redirect('news_list')
