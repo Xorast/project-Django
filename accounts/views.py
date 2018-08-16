@@ -65,13 +65,13 @@ def register(request):
 
 def logout(request):
     auth.logout(request)
-    messages.warning(request, 'You are now logged out.')
+    messages.warning(request, 'You are logged out.')
     return redirect('/')
     
  
     
 def profile(request):
     
-    eventsRegisteredTo   = EventRegistration.objects.filter(participant=request.user)
+    eventsRegisteredTo   = EventRegistration.objects.filter(participant=request.user).order_by('event__event_type','event__name')
     
     return render(request, "accounts/profile.html", {'eventsRegisteredTo':eventsRegisteredTo})

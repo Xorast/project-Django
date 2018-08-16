@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 def get_type_subtypes(request, event_type):
     
     event_type      = get_object_or_404(Event_Type, event_type=event_type)
-    event_subtypes  = Event_Subtype.objects.filter(Event__event_type = event_type.id).distinct()
+    event_subtypes  = Event_Subtype.objects.filter(Event__event_type = event_type.id).distinct().order_by('event_subtype')
     
     return render(request, "activities/events_list_of_type_subtypes.html", {"event_type" : event_type, "event_subtypes" : event_subtypes})
     
@@ -17,7 +17,7 @@ def get_subtype_list(request, event_type, event_subtype):
     
     event_type      = get_object_or_404(Event_Type, event_type=event_type)
     event_subtype   = get_object_or_404(Event_Subtype, event_subtype=event_subtype)
-    events          = Event.objects.filter(event_type__event_type=event_type, event_subtype__event_subtype=event_subtype)
+    events          = Event.objects.filter(event_type__event_type=event_type, event_subtype__event_subtype=event_subtype).order_by('name')
     
     return render(request, "activities/events_list_by_type_subtypes.html", {"event_type" : event_type, "event_subtype":event_subtype, "events": events})
 

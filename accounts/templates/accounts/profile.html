@@ -26,7 +26,17 @@
             {% for eventRegisteredto in eventsRegisteredTo %} 
             <div class="col-md-6 col-lg-4">
                 
-                <div class="card card text-white bg-danger mb-3">
+                <div  class="card card text-white mb-3
+                      {% if eventRegisteredto.event.event_type.event_type == 'ACTIVITY' %}
+                        bg-danger"
+                      
+                      {% elif eventRegisteredto.event.event_type.event_type == 'TRAININGCOURSE' %}
+                        bg-primary"
+                      
+                      {% elif eventRegisteredto.event.event_type.event_type == 'EVENT' %}
+                         bg-dark"
+                         
+                      {% endif %}>
                     
                     <div class="card-header text-center text-uppercase"><strong>{{ eventRegisteredto.event.name }}</strong></div>
                     
@@ -36,7 +46,7 @@
                             <tbody>
                                 <tr>
                                   <th scope="row">Category</th>
-                                  <td>{{ eventRegisteredto.event.event_subtype }}</td>
+                                  <td>{{ eventRegisteredto.event.event_type.title }} / {{ eventRegisteredto.event.event_subtype }}</td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Period</th>
