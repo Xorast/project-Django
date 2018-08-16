@@ -3,11 +3,6 @@ from .models                        import Event, Event_Type, Event_Subtype, Eve
 from django.contrib.auth.decorators import login_required
 
 
-
-def get_home_page(request):
-    return render(request, "activities/index.html")
-
-
     
 def get_type_subtypes(request, event_type):
     

@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 
-{% block content %}
 
-<!-- Carousel -->
-<header>
-    
+{% block header %}
+
+    <!-- Carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         
         <ol class="carousel-indicators">
@@ -53,11 +52,10 @@
         
     </div>
       
-</header>
+{% endblock %}
 
+{% block content %}
 
-<section>
-    
     <!-- Page Content -->
     <div class="container">
 
@@ -71,9 +69,10 @@
             <div class="card mb-4">
                 
                 <div class="card-body">
+                    
                     <div class="row">
                         
-                        <div class="col-md-6 img rounded" style="background-image:url('{{ MEDIA_URL }}{{ news.image }}')"></div>
+                        <div class="col-md-6 img rounded" onclick="goTo('{% url 'news_details' news.id %}')" style="background-image:url('{{ MEDIA_URL }}{{ news.image }}')"></div></a>
                 
                         <div class="col-md-6">
                             <h2 class="card-title">{{ news.title }}</h2>
@@ -82,6 +81,7 @@
                         </div>
                 
                     </div>
+                    
                 </div>
                 
                 <div class="card-footer text-muted">
@@ -102,8 +102,9 @@
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
                 <div class="card h-100">
+                    
                     <div class="row m-0">    
-                        <div class="img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ activities.image }}')"></div>    
+                        <div class="img rounded-top" onclick="goTo('{% url 'subtypes' activities.event_type %}')" style="background-image:url('{{ MEDIA_URL }}{{ activities.image }}')"></div>    
                     </div>
                         
                     <div class="card-body">
@@ -114,14 +115,16 @@
                     </div>
                     
                 </div>
+                
             </div>
             
             <!-- Courses -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
                 <div class="card h-100">
+                    
                     <div class="row m-0">    
-                        <div class="img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ courses.image }}')"></div>    
+                        <div class="img rounded-top" onclick="goTo('{% url 'subtypes' courses.event_type %}')" style="background-image:url('{{ MEDIA_URL }}{{ courses.image }}')"></div>    
                     </div>
                         
                     <div class="card-body">
@@ -132,14 +135,16 @@
                     </div>
                     
                 </div>
+                
             </div>
             
             <!-- Event -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
                 <div class="card h-100">
+                    
                     <div class="row m-0">
-                        <div class="img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ events.image }}')"></div>    
+                        <div class="img rounded-top" onclick="goTo('{% url 'subtypes' events.event_type %}')" style="background-image:url('{{ MEDIA_URL }}{{ events.image }}')"></div>    
                     </div>
                         
                     <div class="card-body">
@@ -150,6 +155,7 @@
                     </div>
                     
                 </div>
+                
             </div>
             
         </div>    
@@ -157,7 +163,5 @@
     
     </div>
     <!-- /.container -->
-      
-</section>
 
 {% endblock %}

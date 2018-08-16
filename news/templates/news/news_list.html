@@ -3,15 +3,15 @@
 
 {% block content %}
 
-<!-- Page Content -->
+    <!-- Page Content -->
     <div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
+    <!-- Page Heading -->
     <h1 class="mt-4 mb-3">News
         <small>Keep informed about what's happening !</small>
     </h1>
     
-    <!-- Create News if you are a superuser -->
+    <!-- Create News button if you are a superuser -->
     {% if user.is_superuser %}
         <a href="{% url 'create_news' %}" class="btn btn-info mb-4">Create News</a><br>
     {% endif %}
@@ -21,18 +21,21 @@
         <div class="card mb-4">
             
             <div class="card-body">
+                
                 <div class="row">
-                    <div class="rounded col-lg-6">
-                        <a href="#">
+                    
+                    <div class="rounded col-lg-6"  onclick="goTo('{% url 'news_details' n.id %}')">
                             <img class="img-fluid rounded" src="{{MEDIA_URL}}{{ n.image }}" alt="">
-                        </a>
                     </div>
+                    
                     <div class="col-lg-6">
                         <h2 class="card-title">{{ n.title    }}</h2>
                         <p class="card-text">  {{ n.content|truncatewords:100  }}</p>
                         <a href="{% url 'news_details' n.id %}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
+                    
                 </div>
+                
             </div>
           
             <div class="card-footer text-muted">
@@ -41,7 +44,6 @@
             
         </div>
     {% endfor %}
-
 
   </div>
   <!-- /.container -->

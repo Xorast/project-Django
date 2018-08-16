@@ -3,34 +3,32 @@
 
 {% block content %}
 
-    <section>
         
-        <!-- Page Content -->
-        <div class="container">
+    <!-- Page Content -->
+    <div class="container">
 
-            <div class="col-md-6 offset-md-3">
-                
-                <a href="{% url 'news_details' newsId %}" class="btn btn-primary btn-lg mt-4">Back</a>
-                
-                {% if edit == "True" %}
-                <h1 class="mt-4 mb-3">Edit News</h1>
-                {% else %}
-                <h1 class="mt-4 mb-3">Create News</h1>
-                {% endif %}
-                
-                <form method="POST" enctype="multipart/form-data">
-                
-                    {% csrf_token %}
-                    {{ form | as_bootstrap }}
-                    <button type="submit" class="btn btn-info btn-lg btn-block">POST</button>
-                
-                </form>
-                
-            </div>
-
+        <div class="col-md-6 offset-md-3">
+            
+            <a href="{% url 'news_details' newsId %}" class="btn btn-primary btn-lg mt-4">Back</a>
+            
+            {% if edit == "True" %}
+            <h1 class="mt-4 mb-3">Edit News</h1>
+            {% else %}
+            <h1 class="mt-4 mb-3">Create News</h1>
+            {% endif %}
+            
+            <form method="POST" enctype="multipart/form-data">
+            
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <button type="submit" class="btn btn-info btn-lg btn-block">POST</button>
+            
+            </form>
+            
         </div>
-        <!-- /.container -->
+
+    </div>
+    <!-- /.container -->
       
-    </section>
     
 {% endblock %}

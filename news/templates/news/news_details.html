@@ -1,85 +1,73 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block specific_js %}
-    
-    <script>
-    function goBack() {
-        window.history.back();
-    }
-    </script>
-    
-{% endblock specific_js %}
-
 {% block content %}
 
-<section>
         
-        <!-- Page Content -->
-        <div class="container">
+    <!-- Page Content -->
+    <div class="container">
+        
+        <div class="col-md-8 offset-md-2"> 
+        
+            <a class="btn btn-primary mt-3" href="{% url 'news_list' %}">All News</a>
+        
+            <h1 class="mt-4 mb-3">{{ news.title        }}</h1>
+        
+            <!-- Exact same code works on other pages, but not here -->
+            <!--<div class="header rounded mt-4 mb-3" style="background-image:url({{MEDIA_URL}}{{ news.image }})"></div>-->
             
-            <div class="col-md-8 offset-md-2"> 
+            <img class="img-fluid rounded" src="{{MEDIA_URL}}{{ news.image }}" alt="">
             
-                <button class="btn btn-primary mt-3" onclick="goBack()">Go Back</button>
+            {% if user.is_superuser %}
+             
+              <a href="{% url 'edit_news' news.id %}" class="btn btn-info btn-lg btn-block mt-4">Edit News</a><br>
+              
+              <!-- button - trigger modal - confirmation deletion -->
+              <button type="button" class="btn btn-danger btn-lg btn-block mt-2" data-toggle="modal" data-target="#ModalFileSelection">
+              Delete News
+              </button>
+              
+            {% endif %}
+            <hr>
+        
+            <!-- Date/Time -->
+            <p class="mx-3">{{ news.created_date }}</p>
+        
+            <hr>
+        
+            <!-- Post Content -->
+        
+            <p class=" text-justify mx-3">{{ news.content      }}</p>
+        
+            <hr>
             
-                <h1 class="mt-4 mb-3">{{ news.title        }}</h1>
-            
-                <!-- Exact same code works on other pages, but not here -->
-                <!--<div class="header rounded mt-4 mb-3" style="background-image:url({{MEDIA_URL}}{{ news.image }})"></div>-->
-                
-                <img class="img-fluid rounded" src="{{MEDIA_URL}}{{ news.image }}" alt="">
-                
-                {% if user.is_superuser %}
-                 
-                  <a href="{% url 'edit_news' news.id %}" class="btn btn-info btn-lg btn-block mt-4">Edit News</a><br>
-                  
-                  <!-- button - trigger modal - confirmation deletion -->
-                  <button type="button" class="btn btn-danger btn-lg btn-block mt-2" data-toggle="modal" data-target="#ModalFileSelection">
-                  Delete News
-                  </button>
-                  
-                {% endif %}
-                <hr>
-            
-                <!-- Date/Time -->
-                <p class="mx-3">{{ news.created_date }}</p>
-            
-                <hr>
-            
-                <!-- Post Content -->
-            
-                <p class=" text-justify mx-3">{{ news.content      }}</p>
-            
-                <hr>
-                
-                <!-- modal - confirm deletion -->
-                <div class="modal fade" id="ModalFileSelection" tabindex="-1" role="dialog" aria-labelledby="ModalFileSelection" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                                
-                            <div class="modal-header">
-                                <h5 class="modal-title text-uppercase" id="ModalFileSelection">DELETION CONFIRMATION</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+            <!-- modal - confirm deletion -->
+            <div class="modal fade" id="ModalFileSelection" tabindex="-1" role="dialog" aria-labelledby="ModalFileSelection" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
                             
-                            <div class="modal-body">
-                                <p>Do you confirm the deletion ?</p>
-                                <a href="{% url 'delete_news' news.id %}" class="btn btn-danger btn-lg btn-block mt-3">Delete post</a><br>
-                            </div>
-                            
-                            <div class="modal-footer">
-                            </div>
-                                
+                        <div class="modal-header">
+                            <h5 class="modal-title text-uppercase" id="ModalFileSelection">DELETION CONFIRMATION</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        
+                        <div class="modal-body">
+                            <p>Do you confirm the deletion ?</p>
+                            <a href="{% url 'delete_news' news.id %}" class="btn btn-danger btn-lg btn-block mt-3">Delete post</a><br>
+                        </div>
+                        
+                        <div class="modal-footer">
+                        </div>
+                            
                     </div>
                 </div>
-          
             </div>
-            
+      
         </div>
-        <!-- /.container -->
+        
+    </div>
+    <!-- /.container -->
 
-    </section> 
 {% endblock %}

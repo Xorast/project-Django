@@ -2,7 +2,6 @@
 {% load static from staticfiles %}
 
 {% block content %}
-<section>
     
     <!-- Page Content -->
     <div class="container">
@@ -24,18 +23,25 @@
             
             {% for event_subtype in event_subtypes %}
                 <div class="col-lg-4 mb-4">
+                    
                     <div class="card h-100">
+                        
                         <h4 class="card-header"> {{ event_subtype.event_subtype }}</h4>
+                        
                         <div class="row m-0">    
-                            <div class="col-md-12 img" style="background-image:url('{{ MEDIA_URL }}{{ event_subtype.image }}')"></div>    
+                            <div class="col-md-12 img" onclick="goTo('{% url 'list' event_type.event_type event_subtype.event_subtype %}')"  style="background-image:url('{{ MEDIA_URL }}{{ event_subtype.image }}')"></div>    
                         </div>
+                        
                         <div class="card-body">
                             <p class="card-text">{{ event_subtype.description|truncatewords:40 }}</p>
                         </div>
+                        
                         <div class="card-footer">
                             <a href="{% url 'list' event_type.event_type event_subtype.event_subtype %}" class="btn btn-primary">Learn More</a>
                         </div>
+                        
                     </div>
+                    
                 </div>
             {% endfor %}
                 
@@ -45,5 +51,4 @@
     </div>
     <!-- /.container -->
     
-</section>
 {% endblock %}

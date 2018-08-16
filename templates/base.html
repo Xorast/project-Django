@@ -29,6 +29,7 @@
 
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top pb-0">
+        
         <div class="container">
             
             <a class="navbar-brand pb-3" href="/">MJC Mauguio Carnon</a>
@@ -39,6 +40,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 
                 <ul class="navbar-nav ml-auto">
+                    
+                    <!-- Home -->
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}" >Home</a></li>
                     
                     <!-- News -->
                     <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}" >News</a></li>
@@ -72,7 +76,7 @@
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
                           <a class="dropdown-item txt-white" href="{% url 'subtypes' 'TRAININGCOURSE' %}"             >Overview             </a>
-                          
+                              
                           {% for n in event_subtypes_COURSE  %}
                           <a class="dropdown-item txt-white" href="{% url 'list' 'TRAININGCOURSE' n.event_subtype %}" >{{ n.event_subtype }}</a>  
                           {% endfor %}
@@ -139,69 +143,53 @@
                         </li>
                         
                         <!-- Logout -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Logout</span>
-                                                                                                <!--<svg   class="svg-white svg-mini-1"-->
-                                                                                                <!--        viewBox="0 0 24 24">-->
-                                                                                                <!--        <g fill="none" fill-rule="evenodd" id="miu" stroke="none" stroke-width="1">-->
-                                                                                                <!--        <g id="Artboard-1" transform="translate(-359.000000, -407.000000)">-->
-                                                                                                <!--        <g id="slice" transform="translate(215.000000, 119.000000)"/>-->
-                                                                                                <!--        <path fill="currentColor" id="common-logout-signout-exit-outline-stroke" d="M360,408 L360,430 L375,430 L375,423.5 L374,423.5 L374,429 L361,429 L361,409 L374,409 L374,414.5 L375,414.5 L375,408 L360,408 Z M377.050253,415.464466 L377.757359,414.757359 L382,419 L377.757359,423.242641 L377.050253,422.535534 L380.087349,419.498437 L367.00472,419.498437 L367.00472,418.5 L380.085786,418.5 L377.050253,415.464466 Z"/>-->
-                                                                                                <!--        </g>-->
-                                                                                                <!--        </g>-->
-                                                                                                <!--</svg>-->
-                                                                                                </a>
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Logout</span></a>
                         </li>
-                    
+                        
+                        {% if user.is_superuser %}
+                        <!-- Admin panel -->
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'admin_panel'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-light">Admin</span></a>                                                                                                </a>
+                        </li>
+                        {% endif %}
+                        
                     {% else %}
                         
                         <!-- Login -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Login'    %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Login</span>
-                                                                                                <!-- <svg   class= ""
-                                                                                                <!--        aria-hidden="true" -->
-                                                                                                <!--        data-prefix="fas" -->
-                                                                                                <!--        data-icon="sign-in-alt" -->
-                                                                                                <!--        class="svg-white svg-mini-1" -->
-                                                                                                <!--        role="img" -->
-                                                                                                <!--        xmlns="http://www.w3.org/2000/svg" -->
-                                                                                                <!--        viewBox="0 0 512 512">-->
-                                                                                                <!--        <path fill="currentColor" d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"></path>-->
-                                                                                                <!--</svg>-->
-                                                                                                </a>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Login</span></a>
                         </li>
                         
                         <!-- Register -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Register</span>
-                                                                                                <!--<svg   class="svg-white svg-mini-1"-->
-                                                                                                <!--        enable-background="new 0 0 512 512" -->
-                                                                                                <!--        id="Layer_1" -->
-                                                                                                <!--        version="1.1" -->
-                                                                                                <!--        viewBox="0 0 512 512" -->
-                                                                                                <!--        xml:space="preserve" -->
-                                                                                                <!--        xmlns="http://www.w3.org/2000/svg" -->
-                                                                                                <!--        xmlns:xlink="http://www.w3.org/1999/xlink">-->
-                                                                                                <!--        <g>-->
-                                                                                                <!--            <path fill="currentColor" d="M185.9,272.4c-57.4,0-104.1-46.7-104.1-104.1S128.5,64.2,185.9,64.2S290,110.9,290,168.3   S243.3,272.4,185.9,272.4z M185.9,85.3c-45.8,0-83,37.2-83,83s37.2,83,83,83s83-37.2,83-83S231.7,85.3,185.9,85.3z"/>-->
-                                                                                                <!--            <path fill="currentColor" d="M361.3,447.8c-5.8,0-10.5-4.7-10.5-10.5c0-90.9-73.9-164.8-164.8-164.8S21.1,346.3,21.1,437.2   c0,5.8-4.7,10.5-10.5,10.5S0,443,0,437.2c0-102.5,83.4-185.9,185.9-185.9s185.9,83.4,185.9,185.9   C371.8,443,367.1,447.8,361.3,447.8z"/>-->
-                                                                                                <!--            <path fill="currentColor" d="M501.5,239.7H337.8c-5.8,0-10.5-4.7-10.5-10.5s4.7-10.5,10.5-10.5h163.7c5.8,0,10.5,4.7,10.5,10.5   S507.3,239.7,501.5,239.7z"/>-->
-                                                                                                <!--            <path fill="currentColor" d="M419.6,321.5c-5.8,0-10.5-4.7-10.5-10.5V147.3c0-5.8,4.7-10.5,10.5-10.5c5.8,0,10.5,4.7,10.5,10.5V311   C430.2,316.8,425.4,321.5,419.6,321.5z"/>-->
-                                                                                                <!--        </g>-->
-                                                                                                <!--</svg>  -->
-                                                                                                </a>
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Register</span></a>
                         </li>
                     
                     {% endif %}
                     
                 </ul>
+                
             </div>
             
         </div>
+        
     </nav>
 
-
-    <!-- Content -->
+    <!-- Messages -->
+    {% for message in messages %}
+    <p class="text-center lead alert alert-dismissible alert-{{ message.tags }} my-0">{{ message }}</p>
+    {% endfor %}
+    
+    <!-- Header -->
+    <header>
+    {% block header %}
+    {% endblock %}
+    </header>
+    
+    <!-- Section / Content -->
+    <section>
     {% block content %}
     {% endblock %}
-
+    </section>
+    
+    
     <!-- Footer -->
     <footer class="footer-bottom py-4 bg-dark">
         
@@ -213,163 +201,47 @@
                 <strong>MJC Mauguio Carnon &copy; 2018</strong> </br>
                 
                 <!-- Adress -->
-                527 Avenue du 8 Mai 1945, 34130 Mauguio, France
+                <span class="text-nowrap">527 Avenue du 8 Mai 1945,</span>
+                <span class="text-nowrap">34130 Mauguio, France
                 
-                <!-- Map link -->
-                <a class="" href="https://goo.gl/maps/hyZBdUHhrWz" target="_blank">
-                            <svg    class="svg-mini-1"
-                                    enable-background="new 0 0 136 135.099"
-                                    viewBox="0 0 136 135.099">
-                                    <g>
-                                    <path class="mappinfooter" fill="#284A9F"   d="M4.667,67.549c0-34.98,28.355-63.334,63.332-63.334c34.979,0,63.334,28.354,63.334,63.334   c0,34.976-28.355,63.333-63.334,63.333C33.022,130.882,4.667,102.525,4.667,67.549z"/>
-                                    <path class="mappinfooter" fill="#24488E"   d="M112.966,22.947c24.733,24.734,24.735,64.833,0,89.568c-24.732,24.732-64.834,24.732-89.568,0   L112.966,22.947z" />
-                                    <g>
-                                    <path class="mappinfooter" fill="#1E3F77"  d="M129.405,83.09L84.739,38.423l-9.075,9.075l-19.331-2.664l1.997,19.998l-9.407,9.407L67.926,93.24    l0.331,12.998L89.24,127.22C108.989,120.189,124.22,103.642,129.405,83.09z" />
-                                    </g>
-                                    <path class="mappinfooter" id="mappinfooterID" fill="red"  d="M92.617,50.709c-0.263-0.988-0.798-2.04-1.193-2.961   c-4.738-11.384-15.088-15.464-23.445-15.464c-11.188,0-23.511,7.5-25.156,22.966v3.159c0,0.131,0.045,1.315,0.111,1.908   c0.922,7.37,6.736,15.202,11.079,22.571c4.672,7.896,9.521,15.662,14.325,23.428c2.961-5.066,5.912-10.199,8.807-15.137   c0.789-1.447,1.705-2.895,2.495-4.276c0.525-0.921,1.531-1.843,1.991-2.698c4.672-8.554,12.192-17.176,12.192-25.665v-3.488   C93.822,54.132,92.683,50.907,92.617,50.709z M68.183,66.568c-3.289,0-6.888-1.645-8.665-6.186   c-0.265-0.723-0.244-2.171-0.244-2.304v-2.041c0-5.789,4.917-8.422,9.193-8.422c5.265,0,9.336,4.211,9.336,9.476   C77.803,62.358,73.447,66.568,68.183,66.568z" />
-                                    </g>
-                                    </svg></a>
-                 &bull;  
+                    <!-- Map link -->
+                    <a class="" href="https://goo.gl/maps/hyZBdUHhrWz" target="_blank">
+                                <svg    class="svg-mini-1"
+                                        enable-background="new 0 0 136 135.099"
+                                        viewBox="0 0 136 135.099">
+                                        <g>
+                                        <path class="mappinfooter" fill="#284A9F"   d="M4.667,67.549c0-34.98,28.355-63.334,63.332-63.334c34.979,0,63.334,28.354,63.334,63.334   c0,34.976-28.355,63.333-63.334,63.333C33.022,130.882,4.667,102.525,4.667,67.549z"/>
+                                        <path class="mappinfooter" fill="#24488E"   d="M112.966,22.947c24.733,24.734,24.735,64.833,0,89.568c-24.732,24.732-64.834,24.732-89.568,0   L112.966,22.947z" />
+                                        <g>
+                                        <path class="mappinfooter" fill="#1E3F77"  d="M129.405,83.09L84.739,38.423l-9.075,9.075l-19.331-2.664l1.997,19.998l-9.407,9.407L67.926,93.24    l0.331,12.998L89.24,127.22C108.989,120.189,124.22,103.642,129.405,83.09z" />
+                                        </g>
+                                        <path class="mappinfooter" id="mappinfooterID" fill="red"  d="M92.617,50.709c-0.263-0.988-0.798-2.04-1.193-2.961   c-4.738-11.384-15.088-15.464-23.445-15.464c-11.188,0-23.511,7.5-25.156,22.966v3.159c0,0.131,0.045,1.315,0.111,1.908   c0.922,7.37,6.736,15.202,11.079,22.571c4.672,7.896,9.521,15.662,14.325,23.428c2.961-5.066,5.912-10.199,8.807-15.137   c0.789-1.447,1.705-2.895,2.495-4.276c0.525-0.921,1.531-1.843,1.991-2.698c4.672-8.554,12.192-17.176,12.192-25.665v-3.488   C93.822,54.132,92.683,50.907,92.617,50.709z M68.183,66.568c-3.289,0-6.888-1.645-8.665-6.186   c-0.265-0.723-0.244-2.171-0.244-2.304v-2.041c0-5.789,4.917-8.422,9.193-8.422c5.265,0,9.336,4.211,9.336,9.476   C77.803,62.358,73.447,66.568,68.183,66.568z" />
+                                        </g>
+                                        </svg></a>
+                                        
+                </span>
                  
                 <!-- Phone -->
-                Tel. 08.11.22.33.44 
-                 &bull; 
+                <span class="text-nowrap"> &bull; Tel. 08.11.22.33.44 </span>
                  
                 <!-- Mail -->
-                contact@mjc-maugio.com
+                <span class="text-nowrap"> &bull; contact@mjc-maugio.com</span>
             
             </p>
         
         </div>
         <!-- /.container -->
+        
     </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
     
-    <!-- Map pin svg change color when hovered -->
-    <script>
-        $(".mappinfooter").on("mouseover", function() {
-            $("#mappinfooterID").attr( 'fill','white');
-            }).on("mouseleave", function() {
-            $("#mappinfooterID").attr( 'fill','red');
-            });
-    </script>
-    
-    <!-- Profile svg change color when hovered -->
-    <script>
-        $(".userprofile").on("mouseover", function() {
-            $("#userProfileCircle").attr( 'fill','white');
-            $("#userProfileUser").attr( 'fill','#DD5600');
-            }).on("mouseleave", function() {
-            $("#userProfileCircle").attr( 'fill','#DD5600');
-            $("#userProfileUser").attr( 'fill','white');
-            });
-    </script>
+    <!-- Custom scripts -->
+    <script src="{% static 'js/ux.js' %}"></script>
     
     
-    
-    <!-- Dropdown menu when hovered -->
-    <!-- Bugg when mouseleave on the side (trigger two animations and it buggs) -->
-    <script type="text/javascript">
-        
-            // var timer;
-            
-            // // Dropdown 1
-            // $("#dropdown_1A").on("mouseover", function() {
-            //   clearTimeout(timer);
-            // 	openSubmenu_1();
-            // }).on("mouseleave", function() {
-            //   timer = setTimeout(
-            //   	closeSubmenu_1
-            //   , 300);
-            // });
-            
-            // function openSubmenu_1() {
-            //   $("#dropdown_1B").addClass("show");
-            // }
-            // function closeSubmenu_1() {
-            //   $("#dropdown_1B").removeClass("show");
-            // };
-            
-            // // Dropdown 2
-            // $("#dropdown_2A").on("mouseover", function() {
-            //   clearTimeout(timer);
-            // 	openSubmenu_2();
-            // }).on("mouseleave", function() {
-            //   timer = setTimeout(
-            //   	closeSubmenu_2
-            //   , 300);
-            // });
-            
-            // function openSubmenu_2() {
-            //   $("#dropdown_2B").addClass("show");
-            // }
-            // function closeSubmenu_2() {
-            //   $("#dropdown_2B").removeClass("show");
-            // };
-            
-            // // Dropdown 3
-            // $("#dropdown_3A").on("mouseover", function() {
-            //   clearTimeout(timer);
-            // 	openSubmenu_3();
-            // }).on("mouseleave", function() {
-            //   timer = setTimeout(
-            //   	closeSubmenu_3
-            //   , 300);
-            // });
-            
-            // function openSubmenu_3() {
-            //   $("#dropdown_3B").addClass("show");
-            // }
-            // function closeSubmenu_3() {
-            //   $("#dropdown_3B").removeClass("show");
-            // };
-                
-            // ------------------------------------
-            // ------------------------------------
-
-            // Working function - missing the "select only the child of THAT element".
-            // 1. Initial function
-            //
-            // $(".dropdown").on("mouseover", function() {
-            //   clearTimeout(timer);
-            // 	openSubmenu();
-            // }).on("mouseleave", function() {
-            //   timer = setTimeout(
-            //   	closeSubmenu
-            //   , 300);
-            // });
-            //
-            // function openSubmenu() {
-            //   $(".submenu").addClass("show");
-            // }
-            // function closeSubmenu() {
-            //   $(".submenu").removeClass("show");
-            // };
-            // 
-            // 2. Try to select only the child (to avoid having x functions)
-            // 
-            // $('.dropdown').hover(function () {
-            //     clearTimeout(timer);
-            //     openSubmenu(this);
-            //     }, function () {
-            //         timer = setTimeout(
-            //         closeSubmenu
-            //         , 300);
-            // });
-            //
-            // function openSubmenu() {
-            //   $(this).find('.submenu').addClass('show');
-            // }
-            // function closeSubmenu() {
-            //   $(this).find('.submenu').removeClass('show');
-            // };
-            
-                
-        </script>
-
 </body>
 </html>
 

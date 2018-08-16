@@ -1,7 +1,7 @@
 from django.shortcuts    import render, redirect
 from django.http         import HttpResponse
 from django.contrib.auth import authenticate
-from django.contrib      import auth
+from django.contrib      import auth, messages
 from .forms              import UserLoginForm, UserRegistrationForm, ProfileRegistrationForm
 from activities.models   import EventRegistration
 
@@ -20,10 +20,12 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 next = request.GET.get('next', "/")
+                messages.success(request, 'You are now logged in!')
                 return redirect(next)
-                
+        
             else:
                 login_form.add_error(None, "Your username or password are incorrect")
+        
     else:
         login_form = UserLoginForm()
 
@@ -63,6 +65,7 @@ def register(request):
 
 def logout(request):
     auth.logout(request)
+    messages.warning(request, 'You are now logged out.')
     return redirect('/')
     
  
