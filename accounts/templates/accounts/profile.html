@@ -66,7 +66,7 @@
                                 </tr>
                                 <tr>
                                   <th scope="row">Host</th>
-                                  <td>{{ eventRegisteredto.event.host          }}</td>
+                                  <td><a href="{% url 'host' eventRegisteredto.event.host.id %}">{{ eventRegisteredto.event.host          }}</a></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Day</th>
@@ -78,8 +78,8 @@
                                   
                                 </tr>
                                 <tr>
-                                  <th scope="row">Venue  <a href="{{ eventRegisteredto.event.room.venue.url_map }}" target="_blank"><img class="svg-mini-1" src="{{ STATIC_URL }}/svg/desgin-map-pin.svg"></a></th>
-                                  <td>{{ eventRegisteredto.event.room          }}</td>
+                                  <th scope="row"><span class="mr-3">Venue</span><a href="{{ eventRegisteredto.event.room.venue.url_map }}" target="_blank"><img class="svg-mini-1" src="{{ STATIC_URL }}/svg/desgin-map-pin.svg"></a></th>
+                                  <td><a href="{% url 'venue' eventRegisteredto.event.room.venue.name %}">{{ eventRegisteredto.event.room          }}</a></td>
                                 </tr>
                             </tbody>
                         </table>

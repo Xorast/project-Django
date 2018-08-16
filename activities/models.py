@@ -115,7 +115,7 @@ class Venue(models.Model):
     street_name     = models.CharField(max_length=200, null=False)
     city            = models.CharField(max_length=100, null=False)
     postcode        = models.PositiveSmallIntegerField(null=False)
-    url_map         = models.URLField(max_length=200)
+    iframe_url_map  = models.URLField(max_length=500, null=True)
     
     
     def __str__(self):
