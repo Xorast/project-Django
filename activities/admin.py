@@ -1,10 +1,11 @@
 from django.contrib     import admin
-from .models            import EventRegistration, Event, Event_Type, Event_Subtype,Age_Group,Level,Venue, Room, Period, Host, Weekday
+from .models            import EventRegistration, Event, Event_Subtype,Age_Group,Level,Venue, Room, Period, Host, Weekday
 
+# Event_Type
 
 admin.site.register(EventRegistration)
 admin.site.register(Event)
-admin.site.register(Event_Type)
+# admin.site.register(Event_Type)
 admin.site.register(Event_Subtype)
 admin.site.register(Age_Group)
 admin.site.register(Level)
