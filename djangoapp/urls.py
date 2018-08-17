@@ -24,9 +24,9 @@ from checkout       import urls as checkout_urls
 
 urlpatterns = [
     path('admin/',      admin.site.urls),
-    path('',            include(views_urls)),
-    path('news/',       include(news_urls)),
-    path('accounts/',   include(accounts_urls)),
-    path('activities/', include(activities_urls)),
-    path('checkout/',   include(checkout_urls))
+    # path('',            include(views_urls)),
+    # path('news/',       include(news_urls)),
+    # path('accounts/',   include(accounts_urls)),
+    # path('activities/', include(activities_urls)),
+    # path('checkout/',   include(checkout_urls))
 ]
