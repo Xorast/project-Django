@@ -1,12 +1,12 @@
 from django.shortcuts       import render, redirect, get_object_or_404
-from activities.models      import Event_Type, Venue, Host
+# from activities.models      import Event_Type, Venue, Host
 from news.models            import News
 
 
 
 def get_home_page(request):
     
-    # last_news    = News.objects.order_by('-published_date')[:2]
+    # last_news    = News.objects.order_by('-published_date')[:3]
     # activities   = get_object_or_404(Event_Type, event_type="ACTIVITY")
     # courses      = get_object_or_404(Event_Type, event_type="TRAININGCOURSE")
     # events       = get_object_or_404(Event_Type, event_type="EVENT")
