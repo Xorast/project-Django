@@ -1,5 +1,5 @@
 from django.shortcuts       import render, redirect, get_object_or_404
-# from activities.models      import Event_Type, Venue, Host
+from activities.models      import Event_Type, Venue, Host
 from news.models            import News
 
 
