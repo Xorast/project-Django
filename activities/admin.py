@@ -11,6 +11,11 @@ class RoomAdmin(admin.ModelAdmin):
     list_display    = ['venue', 'room']
     ordering        = ('venue','room')
 
+class HostAdmin(admin.ModelAdmin):  
+    list_display    = ['firstname', 'lastname', 'image', 'resume']
+    ordering        = ('firstname', 'lastname')
+
+
 
 admin.site.register(EventRegistration)
 admin.site.register(Event)
@@ -21,5 +26,5 @@ admin.site.register(Level)
 admin.site.register(Venue)
 admin.site.register(Room, RoomAdmin)
 admin.site.register(Period)
-admin.site.register(Host)
+admin.site.register(Host, HostAdmin)
 admin.site.register(Weekday)
