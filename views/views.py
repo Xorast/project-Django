@@ -35,8 +35,8 @@ def get_host(request, id):
     return render(request, "views/host.html", {'host':host} )
 
 
-def get_admin_panel(request):
-    return redirect("/admin")
+# def get_admin_panel(request):
+#     return redirect("/admin")
     
     
     
