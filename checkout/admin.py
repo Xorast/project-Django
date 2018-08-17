@@ -1,5 +1,5 @@
-# from django.contrib     import admin
-# from .models            import RegistrationOrder
+from django.contrib     import admin
+from .models            import RegistrationOrder
 
 
-# admin.site.register(RegistrationOrder)
+admin.site.register(RegistrationOrder)
