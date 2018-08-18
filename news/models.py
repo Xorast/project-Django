@@ -3,7 +3,8 @@ from django.utils       import timezone
 # from dateutil.parser    import parse
 
 def upload_path_handler(instance, filename):
-    return "images/news/{file}".format(file=filename)
+    return "images/news/{title}/{file}".format(title=instance.title, file=filename)
+    # return "images/news/{file}".format(file=filename)
     # return "images/news/{date}/{file}".format(date=instance.published_date, file=filename)
     # return "images/news/{date}_|_{title}/{file}".format(date=instance.published_date, title=instance.title, file=filename)
 
