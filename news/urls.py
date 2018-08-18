@@ -7,7 +7,7 @@ from .views                     import get_news_list, create_news, news_details,
 
 urlpatterns = [
     path('', get_news_list, name='news_list'),
-    path('new/', create_news, name='create_news'),
+    path('new', create_news, name='create_news'),
     path('<pk>/', news_details, name='news_details'),
     path('<pk>/edit', edit_news, name='edit_news'),
     path('<pk>/delete', delete_news, name='delete_news'),

@@ -27,7 +27,7 @@ def create_news(request):
             news = form.save(commit=False)
             news.save()
             
-            return redirect('news_detail', news.pk)
+            return redirect('news_list')
     else:
         
         form = NewsForm()

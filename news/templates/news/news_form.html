@@ -9,13 +9,18 @@
 
         <div class="col-md-6 offset-md-3">
             
-            <a href="{% url 'news_details' newsId %}" class="btn btn-primary btn-lg mt-4">Back</a>
+            <!-- Back button -->
+            <div class="mt-3">
+                <button class="btn btn-primary mt-3 text-uppercase" onclick="goBack()">Go Back</button>
+            </div>
             
             {% if edit == "True" %}
             <h1 class="mt-4 mb-3">Edit News</h1>
+            
             {% else %}
             <h1 class="mt-4 mb-3">Create News</h1>
             {% endif %}
+            
             
             <form method="POST" enctype="multipart/form-data">
             
