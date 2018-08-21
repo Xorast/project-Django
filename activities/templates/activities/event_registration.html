@@ -8,17 +8,17 @@
         
         <div class="col-md-8 offset-md-2">  
         
-            <h1 class="mt-4 mb-3 text-success">Registration</h1>
+            <h1 class="mt-4 mb-3 text-success">Inscription</h1>
             
-            <p>You are about to register to the following event : 
+            <p>Vous êtes sur le point de vous inscrire à : 
             <strong><span class="text-nowrap"> {{ event.name }} - [Event reference: {{ event.id }}].</span></strong></br>
             
-            <span class="text-danger">The participant that will be registered is the current user: 
+            <span class="text-danger">Le participant qui sera inscrit est l'utilisateur connecté : 
             <strong><span class="text-nowrap">{{ user.first_name }} {{ user.last_name  }}</span></strong>.
             
-            <br>If you wish to register your child, please login with her or his account. </br> If you wish to register several people, please register through every participant's account.</span></br>
+            <br>Si vous voulez enregistrer votre enfant, merci de vous connecter avec son compte.</br> Si vous souhaitez enregistrer plusieurs personne, merci de vous enregistrer avec chacun des comptes. </span></br>
             
-            The fare for this event is : <span class="text-nowrap">{{ event.rate }} €.</span> If you wish to proceed, click on "Proceed to payment".</p>
+            Le tarif est de : <span class="text-nowrap">{{ event.rate }} €.</span> Si vous souhaitez continuer, cliquer sur  "Aller au paiement".</p>
             
             <div class="mt-3">
                 <button class="btn btn-outline-primary mt-3 text-uppercase" onclick="goBack()">Go Back to event description</button>
@@ -29,7 +29,7 @@
                 <form method="POST" action="{% url 'checkout' %}">
                     {% csrf_token %}
                     <input type="hidden" name="event_id" value="{{ event.id }}"/>
-                    <input class="btn btn-outline-success text-uppercase" type="submit" value="Proceed to payment"/>
+                    <input class="btn btn-outline-success text-uppercase" type="submit" value="Aller au paiement"/>
                 </form>
                 
             </div>
