@@ -19,7 +19,7 @@
             <div class="carousel-item active" style="background-image: url('{{ STATIC_URL }}images/caroussel-1.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                   <h3 class="txt-white">Music</h3>
-                  <p>The MJC offers many activites : music, sport, school help !</p>
+                  <p>La MJC propose tout un panel d'activités, pour les enfants et pour les adultes : art, sport, ... !</p>
                 </div>
             </div>
               
@@ -27,7 +27,7 @@
             <div class="carousel-item" style="background-image: url('{{ STATIC_URL }}images/caroussel-2.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                   <h3 class="txt-white">Art</h3>
-                  <p>From dance to drawing, everything to develop your creative side!</p>
+                  <p>De la danse au dessin, déveloper votre créativité !</p>
                 </div>
             </div>
               
@@ -35,7 +35,7 @@
             <div class="carousel-item" style="background-image: url('{{ STATIC_URL }}images/caroussel-3.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                   <h3 class="txt-white">Sport</h3>
-                  <p>Enroll for one or several sport activities!</p>
+                  <p>Possibilité de vous enregistrer pour une ou plusieurs activités sportives!</p>
                 </div>
             </div>
             
@@ -77,7 +77,7 @@
                         <div class="col-md-6">
                             <h2 class="card-title">{{ news.title }}</h2>
                             <p class="card-text">{{ news.content|truncatewords:60 }}</p>
-                            <a href="{% url 'news_details' news.id %}" class="btn btn-primary">Read More →</a>
+                            <a href="{% url 'news_details' news.id %}" class="btn btn-primary">Lire →</a>
                         </div>
                 
                     </div>

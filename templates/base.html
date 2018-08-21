@@ -143,7 +143,7 @@
                         </li>
                         
                         <!-- Logout -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Logout</span></a>
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Se déconnecter</span></a>
                         </li>
                         
                         {% if user.is_superuser %}
@@ -155,11 +155,11 @@
                     {% else %}
                         
                         <!-- Login -->
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Login</span></a>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Se connecter</span></a>
                         </li>
                         
                         <!-- Register -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Register</span></a>
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">S'enregistrer</span></a>
                         </li>
                     
                     {% endif %}
