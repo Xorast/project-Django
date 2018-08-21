@@ -51,12 +51,12 @@
                     <li id="dropdown_1A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="{% url 'subtypes' 'ACTIVITY'       %}" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Activities
+                        Activités
                         </a>
                         
                         <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'ACTIVITY' %}"             >Overview            </a>
+                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'ACTIVITY' %}"             >Toutes            </a>
                           
                           {% for n in event_subtypes_ACTIVITY  %}
                           <a class="dropdown-item txt-white" href="{% url 'list' 'ACTIVITY' n.event_subtype %}" >{{ n.event_subtype }}</a>  
@@ -70,12 +70,12 @@
                     <li id="dropdown_2A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Courses
+                        Stages
                         </a>
                         
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'TRAININGCOURSE' %}"             >Overview             </a>
+                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'TRAININGCOURSE' %}"             >Tous             </a>
                               
                           {% for n in event_subtypes_COURSE  %}
                           <a class="dropdown-item txt-white" href="{% url 'list' 'TRAININGCOURSE' n.event_subtype %}" >{{ n.event_subtype }}</a>  
@@ -89,12 +89,12 @@
                     <li id="dropdown_3A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Events
+                        Evènements
                         </a>
                         
                         <div id="dropdown_3B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'EVENT' %}">Overview                          </a>
+                          <a class="dropdown-item txt-white" href="{% url 'subtypes' 'EVENT' %}">Tous                          </a>
                           
                           {% for n in event_subtypes_EVENT  %}
                           <a class="dropdown-item txt-white" href="{% url 'list' 'EVENT' n.event_subtype %}">{{ n.event_subtype }} </a>  
@@ -108,15 +108,15 @@
                     <li id="dropdown_4A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          About Us
+                          A propos
                         </a>
                         
                         <div id="dropdown_4B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}"         >Overview     </a>
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#mission" >Our Mission  </a>
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#team"    >Team         </a>
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#contact" >Contact      </a>
+                            <a class="dropdown-item txt-white" href="{% url 'about'    %}"         >A propos </a>
+                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#mission" >Mission  </a>
+                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#team"    >Equipe   </a>
+                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#contact" >Contact  </a>
                           
                         </div>
                         

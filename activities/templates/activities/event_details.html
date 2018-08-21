@@ -21,7 +21,7 @@
                 </div>
                 <!---->
                 
-                <h1 class="mt-4 mb-3">{{ event.name }}<small> with {{ event.host }}</small></h1>
+                <h1 class="mt-4 mb-3">{{ event.name }}<small> avec {{ event.host }}</small></h1>
                 
                 <table class="table table-hover">
                   <!--<thead>-->
@@ -34,11 +34,11 @@
                   <!--</thead>-->
                   <tbody>
                     <tr>
-                      <th scope="row">Category</th>
+                      <th scope="row">Catégorie</th>
                       <td>{{ event.event_subtype }}</td>
                     </tr>
                     <tr>
-                      <th scope="row">Period</th>
+                      <th scope="row">Période</th>
                       <td>{{ event.period        }}</td>
                     </tr>
                     <tr>
@@ -46,31 +46,31 @@
                       <td>{{ event.age_group     }}</td>
                     </tr>
                     <tr>
-                      <th scope="row">Level</th>
+                      <th scope="row">Niveau</th>
                       <td>{{ event.level         }}</td>
                     </tr>
                     <tr>
-                      <th scope="row">Max group size</th>
+                      <th scope="row">Nb max</th>
                       <td>{{ event.number_max    }}</td>
                     </tr>
                     <tr>
-                      <th scope="row">Host</th>
+                      <th scope="row">Animateur</th>
                       <td><a href="{% url 'host' event.host.id %}">{{ event.host          }}</a></td>
                     </tr>
                     <tr>
-                      <th scope="row">Day</th>
+                      <th scope="row">Jour</th>
                       <td>{{ event.day }}</td>
                     </tr>
                     <tr>
-                      <th scope="row">Time</th>
+                      <th scope="row">Horaires</th>
                       <td>{{ event.time_start }} / {{ event.time_end }}</td>
                     </tr>
                     <tr>
-                      <th scope="row">Venue</th>
+                      <th scope="row">Lieu</th>
                       <td><a href="{% url 'venue' event.room.venue.name %}">{{ event.room }}</a></td>
                     </tr>
                     <tr>
-                      <th scope="row">Rate</th>
+                      <th scope="row">Tarifs</th>
                       <td>{{ event.rate          }} €</td>
                     </tr>
                   </tbody>

@@ -129,7 +129,7 @@ class Room(models.Model):
     room            = models.CharField(max_length=100, null=False)
     
     def __str__(self):
-        return '%s - Room %s' % (self.venue, self.room)
+        return '%s - Salle %s' % (self.venue, self.room)
 
 
 
