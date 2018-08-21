@@ -7,28 +7,30 @@
     
         <div class="col-md-6 offset-md-3"> 
     
-        <div class="row">
-            <button class="btn btn-primary mt-3" onclick="goBack()">Go Back</button>
-        </div>
-        
-        <div class="row">
-            <h1 class="mt-4 mb-3">{{ venue.name }}</h1>
-        </div>
-         
-        <div class="row">
-                
-            <div class="iframe-map-container mb-4"> 
-                <iframe class="iframe-map-container" src="{{ venue.iframe_url_map }}" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <div class="row">
+                <button class="btn btn-primary mt-3" onclick="goBack()">Retour</button>
             </div>
             
-            <div class="col-md-12 px-0">
-                <h2 "mt-4 mb-3 ">Information</h2>   
+            <div class="row">
+                <h1 class="mt-4 mb-4">{{ venue.name }}</h1>
             </div>
              
-            <div class="col-md-12 px-0">
-                <p><strong>Adress:</strong></br>
-                {{ venue.street_nb }}, {{ venue.street_name }}</br>
-                {{ venue.postcode }} {{ venue.city }}</p>
+            <div class="row">
+                    
+                <div class="iframe-map-container mb-4"> 
+                    <iframe class="iframe-map-container" src="{{ venue.iframe_url_map }}" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                
+                <div class="col-md-12 px-0">
+                    <h2 class="mt-4 mb-3 ">Information</h2>   
+                </div>
+                 
+                <div class="col-md-12 px-0">
+                    <p><strong>Adresse :</strong></br>
+                    {{ venue.street_nb }}, {{ venue.street_name }}</br>
+                    {{ venue.postcode }} {{ venue.city }}</p>
+                </div>
+            
             </div>
         
         </div>

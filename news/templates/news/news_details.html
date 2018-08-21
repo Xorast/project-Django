@@ -9,7 +9,7 @@
         
         <div class="col-md-8 offset-md-2"> 
         
-            <a class="btn btn-primary mt-3" href="{% url 'news_list' %}">All News</a>
+            <a class="btn btn-primary mt-3" href="{% url 'news_list' %}">Tous les articles</a>
         
             <h1 class="mt-4 mb-3">{{ news.title        }}</h1>
         
@@ -20,11 +20,11 @@
             
             {% if user.is_superuser %}
              
-              <a href="{% url 'edit_news' news.id %}" class="btn btn-info btn-lg btn-block mt-4">Edit News</a><br>
+              <a href="{% url 'edit_news' news.id %}" class="btn btn-info btn-lg btn-block mt-4 text-capitalize">Editer Article</a><br>
               
               <!-- button - trigger modal - confirmation deletion -->
-              <button type="button" class="btn btn-danger btn-lg btn-block mt-2" data-toggle="modal" data-target="#ModalFileSelection">
-              Delete News
+              <button type="button" class="btn btn-danger btn-lg btn-block mt-2 text-capitalize" data-toggle="modal" data-target="#ModalFileSelection">
+              Supprimer Article
               </button>
               
             {% endif %}
