@@ -203,6 +203,10 @@ class EventRegistration(models.Model):
     
     def __str__(self):
         return 'Event Registration N° %s' % (self.id)
+    
+    class Meta:
+        verbose_name = 'Inscription'
+        verbose_name_plural = 'Inscriptions'
         
 # ----------------------------------------------------------------------
 

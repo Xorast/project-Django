@@ -12,5 +12,5 @@ class Profile(models.Model):
         return self.user.username
         
     class Meta:
-        verbose_name = 'Profiles Adhérents'
-        verbose_name_plural = 'Profile Adhérent'
+        verbose_name = 'Profile Adhérent'
+        verbose_name_plural = 'Profiles Adhérents'
