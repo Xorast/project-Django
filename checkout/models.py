@@ -11,3 +11,13 @@ class RegistrationOrder(models.Model):
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.event, self.user)
+    
+    class Meta:
+        verbose_name = 'Paiement'
+        verbose_name_plural = 'Paiements'
+        
+class User(models.Model):
+    
+    class Meta:
+        verbose_name = 'Test'
+        verbose_name_plural = 'tests'

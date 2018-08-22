@@ -29,7 +29,11 @@ class Event_Type(models.Model):
     def __str__(self):
         return self.event_type
 
-
+    class Meta:
+            verbose_name = "Eléments - Type"
+            verbose_name_plural = "Eléments - Types"
+    
+    
 
 class Event_Subtype(models.Model):
     
@@ -40,7 +44,11 @@ class Event_Subtype(models.Model):
     def __str__(self):
         return self.event_subtype
 
-
+    class Meta:
+            verbose_name = "Eléments - Sous-type"
+            verbose_name_plural = "Eléments - Sous-types"
+            
+            
         
 class Weekday(models.Model):
     
@@ -67,7 +75,11 @@ class Weekday(models.Model):
     def __str__(self):
         return self.day
 
-
+    class Meta:
+            verbose_name = "Jour"
+            verbose_name_plural = "Jours"
+            
+            
 
 class Period(models.Model):
     
@@ -76,7 +88,9 @@ class Period(models.Model):
     def __str__(self):
         return self.period
 
-
+    class Meta:
+            verbose_name = "Période"
+            verbose_name_plural = "Périodes"
 
 class Host(models.Model):
     
@@ -88,6 +102,10 @@ class Host(models.Model):
     def __str__(self):
         return '%s %s' % (self.firstname, self.lastname)
 
+    class Meta:
+            verbose_name = "Animateur"
+            verbose_name_plural = "Animateurs"
+
 
 
 class Age_Group(models.Model):
@@ -97,6 +115,10 @@ class Age_Group(models.Model):
     def __str__(self):
         return self.age_group
 
+    class Meta:
+            verbose_name = "Groupe d'age"
+            verbose_name_plural = "Groupes d'age"
+            
 
 
 class Level(models.Model):
@@ -106,6 +128,9 @@ class Level(models.Model):
     def __str__(self):
         return self.level
 
+    class Meta:
+            verbose_name = 'Niveau'
+            verbose_name_plural = 'Niveaux'
 
 
 class Venue(models.Model):
@@ -121,6 +146,9 @@ class Venue(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+            verbose_name = 'Lieu'
+            verbose_name_plural = 'Lieux'
 
 
 class Room(models.Model):
@@ -131,7 +159,11 @@ class Room(models.Model):
     def __str__(self):
         return '%s - Salle %s' % (self.venue, self.room)
 
-
+    class Meta:
+        verbose_name = 'Salle'
+        verbose_name_plural = 'Salles'
+        
+        
 
 class Event(models.Model):
     
@@ -155,6 +187,10 @@ class Event(models.Model):
     def __str__(self):
         return self.name
         
+    class Meta:
+        verbose_name = 'Elément'
+        verbose_name_plural = 'Eléments'
+        
         
         
 class EventRegistration(models.Model):
@@ -167,7 +203,6 @@ class EventRegistration(models.Model):
     
     def __str__(self):
         return 'Event Registration N° %s' % (self.id)
-        
         
 # ----------------------------------------------------------------------
 
