@@ -50,7 +50,7 @@
                     <!-- Activities -->
                     <li id="dropdown_1A" class="nav-item dropdown">
                         
-                        <a class="nav-link dropdown-toggle" href="{% url 'subtypes' 'ACTIVITY'       %}" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{% url 'subtypes' 'ACTIVITY'       %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Activités
                         </a>
                         
@@ -74,13 +74,13 @@
                     <!-- Courses -->
                     <li id="dropdown_2A" class="nav-item dropdown">
                         
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Stages
                         </a>
                         
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href="{% url 'subtypes' 'TRAININGCOURSE' %}"             >Tous             </a>
+                            <a class="dropdown-item txt-white" href="{% url 'subtypes' 'TRAININGCOURSE' %}"             >Tous        </a>
                               
                             {% for n in event_subtypes_COURSE  %}
                             <a class="dropdown-item txt-white" href="{% url 'list' 'TRAININGCOURSE' n.event_subtype %}" >{{ n.event_subtype }}</a>  
@@ -99,21 +99,52 @@
                     <!-- Events -->
                     <li id="dropdown_3A" class="nav-item dropdown">
                         
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Evènements
                         </a>
                         
                         <div id="dropdown_3B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href="{% url 'subtypes' 'EVENT' %}">Tous                          </a>
+                            <a class="dropdown-item txt-white" href="{% url 'subtypes' 'EVENT' %}">Tous                              </a>
                           
                             {% for n in event_subtypes_EVENT  %}
                             <a class="dropdown-item txt-white" href="{% url 'list' 'EVENT' n.event_subtype %}">{{ n.event_subtype }} </a>  
                             {% endfor %}
+                        
+                        </div>
+                        
+                    </li>
+                    
+                    <!-- Youth -->
+                    <li id="dropdown_1A" class="nav-item dropdown">
+                        
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Jeunesse
+                        </a>
+                        
+                        <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <!--<div class="dropdown-divider"></div>-->
+                            <a class="dropdown-item txt-white" href="">Centre de Loisirs A </a>
+                            <a class="dropdown-item txt-white" href="">Centre de Loisirs B </a>
+                            <a class="dropdown-item txt-white" href="">Local Jeunes        </a>
                             
-                              
+                        </div>
+                        
+                    </li>
+                    
+                    <!-- Solidarity -->
+                    <li id="dropdown_1A" class="nav-item dropdown">
+                        
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Vivre Ensemble
+                        </a>
+                        
+                        <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                          
+                            <a class="dropdown-item txt-white" href="">Espace de vie sociale</a>
+                            <a class="dropdown-item txt-white" href="">Texte 2              </a>
+                            <a class="dropdown-item txt-white" href="">Texte 3              </a>
+                        
                         </div>
                         
                     </li>
@@ -137,44 +168,44 @@
                     </li>
                     
                     
-                    <!-- Login features -->
+                    <!--Login features -->
                     {% if user.is_authenticated %}
                         
-                        <!-- Profile -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Profile'  %}"><svg class="svg-white svg-mini-1"
-                                                                                                    enable-background="new 0 0 128 128"
-                                                                                                    viewBox="0 0 128 128">
-                                                                                                    <circle  class="userprofile" id="userProfileCircle" fill="#DD5600" cx="64" cy="64"  id="circle" r="64"/>
-                                                                                                    <g id="icon">
-                                                                                                        <path class="userprofile" id="userProfileUser" fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35"/>
-                                                                                                        <!--<path fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 " id="right"/>-->
-                                                                                                        <!--<path fill="white" d="M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35" id="left"/>-->
+                        <!--Profile: to put back again when client is ready -->
+                        <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Profile'  %}"><svg class="svg-white svg-mini-1"-->
+                        <!--                                                                            enable-background="new 0 0 128 128"-->
+                        <!--                                                                            viewBox="0 0 128 128">-->
+                        <!--                                                                            <circle  class="userprofile" id="userProfileCircle" fill="#DD5600" cx="64" cy="64"  id="circle" r="64"/>-->
+                        <!--                                                                            <g id="icon">-->
+                        <!--                                                                                <path class="userprofile" id="userProfileUser" fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35"/>-->
+                        <!--                                                                                <path fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 " id="right"/>-->
+                        <!--                                                                                <path fill="white" d="M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35" id="left"/>-->
                                                                                                     
-                                                                                                    </g>
-                                                                                                </svg>
-                                                                                                </a>
+                        <!--                                                                            </g>-->
+                        <!--                                                                        </svg>-->
+                        <!--                                                                        </a>-->
                                                                                                 
-                        </li>
+                        <!--</li>-->
                         
-                        <!-- Logout -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Se déconnecter</span></a>
-                        </li>
+                        <!--Logout -->
+                        <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Déconnexion</span></a>
+                        <!--</li>-->
                         
                         {% if user.is_superuser %}
-                        <!-- Admin panel -->
+                        <!--Admin panel -->
                         <li class="nav-item"><a class="nav-link"    href="{% url 'admin_panel'   %}" target="_blank" ><span class="badge-nav-hover-danger badge badge-pill badge-light">Admin</span></a>                                                                                                </a>
                         </li>
                         {% endif %}
                         
                     {% else %}
                         
-                        <!-- Login -->
+                        <!--Login -->
                         <li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Se connecter</span></a>
                         </li>
                         
-                        <!-- Register -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">S'enregistrer</span></a>
-                        </li>
+                        <!--Register: to put back again when client is ready -->
+                        <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">S'enregistrer</span></a>-->
+                        <!--</li>-->
                     
                     {% endif %}
                     

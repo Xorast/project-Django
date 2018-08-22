@@ -60,38 +60,6 @@
     <div class="container">
 
         <h1 class="my-4">Bienvenue sur le nouveau site de la MJC !</h1>
-        
-        <!-- News section -->
-        <h2>Actualité & Evènements à venir</h2>
-        
-        {% for news in last_news %}
-        
-            <div class="card mb-4">
-                
-                <div class="card-body">
-                    
-                    <div class="row">
-                        
-                        <div class="col-md-6 img rounded" onclick="goTo('{% url 'news_details' news.id %}')" style="background-image:url('{{ MEDIA_URL }}{{ news.image }}')"></div></a>
-                
-                        <div class="col-md-6">
-                            <h2 class="card-title">{{ news.title }}</h2>
-                            <p class="card-text">{{ news.content|truncatewords:60 }}</p>
-                            <a href="{% url 'news_details' news.id %}" class="btn btn-primary">Lire →</a>
-                        </div>
-                
-                    </div>
-                    
-                </div>
-                
-                <div class="card-footer text-muted">
-                      Posted on {{ news.created_date }} by
-                      <a href="{% url 'about'    %}#team">a loving Team !</a>
-                </div>
-                
-            </div>
-        {% endfor %}
-    
     
         <!-- Offer Section -->
         <h2>Rejoignez-nous!</h2>
@@ -160,6 +128,37 @@
             
         </div>    
         <!-- /.row -->
+        
+        <!-- News section -->
+        <h2>Actualité & Evènements à venir</h2>
+        
+        {% for news in last_news %}
+        
+            <div class="card mb-4">
+                
+                <div class="card-body">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-6 img rounded" onclick="goTo('{% url 'news_details' news.id %}')" style="background-image:url('{{ MEDIA_URL }}{{ news.image }}')"></div></a>
+                
+                        <div class="col-md-6">
+                            <h2 class="card-title">{{ news.title }}</h2>
+                            <p class="card-text">{{ news.content|truncatewords:60 }}</p>
+                            <a href="{% url 'news_details' news.id %}" class="btn btn-primary">Lire →</a>
+                        </div>
+                
+                    </div>
+                    
+                </div>
+                
+                <div class="card-footer text-muted">
+                      Posted on {{ news.created_date }} by
+                      <a href="{% url 'about'    %}#team">a loving Team !</a>
+                </div>
+                
+            </div>
+        {% endfor %}
     
     </div>
     <!-- /.container -->
