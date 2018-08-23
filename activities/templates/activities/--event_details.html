@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+  
+    <!-- Page Content -->
+    <div class="container">
+        
+        <div class="row">
+              
+            </div>
+            <!-- Post Content Column -->
+            <div class="col-lg-8 offset-lg-2">
+            
+                <button class="btn btn-primary mt-3" onclick="goBack()">Retour</button>
+                
+                <!-- Image -->
+                <div class="row m-0 mt-3">    
+                        <div class="img rounded" style="background-image:url('{{ MEDIA_URL }}{{ event.image }}')"></div>    
+                </div>
+                <!---->
+                
+                <h1 class="mt-4 mb-3">{{ event.name }}<small> avec {{ event.host }}</small></h1>
+                
+                <table class="table table-hover">
+                  <!--<thead>-->
+                  <!--  <tr>-->
+                  <!--    <th scope="col">Information</th>-->
+                  <!--    <th scope="col"></th>-->
+                    <!--  <th scope="col">Column heading</th>-->
+                    <!--  <th scope="col">Column heading</th>-->
+                  <!--  </tr>-->
+                  <!--</thead>-->
+                  <tbody>
+                    <tr>
+                      <th scope="row">Catégorie</th>
+                      <td>{{ event.event_subtype }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Période</th>
+                      <td>{{ event.period        }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Age</th>
+                      <td>{{ event.age_group     }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Niveau</th>
+                      <td>{{ event.level         }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Nombre max</th>
+                      <td>{{ event.number_max    }} personnes</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Animateur(s)</th>
+                      <td><a href="{% url 'host' event.host.id %}">{{ event.host          }}</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Jour</th>
+                      <td>{{ event.day }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Horaires</th>
+                      <td>{{ event.time_start }} / {{ event.time_end }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Lieu</th>
+                      <td><a href="{% url 'venue' event.room.venue.name %}">{{ event.room }}</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tarifs</th>
+                      <td>{{ event.rate          }} €</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <hr>
+                {% if event.number_available > 0 %}
+                    <a href="{% url 'register_to_event' event.event_type event.event_subtype event.id %}">
+                    <button id="register_button" type="button" class="nounderline btn btn-outline-primary btn-lg btn-block text-uppercase">S'INSCRIRE</button>
+                    </a>
+                {% else %}
+                    <button type="button" class="disabled btn btn-danger btn-lg btn-block text-uppercase">COMPLET</button>
+                {% endif %}
+                
+                <hr>
+                
+                <!-- Post Content -->
+                <p class="lead">{{ event.description      }}</p>
+                
+                <hr>
+            
+            </div>
+                
+                
+        </div>
+        <!-- /.row -->
+    </div>
+            
+{% endblock %}
