@@ -1,11 +1,12 @@
 from django.db                      import models
 from django.contrib.auth.models     import User
 from accounts.models                import Profile
+from django.contrib.postgres.fields import ArrayField
 
 # Comments :
 # <!> Make the distinction between "Event" and "OneTimeEvent" :
-# <!> All entries are events, some of them are "activities", other "TrainingCourse" and others "OneTimeEvent"
-# <!> The app is named "activities", it should have been named "Events".EVENT
+# <!> All entries are events / element, some of them are "activities", other "TrainingCourse" and others "OneTimeEvent"
+# <!> The app is named "activities", it should have been named "Element"
 
 
 
@@ -21,10 +22,10 @@ class Event_Type(models.Model):
         (ONETIMEEVENT,     'EVENT'          ),
     )
     
-    event_type      = models.CharField(max_length=50, choices=TYPE)
-    title           = models.CharField(max_length=50, null=True)
-    description     = models.TextField(null=True)
-    image           = models.ImageField(upload_to="images/event_type", blank=True, null=True)
+    event_type      = models.CharField("Type d'élément", max_length=50, choices=TYPE)
+    title           = models.CharField("Label", max_length=50, null=True)
+    description     = models.TextField("Description", null=True)
+    image           = models.ImageField("Image", upload_to="images/event_type", blank=True, null=True)
     
     def __str__(self):
         return self.event_type
@@ -35,42 +36,58 @@ class Event_Type(models.Model):
     
     
 
-class Event_Subtype(models.Model):
+class Animation_Type(models.Model):
     
-    event_subtype   = models.CharField(max_length=100, null=False)
-    description     = models.TextField(null=True)
-    image           = models.ImageField(upload_to="images/event_subtype", blank=True, null=True)
+    animation_type  = models.CharField("Type d'animation", max_length=100, null=False)
+    description     = models.TextField("Description", null=True)
+    image           = models.ImageField("Image", upload_to="images/animation_type", blank=True, null=True)
     
     def __str__(self):
-        return self.event_subtype
+        return self.animation_type
 
     class Meta:
-            verbose_name = "Eléments - Sous-type"
-            verbose_name_plural = "Eléments - Sous-types"
+            verbose_name = "Animation - Type"
+            verbose_name_plural = "Animations - Types"
             
-            
+
+
+class Animation(models.Model):
+    
+    name              = models.CharField("Nom", max_length=100)
+    animation_type    = models.ForeignKey(Animation_Type, related_name="Animation", on_delete=models.SET_NULL, null=True)
+    image             = models.ImageField("Image", upload_to="images/animation/", default = "noimage.jpg")
+    description       = models.TextField()
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Animation'
+        verbose_name_plural = 'Animations'
+        
+        
         
 class Weekday(models.Model):
     
-    MONDAY      = 'MONDAY'
-    TUESDAY     = 'TUESDAY'
-    WEDNESDAY   = 'WEDNESDAY'
-    THURSDAY    = 'THURSDAY'
-    FRIDAY      = 'FRIDAY'
-    SATURDAY    = 'SATURDAY'
-    SUNDAY      = 'SUNDAY'
+    LUNDI      = 'Lundi'
+    MARDI      = 'Mardi'
+    MERCREDI   = 'Mercredi'
+    JEUDI      = 'Jeudi'
+    VENDREDI   = 'Vendredi'
+    SAMEDI     = 'Samedi'
+    DIMANCHE   = 'Dimanche'
     
     WEEKDAY_CHOICES = (
-        (MONDAY,    'MONDAY'    ),
-        (TUESDAY,   'TUESDAY'   ),
-        (WEDNESDAY, 'WEDNESDAY' ),
-        (THURSDAY,  'THURSDAY'  ),
-        (FRIDAY,    'FRIDAY'    ),
-        (SATURDAY,  'SATURDAY'  ),
-        (SUNDAY,    'SUNDAY'    ),
+        (LUNDI,    'Lundi'       ),
+        (MARDI,    'Mardi'       ),
+        (MERCREDI, 'Mercredi'    ),
+        (JEUDI,    'Jeudi'       ),
+        (VENDREDI, 'Vendredi'    ),
+        (SAMEDI,   'Samedi'      ),
+        (DIMANCHE, 'Dimanche'    ),
     )
     
-    day             = models.CharField(max_length=10, choices=WEEKDAY_CHOICES)
+    day             = models.CharField("Jour", max_length=10, choices=WEEKDAY_CHOICES)
     
     def __str__(self):
         return self.day
@@ -83,7 +100,7 @@ class Weekday(models.Model):
 
 class Period(models.Model):
     
-    period          = models.CharField(max_length=20, null=False)
+    period          = models.CharField("Période", max_length=20, null=False)
     
     def __str__(self):
         return self.period
@@ -91,13 +108,16 @@ class Period(models.Model):
     class Meta:
             verbose_name = "Période"
             verbose_name_plural = "Périodes"
+            
+            
 
 class Host(models.Model):
     
-    firstname   = models.CharField(max_length=100, null=False)
-    lastname    = models.CharField(max_length=100, null=False)
-    image       = models.ImageField(upload_to="images/hosts/", default = "noimage.jpg")
-    resume      = models.TextField(null=True)
+    firstname   = models.CharField("Prénom", max_length=100, null=True)
+    lastname    = models.CharField("Nom", max_length=100, null=True)
+    initials    = models.CharField("Initiales", max_length=10, null=True)
+    image       = models.ImageField("Image", upload_to="images/hosts/", default = "noimage.jpg")
+    resume      = models.TextField("Présentation",null=True)
     
     def __str__(self):
         return '%s %s' % (self.firstname, self.lastname)
@@ -108,22 +128,37 @@ class Host(models.Model):
 
 
 
-class Age_Group(models.Model):
+class Age_Class(models.Model):
     
-    age_group       = models.CharField(max_length=100, null=False)
+    age_class    = models.CharField("Classe d'age", max_length=100, null=False)
     
     def __str__(self):
-        return self.age_group
+        return self.age_class
 
     class Meta:
-            verbose_name = "Groupe d'age"
-            verbose_name_plural = "Groupes d'age"
+            verbose_name = "Age - Classe d'ages"
+            verbose_name_plural = "Age - Classes d'ages"
+
+
+
+class Age_Group(models.Model):
+    
+    age_group   = models.ForeignKey(Age_Class, related_name="Age_Group", on_delete=models.SET_NULL, null=True)
+    age_min     = models.IntegerField("Age minimum", null=False)
+    age_max     = models.IntegerField("Age maximum", null=False)
+    
+    def __str__(self):
+        return '%s - %s - %s' % (self.age_group, str(self.age_min), str(self.age_max))
+
+    class Meta:
+            verbose_name = "Age - Groupe d'ages"
+            verbose_name_plural = "Age - Groupes d'ages"
             
 
 
 class Level(models.Model):
     
-    level           = models.CharField(max_length=100, null=False)
+    level           = models.CharField("Niveau", max_length=100, null=False)
     
     def __str__(self):
         return self.level
@@ -133,14 +168,28 @@ class Level(models.Model):
             verbose_name_plural = 'Niveaux'
 
 
+
+class City(models.Model):
+    
+    city            = models.CharField("Ville", max_length=100, null=False)
+
+    def __str__(self):
+        return self.city
+        
+    class Meta:
+            verbose_name = "Ville"
+            verbose_name_plural = "Villes"
+            
+            
+
 class Venue(models.Model):
     
-    name            = models.CharField(max_length=100, null=False)
-    street_nb       = models.CharField(max_length=20,  null=False)
-    street_name     = models.CharField(max_length=200, null=False)
-    city            = models.CharField(max_length=100, null=False)
-    postcode        = models.IntegerField(null=False)
-    iframe_url_map  = models.URLField(max_length=500,  null=True)
+    name            = models.CharField("Nom", max_length=100, null=False)
+    street_nb       = models.CharField("N°", max_length=20,  null=False)
+    street_name     = models.CharField("Rue", max_length=200, null=False)
+    city            = models.ForeignKey(City, related_name="Venue", on_delete=models.SET_NULL, null=True)
+    postcode        = models.IntegerField("Code Postal", null=False)
+    iframe_url_map  = models.URLField("URL Google Iframe", max_length=500,  null=True)
     
     
     def __str__(self):
@@ -153,8 +202,8 @@ class Venue(models.Model):
 
 class Room(models.Model):
     
-    venue           = models.ForeignKey(Venue, related_name="Room", on_delete=models.SET_DEFAULT, default= 1, null=False)
-    room            = models.CharField(max_length=100, null=False)
+    venue           = models.ForeignKey(Venue, related_name="Room", on_delete=models.SET_NULL, null=True)
+    room            = models.CharField("Salle", max_length=100, null=False)
     
     def __str__(self):
         return '%s - Salle %s' % (self.venue, self.room)
@@ -163,30 +212,34 @@ class Room(models.Model):
         verbose_name = 'Salle'
         verbose_name_plural = 'Salles'
         
-        
+
 
 class Event(models.Model):
     
-    event_type        = models.ForeignKey(Event_Type, related_name="Event", on_delete=models.SET_DEFAULT, default= 1, null=False)
-    event_subtype     = models.ForeignKey(Event_Subtype, related_name="Event", on_delete=models.SET_DEFAULT, default= 1, null=False)
-    name              = models.CharField(max_length=100)
-    period            = models.ForeignKey(Period, related_name="Event", on_delete=models.SET_DEFAULT, default= 1, null=False)
-    host              = models.ForeignKey(Host, related_name="Event", on_delete=models.SET_DEFAULT, default= 1, null=True)
-    description       = models.TextField()
-    image             = models.ImageField(upload_to="images/events/", default = "noimage.jpg")
-    day               = models.ForeignKey(Weekday, related_name="Event", on_delete=models.SET_DEFAULT, default= 1)
-    time_start        = models.TimeField(null=True)
-    time_end          = models.TimeField(null=True)
-    rate              = models.DecimalField(max_digits=6, decimal_places=2)
-    age_group         = models.ForeignKey(Age_Group, related_name="Event", on_delete=models.SET_DEFAULT, default= 1, null=False)
-    level             = models.ForeignKey(Level, related_name="Event", on_delete=models.SET_DEFAULT, default= 1, null=False)
-    number_max        = models.PositiveSmallIntegerField(null=False)
-    number_available  = models.PositiveSmallIntegerField(null=True)
-    room              = models.ForeignKey(Room, related_name="Event", on_delete=models.SET_DEFAULT, default= 1, null=False)
+    event_type        = models.ForeignKey(Event_Type, related_name="Event",          on_delete=models.SET_NULL, null=True)
+    animation         = models.ForeignKey(Animation,  related_name="Event",          on_delete=models.SET_NULL, null=True)
+    name              = models.CharField("Nom", max_length=100)
+    period            = models.ForeignKey(Period,     related_name="Event",          on_delete=models.SET_NULL, null=True)
+    host_1            = models.ForeignKey(Host,       related_name="Event_host_1",   on_delete=models.SET_NULL, null=True)
+    host_2            = models.ForeignKey(Host,       related_name="Event_host_2",   on_delete=models.SET_NULL, null=True)
+    host_3            = models.ForeignKey(Host,       related_name="Event_host_3",   on_delete=models.SET_NULL, null=True)
+    host_4            = models.ForeignKey(Host,       related_name="Event_host_4",   on_delete=models.SET_NULL, null=True)
+    host_5            = models.ForeignKey(Host,       related_name="Event_host_5",   on_delete=models.SET_NULL, null=True)
+    day               = models.ForeignKey(Weekday,    related_name="Event",          on_delete=models.SET_NULL, null=True)
+    time_start        = models.TimeField("Heure de début", null=True)
+    time_end          = models.TimeField("Heure de fin",   null=True)
+    # dates             = ArrayField(models.DateTimeField(auto_now=False, auto_now_add=False))
+    age_group         = models.ForeignKey(Age_Group,  related_name="Event",          on_delete=models.SET_NULL, null=True)
+    level             = models.ForeignKey(Level,      related_name="Event",          on_delete=models.SET_NULL, null=True)
+    room              = models.ForeignKey(Room,       related_name="Event",          on_delete=models.SET_NULL, null=True)
+    number_max        = models.PositiveSmallIntegerField("Nb max participants", null=True)
+    number_available  = models.PositiveSmallIntegerField("Nb places libres", null=True)
+    rate_resident     = models.DecimalField("Tarif MC", max_digits=6, decimal_places=2, null=True)
+    rate_non_resident = models.DecimalField("Tarif hors MC", max_digits=6, decimal_places=2, null=True)
     
     def __str__(self):
         return self.name
-        
+    
     class Meta:
         verbose_name = 'Elément'
         verbose_name_plural = 'Eléments'
@@ -195,8 +248,8 @@ class Event(models.Model):
         
 class EventRegistration(models.Model):
     
-    participant         = models.ForeignKey(User, related_name="RegistrationList", on_delete=models.SET_DEFAULT, default= 1, null=False)
-    event               = models.ForeignKey(Event, related_name="RegistrationList", on_delete=models.SET_DEFAULT, default= 1, null=False)
+    participant         = models.ForeignKey(User, related_name="RegistrationList",  on_delete=models.PROTECT, null=False)
+    event               = models.ForeignKey(Event, related_name="RegistrationList", on_delete=models.PROTECT, null=False)
     
     class Meta:
         unique_together = ["participant", "event"]

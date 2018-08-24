@@ -6,12 +6,13 @@ from news.models            import News
 
 def get_home_page(request):
     
-    last_news    = News.objects.order_by('-published_date')[:3]
-    activities   = get_object_or_404(Event_Type, event_type="ACTIVITY")
-    courses      = get_object_or_404(Event_Type, event_type="TRAININGCOURSE")
-    events       = get_object_or_404(Event_Type, event_type="EVENT")
+    # last_news    = News.objects.order_by('-published_date')[:3]
+    # activities   = get_object_or_404(Event_Type, event_type="ACTIVITY")
+    # courses      = get_object_or_404(Event_Type, event_type="TRAININGCOURSE")
+    # events       = get_object_or_404(Event_Type, event_type="EVENT")
     
-    return render(request, "views/index.html", {'last_news': last_news, 'activities': activities, 'courses': courses, 'events': events})
+    # return render(request, "views/index.html", {'last_news': last_news, 'activities': activities, 'courses': courses, 'events': events})
+    return render(request, "views/initialization.html")
 
 
 
