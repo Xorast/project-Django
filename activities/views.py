@@ -1,6 +1,25 @@
 from django.shortcuts               import render, redirect, get_object_or_404, HttpResponse
-from .models                        import Animation_Type #, EventRegistration
+from .models                        import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot #, EventRegistration
+# from workshop.models                import Workshop
 from django.contrib.auth.decorators import login_required
+
+
+
+def get_animation_type(request, animation_type):
+    
+   
+
+    return render(request, "activities/animation_types_activities.html", {'list_of_animations_types':list_of_animations_types})
+
+
+
+
+
+
+
+
+
+
 
 
 # To be deleted

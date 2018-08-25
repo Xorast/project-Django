@@ -20,7 +20,8 @@ from views          import urls as views_urls
 from news           import urls as news_urls
 from accounts       import urls as accounts_urls
 from activities     import urls as activities_urls
-from checkout       import urls as checkout_urls
+from workshop       import urls as workshops_urls
+# from checkout       import urls as checkout_urls
 
 urlpatterns = [
     path('admin/',      admin.site.urls),
@@ -28,5 +29,6 @@ urlpatterns = [
     path('news/',       include(news_urls)),
     path('accounts/',   include(accounts_urls)),
     path('activities/', include(activities_urls)),
+    # path('workshops/',  include(workshops_urls)),
     # path('checkout/',   include(checkout_urls))
 ]

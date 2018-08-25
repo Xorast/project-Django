@@ -1,7 +1,6 @@
 from django.db                      import models
 from django.contrib.auth.models     import User
 # from accounts.models                import Profile
-from django.contrib.postgres.fields import ArrayField
 
 
 
@@ -28,38 +27,42 @@ class Elements_Type(models.Model):
 
     class Meta:
             verbose_name = "Eléments - Type"
-            verbose_name_plural = "Eléments - Types"
+            verbose_name_plural = "Z. Eléments - Types"
     
     
 
-class Animation_Type(models.Model):
+class Activity_Animation_Type(models.Model):
     
-    animation_type  = models.CharField("Type d'animation", max_length=100, null=False)
-    description     = models.TextField("Description", null=True)
-    image           = models.ImageField("Image", upload_to="images/animation_type", blank=True, null=True)
+    animation_type  = models.CharField("Type d'animation (ex: sports, activité artistique, ...)", max_length=100, null=False)
+    description     = models.TextField("Présentation générale", null=True)
+    image           = models.ImageField("Image", upload_to="images/activity/animation_type", blank=True, null=True)
     
     def __str__(self):
         return self.animation_type
 
     class Meta:
-            verbose_name = "Animation - Type"
-            verbose_name_plural = "Animations - Types"
+            verbose_name = "Animation - Type d'animation"
+            verbose_name_plural = "1. Animations - Types d'animation"
             
 
 
-class Animation(models.Model):
+class Activity_Animation(models.Model):
     
-    name              = models.CharField("Nom", max_length=100)
-    animation_type    = models.ForeignKey(Animation_Type, related_name="Animation", on_delete=models.SET_NULL, null=True)
-    image             = models.ImageField("Image", upload_to="images/animation/", default = "noimage.jpg")
-    description       = models.TextField()
+    name                     = models.CharField("Nom", max_length=100)
+    animation_type           = models.ForeignKey(Activity_Animation_Type, related_name="Animation", on_delete=models.SET_NULL, null=True)
+    disabled_friendly        = models.BooleanField("Accessible handicap",          default=None)
+    new                      = models.BooleanField("Nouveau",                      default=None)
+    available_in_both_cities = models.BooleanField("Existe à Mauguio ET à Carnon", default=None)
+    image                    = models.ImageField("Image", upload_to="images/activity/animation/", default = "noimage.jpg")
+    description              = models.TextField("Présentation générale", blank=True)
+    notes                    = models.TextField("Notes spécifiques (certif. médical, license, ...)", null=True, blank=True)
     
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = 'Animation'
-        verbose_name_plural = 'Animations'
+        verbose_name_plural = '2. Animations'
         
         
         
@@ -90,7 +93,7 @@ class Weekday(models.Model):
 
     class Meta:
             verbose_name = "Jour"
-            verbose_name_plural = "Jours"
+            verbose_name_plural = "F. Jours"
 
 
 
@@ -103,7 +106,7 @@ class Period(models.Model):
 
     class Meta:
             verbose_name = "Période"
-            verbose_name_plural = "Périodes"
+            verbose_name_plural = "A. Périodes"
             
             
 
@@ -120,7 +123,7 @@ class Host(models.Model):
 
     class Meta:
             verbose_name = "Animateur"
-            verbose_name_plural = "Animateurs"
+            verbose_name_plural = "E. Animateurs"
 
 
 
@@ -133,22 +136,22 @@ class Age_Class(models.Model):
 
     class Meta:
             verbose_name = "Age - Classe d'ages"
-            verbose_name_plural = "Age - Classes d'ages"
+            verbose_name_plural = "B. Age - Classes d'ages"
 
 
 
 class Age_Group(models.Model):
     
-    age_group   = models.ForeignKey(Age_Class, related_name="Age_Group", on_delete=models.SET_NULL, null=True)
+    age_class   = models.ForeignKey(Age_Class, related_name="Age_Group", on_delete=models.SET_NULL, null=True)
     age_min     = models.IntegerField("Age minimum", null=False)
     age_max     = models.IntegerField("Age maximum", null=False)
     
     def __str__(self):
-        return '%s - %s - %s' % (self.age_group, str(self.age_min), str(self.age_max))
+        return '%s - %s / %s' % (self.age_class, str(self.age_min), str(self.age_max))
 
     class Meta:
             verbose_name = "Age - Groupe d'ages"
-            verbose_name_plural = "Age - Groupes d'ages"
+            verbose_name_plural = "C. Age - Groupes d'ages"
 
 
 
@@ -161,7 +164,7 @@ class Level(models.Model):
 
     class Meta:
             verbose_name = 'Niveau'
-            verbose_name_plural = 'Niveaux'
+            verbose_name_plural = 'D. Niveaux'
 
 
 
@@ -174,18 +177,18 @@ class City(models.Model):
         
     class Meta:
             verbose_name = "Ville"
-            verbose_name_plural = "Villes"
+            verbose_name_plural = "G. Villes"
 
 
 
 class Venue(models.Model):
     
     name            = models.CharField("Nom", max_length=100, null=False)
-    street_nb       = models.CharField("N°", max_length=20,  null=False)
+    street_nb       = models.CharField("N°", max_length=20,  null=False, blank=True)
     street_name     = models.CharField("Rue", max_length=200, null=False)
     city            = models.ForeignKey(City, related_name="Venue", on_delete=models.SET_NULL, null=True)
     postcode        = models.IntegerField("Code Postal", null=False)
-    iframe_url_map  = models.URLField("URL Google Iframe", max_length=500,  null=True)
+    iframe_url_map  = models.URLField("URL Google Iframe", max_length=500,  null=True, blank=True)
     
     
     def __str__(self):
@@ -193,7 +196,7 @@ class Venue(models.Model):
 
     class Meta:
             verbose_name = 'Lieu'
-            verbose_name_plural = 'Lieux'
+            verbose_name_plural = 'H. Lieux'
 
 
 class Room(models.Model):
@@ -206,39 +209,41 @@ class Room(models.Model):
 
     class Meta:
         verbose_name = 'Salle'
-        verbose_name_plural = 'Salles'
+        verbose_name_plural = 'I. Salles'
 
 
 
-class ActivitySlot(models.Model):
+class Activity_Animation_Slot(models.Model):
     
-    animation                 = models.ForeignKey(Animation,  related_name="Activity",          on_delete=models.SET_NULL, null=True)
+    animation                 = models.ForeignKey(Activity_Animation,  related_name="Activity", on_delete=models.SET_NULL, null=True)
     period                    = models.ForeignKey(Period,     related_name="Activity",          on_delete=models.SET_NULL, null=True, blank=True)
     age_group                 = models.ForeignKey(Age_Group,  related_name="Activity",          on_delete=models.SET_NULL, null=True)
     level                     = models.ForeignKey(Level,      related_name="Activity",          on_delete=models.SET_NULL, null=True)
-    name                      = models.CharField("Nom", max_length=50,                                                     null=True)
+    name                      = models.CharField("Nom", max_length=50,                                                     null=True, blank=True)
+    new                       = models.BooleanField("Nouveau",default=None)
+    flash                     = models.CharField("Info flash", max_length=50,                                              null=True, blank=True)
     host                      = models.ManyToManyField(Host,  related_name="Activity",                                                blank=True)
     day                       = models.ForeignKey(Weekday,    related_name="Activity",          on_delete=models.SET_NULL, null=True, blank=True)
     time_start                = models.TimeField("Heure de début",                                                         null=True, blank=True)
     time_end                  = models.TimeField("Heure de fin",                                                           null=True, blank=True)
     room                      = models.ForeignKey(Room,       related_name="Activity",          on_delete=models.SET_NULL, null=True)
-    description               = models.TextField("Description",                                                            null=True, blank=True)
-    rate_resident_1_name      = models.CharField("Désignation Tarif MC 1", max_length=50,                                  null=True, blank=True)
-    rate_resident_1           = models.DecimalField("Tarif MC 1", max_digits=6, decimal_places=2,                          null=True, blank=True)
-    rate_resident_2_name      = models.CharField("Désignation Tarif MC 2", max_length=50,                                  null=True, blank=True)
-    rate_resident_2           = models.DecimalField("Tarif MC 2", max_digits=6, decimal_places=2,                          null=True, blank=True)
-    rate_non_resident_1_name  = models.CharField("Désignation Tarif hors MC 1", max_length=50,                             null=True, blank=True)
-    rate_non_resident_1       = models.DecimalField("Tarif hors MC 1", max_digits=6, decimal_places=2,                     null=True, blank=True)
-    rate_non_resident_2_name  = models.CharField("Désignation Tarif hors MC 2", max_length=50,                             null=True, blank=True)
-    rate_non_resident_2       = models.DecimalField("Tarif hors MC 2", max_digits=6, decimal_places=2,                     null=True, blank=True)
-    notes                     = models.TextField("Notes particulières",                                                    null=True, blank=True)
+    description               = models.TextField("Présentation (spécifique à ce crénau)",                                  null=True, blank=True)
+    rate_resident_1_name      = models.CharField("Tarif 1 MC - Désignation ", max_length=50,                               null=True, blank=True)
+    rate_resident_1           = models.DecimalField("Tarif 1 MC - €", max_digits=6, decimal_places=2,                      null=True, blank=True)
+    rate_resident_2_name      = models.CharField("Tarif 2 MC - Désignation ", max_length=50,                               null=True, blank=True)
+    rate_resident_2           = models.DecimalField("Tarif 2 MC - €", max_digits=6, decimal_places=2,                      null=True, blank=True)
+    rate_non_resident_1_name  = models.CharField("Tarif 1 hors MC - Désignation ", max_length=50,                          null=True, blank=True)
+    rate_non_resident_1       = models.DecimalField("Tarif 1 hors MC - €", max_digits=6, decimal_places=2,                 null=True, blank=True)
+    rate_non_resident_2_name  = models.CharField("Tarif 2 hors MC - Désignation ", max_length=50,                          null=True, blank=True)
+    rate_non_resident_2       = models.DecimalField("Tarif 2 hors MC - €", max_digits=6, decimal_places=2,                 null=True, blank=True)
+    notes                     = models.TextField("Notes particulières (spécifique à ce crénau)",                           null=True, blank=True)
 
     def __str__(self):
         return '%s - %s - %s - %s' % (self.period, self.animation, self.age_group, self.day)
     
     class Meta:
-        verbose_name = 'Activité'
-        verbose_name_plural = 'Activités'
+        verbose_name = 'Animation - Créneau'
+        verbose_name_plural = '3. Animations - Créneaux'
         
         
 # Model deleted
