@@ -3,7 +3,7 @@ from django.http         import HttpResponse
 from django.contrib.auth import authenticate
 from django.contrib      import auth, messages
 from .forms              import UserLoginForm, UserRegistrationForm, ProfileRegistrationForm
-from activities.models   import EventRegistration
+# from activities.models   import EventRegistration
 
 
 
@@ -69,9 +69,9 @@ def logout(request):
     return redirect('/')
     
  
+# Feature deactivated
+# def profile(request):
     
-def profile(request):
+#     eventsRegisteredTo   = EventRegistration.objects.filter(participant=request.user).order_by('event__event_type','event__name')
     
-    eventsRegisteredTo   = EventRegistration.objects.filter(participant=request.user).order_by('event__event_type','event__name')
-    
-    return render(request, "accounts/profile.html", {'eventsRegisteredTo':eventsRegisteredTo})
+#     return render(request, "accounts/profile.html", {'eventsRegisteredTo':eventsRegisteredTo})

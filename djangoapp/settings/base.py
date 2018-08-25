@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'news',
     'accounts',
     'activities',
-    'checkout'
+    'workshop',
+    # 'checkout'
 ]
 
 MIDDLEWARE = [

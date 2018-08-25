@@ -1,16 +1,12 @@
 from django.db                      import models
 from django.contrib.auth.models     import User
-from accounts.models                import Profile
+# from accounts.models                import Profile
 from django.contrib.postgres.fields import ArrayField
 
-# Comments :
-# <!> Make the distinction between "Event" and "OneTimeEvent" :
-# <!> All entries are events / element, some of them are "activities", other "TrainingCourse" and others "OneTimeEvent"
-# <!> The app is named "activities", it should have been named "Element"
 
 
 
-class Event_Type(models.Model):
+class Elements_Type(models.Model):
     
     ACTIVITY        = 'ACTIVITY'
     TRAININGCOURSE  = 'TRAININGCOURSE'
@@ -22,7 +18,7 @@ class Event_Type(models.Model):
         (ONETIMEEVENT,     'EVENT'          ),
     )
     
-    event_type      = models.CharField("Type d'élément", max_length=50, choices=TYPE)
+    element_type    = models.CharField("Type d'élément", max_length=50, choices=TYPE)
     title           = models.CharField("Label", max_length=50, null=True)
     description     = models.TextField("Description", null=True)
     image           = models.ImageField("Image", upload_to="images/event_type", blank=True, null=True)
@@ -95,8 +91,8 @@ class Weekday(models.Model):
     class Meta:
             verbose_name = "Jour"
             verbose_name_plural = "Jours"
-            
-            
+
+
 
 class Period(models.Model):
     
@@ -153,7 +149,7 @@ class Age_Group(models.Model):
     class Meta:
             verbose_name = "Age - Groupe d'ages"
             verbose_name_plural = "Age - Groupes d'ages"
-            
+
 
 
 class Level(models.Model):
@@ -179,8 +175,8 @@ class City(models.Model):
     class Meta:
             verbose_name = "Ville"
             verbose_name_plural = "Villes"
-            
-            
+
+
 
 class Venue(models.Model):
     
@@ -211,58 +207,90 @@ class Room(models.Model):
     class Meta:
         verbose_name = 'Salle'
         verbose_name_plural = 'Salles'
-        
 
 
-class Event(models.Model):
+
+class ActivitySlot(models.Model):
     
-    event_type        = models.ForeignKey(Event_Type, related_name="Event",          on_delete=models.SET_NULL, null=True)
-    animation         = models.ForeignKey(Animation,  related_name="Event",          on_delete=models.SET_NULL, null=True)
-    name              = models.CharField("Nom", max_length=100)
-    period            = models.ForeignKey(Period,     related_name="Event",          on_delete=models.SET_NULL, null=True)
-    host_1            = models.ForeignKey(Host,       related_name="Event_host_1",   on_delete=models.SET_NULL, null=True)
-    host_2            = models.ForeignKey(Host,       related_name="Event_host_2",   on_delete=models.SET_NULL, null=True)
-    host_3            = models.ForeignKey(Host,       related_name="Event_host_3",   on_delete=models.SET_NULL, null=True)
-    host_4            = models.ForeignKey(Host,       related_name="Event_host_4",   on_delete=models.SET_NULL, null=True)
-    host_5            = models.ForeignKey(Host,       related_name="Event_host_5",   on_delete=models.SET_NULL, null=True)
-    day               = models.ForeignKey(Weekday,    related_name="Event",          on_delete=models.SET_NULL, null=True)
-    time_start        = models.TimeField("Heure de début", null=True)
-    time_end          = models.TimeField("Heure de fin",   null=True)
-    # dates             = ArrayField(models.DateTimeField(auto_now=False, auto_now_add=False))
-    age_group         = models.ForeignKey(Age_Group,  related_name="Event",          on_delete=models.SET_NULL, null=True)
-    level             = models.ForeignKey(Level,      related_name="Event",          on_delete=models.SET_NULL, null=True)
-    room              = models.ForeignKey(Room,       related_name="Event",          on_delete=models.SET_NULL, null=True)
-    number_max        = models.PositiveSmallIntegerField("Nb max participants", null=True)
-    number_available  = models.PositiveSmallIntegerField("Nb places libres", null=True)
-    rate_resident     = models.DecimalField("Tarif MC", max_digits=6, decimal_places=2, null=True)
-    rate_non_resident = models.DecimalField("Tarif hors MC", max_digits=6, decimal_places=2, null=True)
-    
+    animation                 = models.ForeignKey(Animation,  related_name="Activity",          on_delete=models.SET_NULL, null=True)
+    period                    = models.ForeignKey(Period,     related_name="Activity",          on_delete=models.SET_NULL, null=True, blank=True)
+    age_group                 = models.ForeignKey(Age_Group,  related_name="Activity",          on_delete=models.SET_NULL, null=True)
+    level                     = models.ForeignKey(Level,      related_name="Activity",          on_delete=models.SET_NULL, null=True)
+    name                      = models.CharField("Nom", max_length=50,                                                     null=True)
+    host                      = models.ManyToManyField(Host,  related_name="Activity",                                                blank=True)
+    day                       = models.ForeignKey(Weekday,    related_name="Activity",          on_delete=models.SET_NULL, null=True, blank=True)
+    time_start                = models.TimeField("Heure de début",                                                         null=True, blank=True)
+    time_end                  = models.TimeField("Heure de fin",                                                           null=True, blank=True)
+    room                      = models.ForeignKey(Room,       related_name="Activity",          on_delete=models.SET_NULL, null=True)
+    description               = models.TextField("Description",                                                            null=True, blank=True)
+    rate_resident_1_name      = models.CharField("Désignation Tarif MC 1", max_length=50,                                  null=True, blank=True)
+    rate_resident_1           = models.DecimalField("Tarif MC 1", max_digits=6, decimal_places=2,                          null=True, blank=True)
+    rate_resident_2_name      = models.CharField("Désignation Tarif MC 2", max_length=50,                                  null=True, blank=True)
+    rate_resident_2           = models.DecimalField("Tarif MC 2", max_digits=6, decimal_places=2,                          null=True, blank=True)
+    rate_non_resident_1_name  = models.CharField("Désignation Tarif hors MC 1", max_length=50,                             null=True, blank=True)
+    rate_non_resident_1       = models.DecimalField("Tarif hors MC 1", max_digits=6, decimal_places=2,                     null=True, blank=True)
+    rate_non_resident_2_name  = models.CharField("Désignation Tarif hors MC 2", max_length=50,                             null=True, blank=True)
+    rate_non_resident_2       = models.DecimalField("Tarif hors MC 2", max_digits=6, decimal_places=2,                     null=True, blank=True)
+    notes                     = models.TextField("Notes particulières",                                                    null=True, blank=True)
+
     def __str__(self):
-        return self.name
+        return '%s - %s - %s - %s' % (self.period, self.animation, self.age_group, self.day)
     
     class Meta:
-        verbose_name = 'Elément'
-        verbose_name_plural = 'Eléments'
+        verbose_name = 'Activité'
+        verbose_name_plural = 'Activités'
         
         
+# Model deleted
+# class Event(models.Model):
+    
+    # event_type        = models.ForeignKey(Event_Type, related_name="Event",          on_delete=models.SET_NULL, null=True)
+    # animation         = models.ForeignKey(Animation,  related_name="Event",          on_delete=models.SET_NULL, null=True)
+    # name              = models.CharField("Nom", max_length=100)
+    # period            = models.ForeignKey(Period,     related_name="Event",          on_delete=models.SET_NULL, null=True)
+    # host_1            = models.ForeignKey(Host,       related_name="Event_host_1",   on_delete=models.SET_NULL, null=True)
+    # host_2            = models.ForeignKey(Host,       related_name="Event_host_2",   on_delete=models.SET_NULL, null=True)
+    # host_3            = models.ForeignKey(Host,       related_name="Event_host_3",   on_delete=models.SET_NULL, null=True)
+    # host_4            = models.ForeignKey(Host,       related_name="Event_host_4",   on_delete=models.SET_NULL, null=True)
+    # host_5            = models.ForeignKey(Host,       related_name="Event_host_5",   on_delete=models.SET_NULL, null=True)
+    # day               = models.ForeignKey(Weekday,    related_name="Event",          on_delete=models.SET_NULL, null=True)
+    # time_start        = models.TimeField("Heure de début", null=True)
+    # time_end          = models.TimeField("Heure de fin",   null=True)
+    # # dates             = ArrayField(models.DateTimeField(auto_now=False, auto_now_add=False))
+    # age_group         = models.ForeignKey(Age_Group,  related_name="Event",          on_delete=models.SET_NULL, null=True)
+    # level             = models.ForeignKey(Level,      related_name="Event",          on_delete=models.SET_NULL, null=True)
+    # room              = models.ForeignKey(Room,       related_name="Event",          on_delete=models.SET_NULL, null=True)
+    # number_max        = models.PositiveSmallIntegerField("Nb max participants", null=True)
+    # number_available  = models.PositiveSmallIntegerField("Nb places libres", null=True)
+    # rate_resident     = models.DecimalField("Tarif MC", max_digits=6, decimal_places=2, null=True)
+    # rate_non_resident = models.DecimalField("Tarif hors MC", max_digits=6, decimal_places=2, null=True)
+    
+    # def __str__(self):
+    #     return self.name
+    
+    # class Meta:
+    #     verbose_name = 'Elément'
+    #     verbose_name_plural = 'Eléments'
         
-class EventRegistration(models.Model):
+        
+# Feature must be deactivated 
+# class EventRegistration(models.Model):
     
-    participant         = models.ForeignKey(User, related_name="RegistrationList",  on_delete=models.PROTECT, null=False)
-    event               = models.ForeignKey(Event, related_name="RegistrationList", on_delete=models.PROTECT, null=False)
+#     participant         = models.ForeignKey(User, related_name="RegistrationList",  on_delete=models.PROTECT, null=False)
+#     event               = models.ForeignKey(Event, related_name="RegistrationList", on_delete=models.PROTECT, null=False)
     
-    class Meta:
-        unique_together = ["participant", "event"]
+#     class Meta:
+#         unique_together = ["participant", "event"]
     
-    def __str__(self):
-        return 'Event Registration N° %s' % (self.id)
+#     def __str__(self):
+#         return 'Event Registration N° %s' % (self.id)
     
-    class Meta:
-        verbose_name = 'Inscription'
-        verbose_name_plural = 'Inscriptions'
+#     class Meta:
+#         verbose_name = 'Inscription'
+#         verbose_name_plural = 'Inscriptions'
         
 # ----------------------------------------------------------------------
-
+    # Notes : 
     # It's possible to define a function to automatically fill a field : 
     # @property
     # def banana_1(self):

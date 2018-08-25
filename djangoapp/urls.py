@@ -28,5 +28,5 @@ urlpatterns = [
     path('news/',       include(news_urls)),
     path('accounts/',   include(accounts_urls)),
     path('activities/', include(activities_urls)),
-    path('checkout/',   include(checkout_urls))
+    # path('checkout/',   include(checkout_urls))
 ]
