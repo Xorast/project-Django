@@ -240,7 +240,7 @@ class Activity_Animation_Slot(models.Model):
     notes                     = models.TextField("Notes particulières (spécifique à ce crénau)",                       null=True, blank=True)
 
     def __str__(self):
-        return '%s - %s - %s' % (self.animation, self.age_group, self.day)
+        return '%s - %s - %s/%s ans - %s - %s' % (self.age_group.age_class, self.animation, self.age_group.age_min, self.age_group.age_max, self.name, self.day)
     
     class Meta:
         verbose_name = 'Animation - Créneau'

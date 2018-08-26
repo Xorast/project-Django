@@ -4,20 +4,22 @@ from news.models            import News
 
 
 
+
+
+
+
 def get_home_page(request):
     
-    # last_news    = News.objects.order_by('-published_date')[:3]
-    # activities   = get_object_or_404(Event_Type, event_type="ACTIVITY")
-    # courses      = get_object_or_404(Event_Type, event_type="TRAININGCOURSE")
-    # events       = get_object_or_404(Event_Type, event_type="EVENT")
+    last_news    = News.objects.order_by('-published_date')[:3]
     
-    # return render(request, "views/index.html", {'last_news': last_news, 'activities': activities, 'courses': courses, 'events': events})
-    return render(request, "views/initialization.html")
+    # return render(request, "views/initialization.html")
+    return render(request, "views/index.html", {'last_news': last_news})
 
 
 
 def get_about_page(request):
     return render(request, "views/about.html")
+
    
    
 # Feature must be deactivated
@@ -57,3 +59,11 @@ def get_host(request, id):
 
 def get_admin_panel(request):
     return redirect("/admin")
+    
+    
+    
+# To be deleted :
+# 
+# activities   = get_object_or_404(Event_Type, event_type="ACTIVITY")
+# courses      = get_object_or_404(Event_Type, event_type="TRAININGCOURSE")
+# events       = get_object_or_404(Event_Type, event_type="EVENT")

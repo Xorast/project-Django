@@ -72,14 +72,14 @@
                 <div class="card h-100">
                     
                     <div class="row m-0">    
-                        <div class="img rounded-top" onclick="goTo('{% url 'subtypes' activities.event_type %}')" style="background-image:url('{{ MEDIA_URL }}{{ activities.image }}')"></div>    
+                        <div class="img rounded-top" onclick="goTo('{% url 'a_list_of_animations_types' %}')" style="background-image:url('{{ MEDIA_URL }}{{ activity.image }}')"></div>    
                     </div>
                         
                     <div class="card-body">
                         <h4 class="card-title text-capitalize">
-                            <a href="{% url 'subtypes' activities.event_type %}">{{ activities.title }}</a>
+                            <a href="{% url 'a_list_of_animations_types' %}">{{ activity.title }}</a>
                         </h4>
-                        <p class="card-text">{{ activities.description|truncatewords:30 }}</p>
+                        <p class="card-text">{{ activity.description|truncatewords:30 }}</p>
                     </div>
                     
                 </div>
@@ -92,14 +92,14 @@
                 <div class="card h-100">
                     
                     <div class="row m-0">    
-                        <div class="img rounded-top" onclick="goTo('{% url 'subtypes' courses.event_type %}')" style="background-image:url('{{ MEDIA_URL }}{{ courses.image }}')"></div>    
+                        <div class="img rounded-top" onclick="goTo('/')" style="background-image:url('{{ MEDIA_URL }}')"></div>    
                     </div>
                         
                     <div class="card-body">
                         <h4 class="card-title text-capitalize">
-                            <a href="{% url 'subtypes' courses.event_type %}">{{ courses.title }}</a>
+                            <a href="/"></a>
                         </h4>
-                        <p class="card-text">{{ courses.description|truncatewords:30 }}</p>
+                        <p class="card-text"></p>
                     </div>
                     
                 </div>
@@ -112,14 +112,14 @@
                 <div class="card h-100">
                     
                     <div class="row m-0">
-                        <div class="img rounded-top" onclick="goTo('{% url 'subtypes' events.event_type %}')" style="background-image:url('{{ MEDIA_URL }}{{ events.image }}')"></div>    
+                        <div class="img rounded-top" onclick="goTo('/')" style="background-image:url('{{ MEDIA_URL }}')"></div>    
                     </div>
                         
                     <div class="card-body">
                         <h4 class="card-title text-capitalize">
-                            <a href="{% url 'subtypes' events.event_type %}">{{ events.title }}</a>
+                            <a href="/"></a>
                         </h4>
-                        <p class="card-text">{{ events.description|truncatewords:30 }}</p>
+                        <p class="card-text"></p>
                     </div>
                     
                 </div>

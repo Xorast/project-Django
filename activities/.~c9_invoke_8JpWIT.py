@@ -26,19 +26,9 @@ def get_animation_details(request, animation_type, animation, animation_id):
 
     animation       = get_object_or_404(Activity_Animation, id=animation_id)
     slots           = Activity_Animation_Slot.objects.filter(animation=animation) #.order_by('')
+    hosts           = Activity_Animation_Slot.host.related.all()
     
-    hosts = []
-    # for slot in slots:
-    #   host = Host.objects.filter(Slot = slot.id)
-    #   for h in host:
-    #       hosts.append(h)  
-    [[hosts.append(h) for h in Host.objects.filter(Slot = slot.id)] for slot in slots]
-    hosts = list(set(hosts))
-    
-    unmentionned_rate_text = "Si le tarif n'est pas indiqué dans les notes, contacter la MJC."
-    two_rates_no_info_on_second_rate = "Contacter la MJC pour connaitre les conditions du deuxième tarif."
-    
-    return render(request, "activities/animation_details.html", {'animation':animation,'slots':slots, 'hosts':hosts, 'unmentionned_rate_text':unmentionned_rate_text, 'two_rates_no_info_on_second_rate':two_rates_no_info_on_second_rate})
+    return render(request, "activities/animation_details.html", {'animation':animation,'slots':slots, 'hosts':hosts})
 
 
 

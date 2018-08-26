@@ -27,8 +27,8 @@
                  
                 <div class="col-md-12 px-0">
                     <p><strong>Adresse :</strong></br>
-                    {{ venue.street_nb }}, {{ venue.street_name }}</br>
-                    {{ venue.postcode }} {{ venue.city }}</p>
+                    {{ venue.street_nb }}{% if venue.street_nb is not None %} {% endif %}{{ venue.street_name }}</br>
+                    {{ venue.postcode }}{% if venue.postcode is not None %} {% endif %}{{ venue.city }}</p>
                 </div>
             
             </div>
