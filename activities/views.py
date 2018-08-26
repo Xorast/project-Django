@@ -1,23 +1,34 @@
 from django.shortcuts               import render, redirect, get_object_or_404, HttpResponse
-from .models                        import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot #, EventRegistration
+from .models                        import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot, Elements_Type, Host
 # from workshop.models                import Workshop
 from django.contrib.auth.decorators import login_required
+# from .models                        import EventRegistration
 
 
 
-def get_animation_type(request, animation_type):
+
+
+
+def get_list_of_animation_types(request):
     
-   
-
-    return render(request, "activities/animation_types_activities.html", {'list_of_animations_types':list_of_animations_types})
+    return render(request, "activities/list_of_animation_types.html")
 
 
+def get_list_of_animations(request, animation_type):
+    
+    animations_type = get_object_or_404(Activity_Animation_Type, animation_type=animation_type)
+    animations      = Activity_Animation.objects.filter(animation_type=animations_type.id)
+    
+    return render(request, "activities/list_of_animations.html", {'animations_type':animations_type,'animations':animations})
 
 
+def get_animation_details(request, animation_type, animation, animation_id):
 
-
-
-
+    animation       = get_object_or_404(Activity_Animation, id=animation_id)
+    slots           = Activity_Animation_Slot.objects.filter(animation=animation) #.order_by('')
+    # hosts           = Host.Slot_set.all()
+    
+    return render(request, "activities/animation_details.html", {'animation':animation,'slots':slots})
 
 
 

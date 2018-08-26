@@ -26,8 +26,8 @@ def get_rate_and_registration_activities_page(request):
 
 
 # Feature must be deactivated
-def get_rate_and_registration_courses_page(request):
-    return render(request, "views/rate_and_registration_courses.html")
+def get_rate_and_registration_workshop_page(request):
+    return render(request, "views/rate_and_registration_workshops.html")
 
 
 

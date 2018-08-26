@@ -12,8 +12,8 @@ class Age_GroupAdmin(admin.ModelAdmin):
     ordering        = ('age_class', 'age_min', 'age_max')
 
 class RoomAdmin(admin.ModelAdmin):  
-    list_display    = ['venue', 'room']
-    ordering        = ('venue','room')
+    list_display    = ['venue', 'room_nb','room_name']
+    ordering        = ('venue','room_nb','room_name')
 
 class HostAdmin(admin.ModelAdmin):
     list_display    = ['firstname', 'lastname', 'image', 'resume']

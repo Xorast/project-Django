@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+
+    <!-- Page Content -->
+    <div class="container">
+        
+        <div class="row">
+              
+            </div>
+            <!-- Content Column -->
+            <div class="col-md-12">
+            
+                <button class="btn btn-primary mt-3" onclick="goBack()">Retour</button>
+                
+                <!-- Image -->
+                <div class="row m-0 mt-3">    
+                        <div class="img rounded" style="background-image:url('{{ MEDIA_URL }}{{ animation.image }}')"></div>    
+                </div>
+                
+                <hr>
+                <div class="text-center">
+                    <span class="text-uppercase badge badge-pill badge-success">{% if animation.new %} Nouveau {% endif %}                                        </span>
+                    <span class="text-uppercase badge badge-pill badge-info"   >{% if animation.disabled_friendly %} Accessible Handicap {% endif %}              </span>
+                    <span class="text-uppercase badge badge-pill badge-primary">{{ animation.flash }}                                                             </span>
+                    <span class="text-uppercase badge badge-pill badge-danger">{% if animation.available_in_both_cities %} Dispo à Mauguio ET à Carnon{% endif %}</span>
+                </div>
+                <!-- Animation description -->
+                <h1 class="mt-4 mb-3 text-center">{{ animation.name }}<br><small> avec </small></h1>
+                <p class="text-center">{{ animation.period }}</p>
+                
+                <p class="lead text-center">{{ animation.description      }}</p>
+                
+                
+                <!-- Table -->
+                
+                
+                
+                <table class="table table-hover text-center">
+                    
+                    <thead>
+                        
+                        <!-- Overheader -->
+                        <!--<colgroup span="7"></colgroup>-->
+                        <!--<colgroup span="2"></colgroup>-->
+                        <!--<tr>-->
+                        <!--  <td rowspan="2"></td>-->
+                        <!--  <th colspan="7" scope="colgroup"></th>-->
+                        <!--  <th colspan="2" scope="colgroup">Tarifs</th>-->
+                        <!--</tr>-->
+                          
+                        <tr>
+                            <th scope="col">                         </th>
+                            <th scope="col">Nom                      </th>
+                            <th scope="col">Age                      </th>
+                            <th scope="col">Niveau                   </th>
+                            <th scope="col">Jour                     </th>
+                            <th scope="col">Horaires                 </th>
+                            <th scope="col">Anim.                    </th>
+                            <th scope="col">Salle                    </th>
+                            <th scope="col"><span class="tooltip">MC      <span class="tooltiptext">Tarifs pour les résidents de Mauguio-Carnon</span></span></th>
+                            <th scope="col"><span class="tooltip">Hors MC <span class="tooltiptext">Tarifs pour les résidents hors commune</span></span></th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                    
+                        {% for slot in slots %}
+                        
+                            <tr>
+                                
+                                <!--Badge - News -->
+                                <td>{% if slot.new %}<span class="badge badge-pill badge-success">N</span>{% endif %}</td>        
+                                
+                                <!-- Slot name-->
+                                <td>{{ slot.name                     }}</td>        
+                                
+                                <!-- Age -->
+                                <td><span class="text-nowrap">
+                                    {{ slot.age_group.age_min        }} /
+                                    {{ slot.age_group.age_max        }}
+                                    </span>                            </td>        
+                                
+                                <!-- Level -->
+                                <td>{{ slot.level                    }}</td>        
+                                
+                                <!-- Day -->
+                                <td>{{ slot.day                      }}</td>        
+                                
+                                <td><span class="text-nowrap">{{ slot.time_start|time:"H:i"}} /</span>
+                                    <span class="text-nowrap">{{ slot.time_end  |time:"H:i"}}</span>
+                                                                       </td>        
+                                
+                                <!-- Hosts-->
+                                <td>{% for slot in slots %}
+                                        {% for host in slot.host.all %}
+                                            {{ host.initials }}
+                                        {% endfor %}
+                                    {% endfor %}                       </td>        
+                                
+                                <!-- Venue - Room -->
+                                <td><div class="tooltip">
+                                        <a href="{% url 'venue' slot.room.venue.name %}">{{ slot.room.room_nb             }}{% if slot.room.room_nb and slot.room.room_name  %} - {% endif%} {{ slot.room.room_name             }}</a>
+                                        <span class="tooltiptext">{{ slot.room.venue.name     }}</span>        
+                                    </div>
+                                                                       </td>
+                                    
+                                <td><span class="text-nowrap tooltip">
+                                       
+                                            {{ slot.rate_resident_1          }} € <svg class="svg-mini-05 svg-blue" data-name="Layer 1" viewBox="0 0 32 32"><path class="cls-1" d="M16,1A15,15,0,1,0,31,16,15,15,0,0,0,16,1Zm2,22a2,2,0,0,1-4,0V16a2,2,0,0,1,4,0ZM16,12.19A2.19,2.19,0,1,1,18.19,10,2.19,2.19,0,0,1,16,12.19Z"/></svg>
+                                            <span class="tooltiptext">{{ slot.rate_resident_1_name     }}</span>
+                                      
+                                    </span><br><span class="text-nowrap tooltip">
+                                  
+                                            {{ slot.rate_resident_2          }} € <svg class="svg-mini-05 svg-blue" data-name="Layer 1" viewBox="0 0 32 32"><path class="cls-1" d="M16,1A15,15,0,1,0,31,16,15,15,0,0,0,16,1Zm2,22a2,2,0,0,1-4,0V16a2,2,0,0,1,4,0ZM16,12.19A2.19,2.19,0,1,1,18.19,10,2.19,2.19,0,0,1,16,12.19Z"/></svg>
+                                            <span class="tooltiptext">{{ slot.rate_resident_2_name     }}</span>
+                                    </span>
+                                  
+                                                                       </td>  
+                                                                       
+                                <td><span class="text-nowrap tooltip">
+                                            {{ slot.rate_non_resident_1      }} € <svg class="svg-mini-05 svg-blue" data-name="Layer 1" viewBox="0 0 32 32"><path class="cls-1" d="M16,1A15,15,0,1,0,31,16,15,15,0,0,0,16,1Zm2,22a2,2,0,0,1-4,0V16a2,2,0,0,1,4,0ZM16,12.19A2.19,2.19,0,1,1,18.19,10,2.19,2.19,0,0,1,16,12.19Z"/></svg>
+                                            <span class="tooltiptext">{{ slot.rate_non_resident_1_name     }}</span>
+                                    </span><br><span class="text-nowrap tooltip">
+                                   
+                                            {{ slot.rate_non_resident_2      }} € <svg class="svg-mini-05 svg-blue" data-name="Layer 1" viewBox="0 0 32 32"><path class="cls-1" d="M16,1A15,15,0,1,0,31,16,15,15,0,0,0,16,1Zm2,22a2,2,0,0,1-4,0V16a2,2,0,0,1,4,0ZM16,12.19A2.19,2.19,0,1,1,18.19,10,2.19,2.19,0,0,1,16,12.19Z"/></svg>
+                                            <span class="tooltiptext">{{ slot.rate_non_resident_2_name     }}</span>
+                                        </span>
+                                    
+                                                                       </td>  
+                            </tr>
+                            
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <hr>
+                
+                 
+                {% for slot in slots %}
+                    {{ slot.name }}
+                    <br>
+                    Présentation :
+                    {{ slot.description }}
+                    <br>
+                    Notes : 
+                    {{ slot.notes }}
+                {% endfor %}
+                
+                <p class="">Note(s) générale(s) Animation : {{ animation.notes      }}</p>
+                
+                <hr>
+                
+                    <a href="{% url 'rate_and_registration_activities' %}">
+                    <button id="register_button" type="button" class="nounderline btn btn-outline-primary btn-lg btn-block text-uppercase">Comment s'inscrire ?</button>
+                    </a>
+                
+            </div>
+                
+                
+        </div>
+        <!-- /.row -->
+    </div>
+            
+{% endblock %}

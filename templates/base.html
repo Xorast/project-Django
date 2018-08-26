@@ -56,10 +56,10 @@
                         
                         <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href="{% url 'subtypes' 'ACTIVITY' %}"             >toutes                </a>
+                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}"                >toutes                </a>
                           
-                            {% for n in event_subtypes_ACTIVITY  %}
-                            <a class="dropdown-item txt-white" href="{% url 'list' 'ACTIVITY' n.event_subtype %}" >{{ n.event_subtype }} </a>  
+                            {% for n in animations_types_activities  %}
+                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations' n.animation_type %}" >{{ n.animation_type }} </a>  
                             {% endfor %}
                             
                             <div class="dropdown-divider"></div>
@@ -72,7 +72,7 @@
                     </li>
                     
                     <!-- Workshops -->
-                    <li& id="dropdown_2A" class="nav-item dropdown">
+                    <li id="dropdown_2A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Stages
@@ -80,15 +80,15 @@
                         
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href="{% url 'subtypes' 'TRAININGCOURSE' %}"             >Tous        </a>
+                            <a class="dropdown-item txt-white" href=""             >Tous        </a>
                               
                             {% for n in event_subtypes_COURSE  %}
-                            <a class="dropdown-item txt-white" href="{% url 'list' 'TRAININGCOURSE' n.event_subtype %}" >{{ n.event_subtype }}</a>  
+                            <a class="dropdown-item txt-white" href="" >{{ n.event_subtype }}</a>  
                             {% endfor %}
                             
                             <div class="dropdown-divider"></div>
                             
-                            <a class="dropdown-item txt-white" href="{% url 'rate_and_registration_courses' %}">Tarifs & Inscriptions </a>
+                            <a class="dropdown-item txt-white" href="{% url 'rate_and_registration_workshop' %}">Tarifs & Inscriptions </a>
                             <a class="dropdown-item txt-white" href="{% url 'venues_list'                   %}">Lieux & Salles        </a>
                             
                         </div>
@@ -105,10 +105,10 @@
                         
                         <div id="dropdown_3B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href="{% url 'subtypes' 'EVENT' %}">Tous                              </a>
+                            <a class="dropdown-item txt-white" href="">Tous                              </a>
                           
                             {% for n in event_subtypes_EVENT  %}
-                            <a class="dropdown-item txt-white" href="{% url 'list' 'EVENT' n.event_subtype %}">{{ n.event_subtype }} </a>  
+                            <a class="dropdown-item txt-white" href="">{{ n.event_subtype }} </a>  
                             {% endfor %}
                         
                         </div>
@@ -172,7 +172,7 @@
                     {% if user.is_authenticated %}
                         
                         <!--Profile: to put back again when client is ready -->
-                        <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Profile'  %}"><svg class="svg-white svg-mini-1"-->
+                        <!--<li class="nav-item"><a class="nav-link"    href=""><svg class="svg-white svg-mini-1"-->
                         <!--                                                                            enable-background="new 0 0 128 128"-->
                         <!--                                                                            viewBox="0 0 128 128">-->
                         <!--                                                                            <circle  class="userprofile" id="userProfileCircle" fill="#DD5600" cx="64" cy="64"  id="circle" r="64"/>-->

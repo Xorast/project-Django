@@ -8,13 +8,13 @@ from django.contrib.auth.models     import User
 class Elements_Type(models.Model):
     
     ACTIVITY        = 'ACTIVITY'
-    TRAININGCOURSE  = 'TRAININGCOURSE'
-    ONETIMEEVENT    = 'EVENT'
+    WORKSHOP        = 'WORKSHOP'
+    EVENT           = 'EVENT'
     
     TYPE = (
-        (ACTIVITY,         'ACTIVITY'       ),
-        (TRAININGCOURSE,   'TRAININGCOURSE' ),
-        (ONETIMEEVENT,     'EVENT'          ),
+        (ACTIVITY,  'ACTIVITY' ),
+        (WORKSHOP,  'WORKSHOP' ),
+        (EVENT,     'EVENT'    ),
     )
     
     element_type    = models.CharField("Type d'élément", max_length=50, choices=TYPE)
@@ -23,13 +23,26 @@ class Elements_Type(models.Model):
     image           = models.ImageField("Image", upload_to="images/event_type", blank=True, null=True)
     
     def __str__(self):
-        return self.event_type
+        return self.element_type
 
     class Meta:
             verbose_name = "Eléments - Type"
             verbose_name_plural = "Z. Eléments - Types"
     
     
+    
+class Period(models.Model):
+    
+    period          = models.CharField("Période", max_length=20, null=False)
+    
+    def __str__(self):
+        return self.period
+
+    class Meta:
+            verbose_name = "Période"
+            verbose_name_plural = "A. Périodes"   
+            
+            
 
 class Activity_Animation_Type(models.Model):
     
@@ -50,12 +63,14 @@ class Activity_Animation(models.Model):
     
     name                     = models.CharField("Nom", max_length=100)
     animation_type           = models.ForeignKey(Activity_Animation_Type, related_name="Animation", on_delete=models.SET_NULL, null=True)
+    period                   = models.ForeignKey(Period,     related_name="Animation",              on_delete=models.SET_NULL, null=True, blank=True)
     disabled_friendly        = models.BooleanField("Accessible handicap",          default=None)
     new                      = models.BooleanField("Nouveau",                      default=None)
     available_in_both_cities = models.BooleanField("Existe à Mauguio ET à Carnon", default=None)
     image                    = models.ImageField("Image", upload_to="images/activity/animation/", default = "noimage.jpg")
+    flash                    = models.CharField("Info flash", max_length=50,                                                   null=True, blank=True)
     description              = models.TextField("Présentation générale", blank=True)
-    notes                    = models.TextField("Notes spécifiques (certif. médical, license, ...)", null=True, blank=True)
+    notes                    = models.TextField("Notes spécifiques (certif. médical, license, ...)",                           null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -94,19 +109,6 @@ class Weekday(models.Model):
     class Meta:
             verbose_name = "Jour"
             verbose_name_plural = "F. Jours"
-
-
-
-class Period(models.Model):
-    
-    period          = models.CharField("Période", max_length=20, null=False)
-    
-    def __str__(self):
-        return self.period
-
-    class Meta:
-            verbose_name = "Période"
-            verbose_name_plural = "A. Périodes"
             
             
 
@@ -202,10 +204,11 @@ class Venue(models.Model):
 class Room(models.Model):
     
     venue           = models.ForeignKey(Venue, related_name="Room", on_delete=models.SET_NULL, null=True)
-    room            = models.CharField("Salle", max_length=100, null=False)
+    room_nb         = models.CharField("Numéro de la Salle", max_length=100, null=True, blank=True)
+    room_name       = models.CharField("Nom de la Salle", max_length=100, null=True, blank=True)
     
     def __str__(self):
-        return '%s - Salle %s' % (self.venue, self.room)
+        return '%s - Salle %s - %s' % (self.venue, self.room_nb, self.room_name)
 
     class Meta:
         verbose_name = 'Salle'
@@ -215,31 +218,29 @@ class Room(models.Model):
 
 class Activity_Animation_Slot(models.Model):
     
-    animation                 = models.ForeignKey(Activity_Animation,  related_name="Activity", on_delete=models.SET_NULL, null=True)
-    period                    = models.ForeignKey(Period,     related_name="Activity",          on_delete=models.SET_NULL, null=True, blank=True)
-    age_group                 = models.ForeignKey(Age_Group,  related_name="Activity",          on_delete=models.SET_NULL, null=True)
-    level                     = models.ForeignKey(Level,      related_name="Activity",          on_delete=models.SET_NULL, null=True)
-    name                      = models.CharField("Nom", max_length=50,                                                     null=True, blank=True)
+    animation                 = models.ForeignKey(Activity_Animation,  related_name="Slot", on_delete=models.SET_NULL, null=True)
+    age_group                 = models.ForeignKey(Age_Group,  related_name="Slot",          on_delete=models.SET_NULL, null=True)
+    level                     = models.ForeignKey(Level,      related_name="Slot",          on_delete=models.SET_NULL, null=True, blank=True)
+    name                      = models.CharField("Nom", max_length=50,                                                 null=True, blank=True)
     new                       = models.BooleanField("Nouveau",default=None)
-    flash                     = models.CharField("Info flash", max_length=50,                                              null=True, blank=True)
-    host                      = models.ManyToManyField(Host,  related_name="Activity",                                                blank=True)
-    day                       = models.ForeignKey(Weekday,    related_name="Activity",          on_delete=models.SET_NULL, null=True, blank=True)
-    time_start                = models.TimeField("Heure de début",                                                         null=True, blank=True)
-    time_end                  = models.TimeField("Heure de fin",                                                           null=True, blank=True)
-    room                      = models.ForeignKey(Room,       related_name="Activity",          on_delete=models.SET_NULL, null=True)
-    description               = models.TextField("Présentation (spécifique à ce crénau)",                                  null=True, blank=True)
-    rate_resident_1_name      = models.CharField("Tarif 1 MC - Désignation ", max_length=50,                               null=True, blank=True)
-    rate_resident_1           = models.DecimalField("Tarif 1 MC - €", max_digits=6, decimal_places=2,                      null=True, blank=True)
-    rate_resident_2_name      = models.CharField("Tarif 2 MC - Désignation ", max_length=50,                               null=True, blank=True)
-    rate_resident_2           = models.DecimalField("Tarif 2 MC - €", max_digits=6, decimal_places=2,                      null=True, blank=True)
-    rate_non_resident_1_name  = models.CharField("Tarif 1 hors MC - Désignation ", max_length=50,                          null=True, blank=True)
-    rate_non_resident_1       = models.DecimalField("Tarif 1 hors MC - €", max_digits=6, decimal_places=2,                 null=True, blank=True)
-    rate_non_resident_2_name  = models.CharField("Tarif 2 hors MC - Désignation ", max_length=50,                          null=True, blank=True)
-    rate_non_resident_2       = models.DecimalField("Tarif 2 hors MC - €", max_digits=6, decimal_places=2,                 null=True, blank=True)
-    notes                     = models.TextField("Notes particulières (spécifique à ce crénau)",                           null=True, blank=True)
+    host                      = models.ManyToManyField(Host,  related_name="Slot",                                                blank=True)
+    day                       = models.ForeignKey(Weekday,    related_name="Slot",          on_delete=models.SET_NULL, null=True, blank=True)
+    time_start                = models.TimeField("Heure de début",                                                     null=True, blank=True)
+    time_end                  = models.TimeField("Heure de fin",                                                       null=True, blank=True)
+    room                      = models.ForeignKey(Room,       related_name="Slot",          on_delete=models.SET_NULL, null=True)
+    description               = models.TextField("Présentation (spécifique à ce crénau)",                              null=True, blank=True)
+    rate_resident_1_name      = models.CharField("Tarif 1 MC - Désignation ", max_length=50,                           null=True, blank=True)
+    rate_resident_1           = models.PositiveSmallIntegerField("Tarif 1 MC - €",                                     null=True, blank=True)
+    rate_resident_2_name      = models.CharField("Tarif 2 MC - Désignation ", max_length=50,                           null=True, blank=True)
+    rate_resident_2           = models.PositiveSmallIntegerField("Tarif 2 MC - €",                                     null=True, blank=True)
+    rate_non_resident_1_name  = models.CharField("Tarif 1 hors MC - Désignation ", max_length=50,                      null=True, blank=True)
+    rate_non_resident_1       = models.PositiveSmallIntegerField("Tarif 1 hors MC - €",                                null=True, blank=True)
+    rate_non_resident_2_name  = models.CharField("Tarif 2 hors MC - Désignation ", max_length=50,                      null=True, blank=True)
+    rate_non_resident_2       = models.PositiveSmallIntegerField("Tarif 2 hors MC - €",                                null=True, blank=True)
+    notes                     = models.TextField("Notes particulières (spécifique à ce crénau)",                       null=True, blank=True)
 
     def __str__(self):
-        return '%s - %s - %s - %s' % (self.period, self.animation, self.age_group, self.day)
+        return '%s - %s - %s' % (self.animation, self.age_group, self.day)
     
     class Meta:
         verbose_name = 'Animation - Créneau'
