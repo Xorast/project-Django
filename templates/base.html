@@ -11,7 +11,7 @@
     <meta name="author"         content="">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">-->
     <link rel="stylesheet" href="{% static 'css/template_css_plugin.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -74,21 +74,21 @@
                     <!-- Workshops -->
                     <li id="dropdown_2A" class="nav-item dropdown">
                         
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Stages
+                        <a class="nav-link dropdown-toggle" href="{% url 'w_list_of_animations_types' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ateliers
                         </a>
                         
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href=""             >Tous        </a>
-                              
-                            {% for n in event_subtypes_COURSE  %}
-                            <a class="dropdown-item txt-white" href="" >{{ n.event_subtype }}</a>  
+                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations_types' %}"             >Tous        </a>
+                             
+                            {% for n in animations_types_workshops  %}
+                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations' n.animation_type %}" >{{ n.animation_type }}</a>  
                             {% endfor %}
                             
                             <div class="dropdown-divider"></div>
                             
-                            <a class="dropdown-item txt-white" href="{% url 'rate_and_registration_workshop' %}">Tarifs & Inscriptions </a>
+                            <a class="dropdown-item txt-white" href="{% url 'rate_and_registration_workshops' %}">Tarifs & Inscriptions </a>
                             <a class="dropdown-item txt-white" href="{% url 'venues_list'                   %}">Lieux & Salles        </a>
                             
                         </div>

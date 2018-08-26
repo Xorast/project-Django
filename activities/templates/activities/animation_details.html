@@ -24,9 +24,9 @@
                 
                 <!-- Info badges -->
                 <div class="text-center">
-                    <span class="text-uppercase badge badge-pill badge-success">{% if animation.new %} Nouveau {% endif %}                                        </span>
-                    <span class="text-uppercase badge badge-pill badge-info"   >{% if animation.disabled_friendly %} Accessible Handicap {% endif %}              </span>
-                    <span class="text-uppercase badge badge-pill badge-primary">{{ animation.flash }}                                                             </span>
+                    <span class="text-uppercase badge badge-pill badge-success">{% if animation.new %} Nouveau {% endif %}</span>
+                    <span class="text-uppercase badge badge-pill badge-info"   >{% if animation.disabled_friendly %} Accessible Handicap {% endif %}</span>
+                    <span class="text-uppercase badge badge-pill badge-primary">{% if animation.flash is not None %}{{ animation.flash }}{% else %}{% endif %}</span>
                     <span class="text-uppercase badge badge-pill badge-danger" >{% if animation.available_in_both_cities %} Dispo à Mauguio ET à Carnon{% endif %}</span>
                 </div>
                 
@@ -143,20 +143,26 @@
                 
                 
                 <!-- Notes - Animation -->
-                <p class="mt-4 mb-3"><strong>Notes générales animation :</strong></p>
+                <p class="mt-4 mb-3"><strong>Informations :</strong></p>
                 <p>{{ animation.notes      }}</p>
                 
                 
                 <!-- Notes - For each slot -->
-                <p class="mt-4 mb-3"><strong>Notes spécifiques créneaux :</strong><br></p>
-                {% for slot in slots %}
-                    {% if slot.description is not None or slot.notes is not None %}
-                        <p>Notes - {{ slot.name }} : {{ slot.description }}{% if slot.description is not None %} - {% endif %}{{ slot.notes }}</p>
-                    {% endif %}
-                {% endfor %}
-                
+                <!--<p class="mt-4 mb-3"><strong>Notes spécifiques créneaux :</strong></p>-->
+                <table class="table-text">
+                    {% for slot in slots %}
+                    <tr>
+                        {% if slot.description|length > 0 or slot.notes|length > 0 %}
+                            <td class="table-text"><i class="text-nowrap">{{ slot.name }} :</i></td>
+                            <td>{{ slot.description }}{% if slot.description is not None %}<br>{% endif %}{{ slot.notes }}</td> 
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <!-- Registration information -->
                 <a href="{% url 'rate_and_registration_activities' %}">
-                <button id="register_button" type="button" class="nounderline btn btn-outline-primary btn-lg btn-block text-uppercase">Comment s'inscrire ?</button>
+                <button id="register_button" type="button" class="nounderline btn btn-outline-primary btn-lg btn-block mt-5 text-uppercase">Comment s'inscrire ?</button>
                 </a>
                 
             </div>

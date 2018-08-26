@@ -221,7 +221,7 @@ class Activity_Animation_Slot(models.Model):
     animation                 = models.ForeignKey(Activity_Animation,  related_name="Slot", on_delete=models.SET_NULL, null=True)
     age_group                 = models.ForeignKey(Age_Group,  related_name="Slot",          on_delete=models.SET_NULL, null=True)
     level                     = models.ForeignKey(Level,      related_name="Slot",          on_delete=models.SET_NULL, null=True, blank=True)
-    name                      = models.CharField("Nom", max_length=50,                                                 null=True, blank=True)
+    name                      = models.CharField("Nom/Désignation", max_length=50,                                                 null=True, blank=True)
     new                       = models.BooleanField("Nouveau",default=None)
     host                      = models.ManyToManyField(Host,  related_name="Slot",                                                blank=True)
     day                       = models.ForeignKey(Weekday,    related_name="Slot",          on_delete=models.SET_NULL, null=True, blank=True)

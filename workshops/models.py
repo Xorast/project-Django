@@ -6,7 +6,7 @@ from activities.models              import Host, Age_Group, Room
 
 class Workshop_Animation_Type(models.Model):
     
-    animation_type  = models.CharField("Type d'animation", max_length=100, null=False)
+    animation_type  = models.CharField("Type d'animation (PAS DE SLASH DANS LE NOM !)", max_length=100, null=False)
     description     = models.TextField("Description", null=True)
     image           = models.ImageField("Image", upload_to="images/workshop/animation_type", blank=True, null=True)
     
@@ -31,7 +31,7 @@ class Workshop_Animation(models.Model):
     notes                    = models.TextField("Notes spécifiques", null=True, blank=True)
     
     def __str__(self):
-        return '%s - %s - %s' % (self.animation_type, self.name)
+        return '%s - %s' % (self.animation_type, self.name)
     
     class Meta:
         verbose_name = 'Atelier - Animation'
@@ -55,7 +55,7 @@ class Workshop_Animation_Slot(models.Model):
     room                      = models.ForeignKey(Room,       related_name="Workshop",  on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
-        return '%s - %s - %s' % (self.animation, self.name, self.age_group)
+        return '%s - %s - %s' % (self.workshop_animation, self.name, self.age_group)
     
     class Meta:
         verbose_name = 'Atelier - Créneau'

@@ -1,6 +1,5 @@
 from django.shortcuts               import render, redirect, get_object_or_404, HttpResponse
 from .models                        import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot, Elements_Type, Host
-# from workshop.models                import Workshop
 from django.contrib.auth.decorators import login_required
 # from .models                        import EventRegistration
 

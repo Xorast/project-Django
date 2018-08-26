@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'news',
     'accounts',
     'activities',
-    'workshop',
+    'workshops',
     # 'checkout'
 ]
 
@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
                 'context_processors.get_list_of_animation_types_activities',
+                'context_processors.get_list_of_animation_types_workshops',
                 'context_processors.get_elements_types'
             ],
         },

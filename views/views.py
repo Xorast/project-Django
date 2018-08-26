@@ -22,12 +22,10 @@ def get_about_page(request):
 
    
    
-# Feature must be deactivated
 def get_rate_and_registration_activities_page(request):
     return render(request, "views/rate_and_registration_activities.html")
 
 
-# Feature must be deactivated
 def get_rate_and_registration_workshop_page(request):
     return render(request, "views/rate_and_registration_workshops.html")
 
