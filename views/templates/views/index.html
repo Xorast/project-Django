@@ -97,9 +97,9 @@
                         
                     <div class="card-body">
                         <h4 class="card-title text-capitalize">
-                            <a href="{% url 'w_list_of_animations_types' %}"></a>
+                            <a href="{% url 'w_list_of_animations_types' %}">{{ workshop.title }}</a>
                         </h4>
-                        <p class="card-text"></p>
+                        <p class="card-text">{{ workshop.description|truncatewords:30 }}</p>
                     </div>
                     
                 </div>
