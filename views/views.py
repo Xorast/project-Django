@@ -15,8 +15,15 @@ def get_home_page(request):
     return render(request, "views/index.html", {'last_news': last_news})
 
 
+
 def get_info_page(request):
     return render(request, "views/info.html")
+
+
+
+def get_calendar_activities_page(request):
+    return render(request, "views/calendar_activities.html")
+
 
 
 def get_about_page(request):
@@ -26,6 +33,7 @@ def get_about_page(request):
    
 def get_rate_and_registration_activities_page(request):
     return render(request, "views/rate_and_registration_activities.html")
+
 
 
 def get_rate_and_registration_workshop_page(request):
