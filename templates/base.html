@@ -28,7 +28,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top pb-0 text-capitalize">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top pb-0">
         
         <div class="container">
             
@@ -41,22 +41,22 @@
                 
                 <ul class="navbar-nav ml-auto">
                     
-                    <!-- Home -->
-                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}" >Accueil</a></li>
+                    <!-- About -->
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}" >L'ASSOCIATION</a></li>
                     
                     <!-- News -->
-                    <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}" >Actualité</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}" >ACTU</a></li>
                     
                     <!-- Activities -->
                     <li id="dropdown_1A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Activités
+                        ACTIVITÉS
                         </a>
                         
                         <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}"                >toutes                </a>
+                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}"                >Toutes                </a>
                           
                             {% for n in animations_types_activities  %}
                             <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations' n.animation_type %}" >{{ n.animation_type }} </a>  
@@ -75,7 +75,7 @@
                     <li id="dropdown_2A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="{% url 'w_list_of_animations_types' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Ateliers
+                        ATELIERS
                         </a>
                         
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -88,7 +88,7 @@
                             
                             <div class="dropdown-divider"></div>
                             
-                            <a class="dropdown-item txt-white" href="{% url 'rate_and_registration_workshops' %}">Adhésion, Inscriptions & Tarifs </a>
+                            <a class="dropdown-item txt-white" href="{% url 'rate_and_registration_workshops' %}">Inscription & Tarifs  </a>
                             <a class="dropdown-item txt-white" href="{% url 'venues_list'                     %}">Lieux & Salles        </a>
                             
                         </div>
@@ -100,7 +100,7 @@
                     <li id="dropdown_3A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Evènements
+                        ÉVÈNEMENTS
                         </a>
                         
                         <div id="dropdown_3B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -119,7 +119,7 @@
                     <li id="dropdown_1A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Jeunesse
+                        JEUNESSE
                         </a>
                         
                         <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -136,7 +136,7 @@
                     <li id="dropdown_1A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Vivre Ensemble
+                        VIVRE ENSEMBLE
                         </a>
                         
                         <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -149,20 +149,21 @@
                         
                     </li>
                     
-                    <!-- About -->
+                    <!-- Info -->
                     <li id="dropdown_4A" class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          A propos
+                          INFOS PRATIQUES
                         </a>
                         
                         <div id="dropdown_4B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                           
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}"         >A propos              </a>
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#mission" >Qu'est-ce qu'une MJC ?</a>
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#team"    >L'Equipe              </a>
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#contact" >Contact               </a>
-                            <a class="dropdown-item txt-white" href="{% url 'about'    %}#horaires">Horaires d'ouverture  </a>
+                            <!--<a class="dropdown-item txt-white" href="{% url 'info'    %}"         >A propos              </a>-->
+                            <!--<a class="dropdown-item txt-white" href="{% url 'info'    %}#mission" >Qu'est-ce qu'une MJC ?</a>-->
+                            <!--<a class="dropdown-item txt-white" href="{% url 'info'    %}#team"    >L'Equipe              </a>-->
+                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#contact"      >Nous Contacter             </a>
+                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#openinghours" >Nos Horaires               </a>
+                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#findus"       >Nous Trouver               </a>
                           
                         </div>
                         
@@ -189,20 +190,20 @@
                         <!--</li>-->
                         
                         <!--Logout -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Déconnexion</span></a>
+                        <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Déconnexion</span></a>-->
                         <!--</li>-->
                         
                         {% if user.is_superuser %}
                         <!--Admin panel -->
-                        <li class="nav-item"><a class="nav-link"    href="{% url 'admin_panel'   %}" target="_blank" ><span class="badge-nav-hover-danger badge badge-pill badge-light">Admin</span></a>                                                                                                </a>
-                        </li>
+                        <!--<li class="nav-item"><a class="nav-link"    href="{% url 'admin_panel'   %}" target="_blank" ><span class="badge-nav-hover-danger badge badge-pill badge-light">Admin</span></a>                                                                                                </a>-->
+                        <!--</li>-->
                         {% endif %}
                         
                     {% else %}
                         
                         <!--Login -->
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Se connecter</span></a>
-                        </li>
+                        <!--<li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Se connecter</span></a>-->
+                        <!--</li>-->
                         
                         <!--Register: to put back again when client is ready -->
                         <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">S'enregistrer</span></a>-->
@@ -271,7 +272,7 @@
                 <span class="text-nowrap"> &bull; Tel. 04.67.29.34.99 </span>
                  
                 <!-- Mail -->
-                <span class="text-nowrap"> &bull; contact@mjc-maugio.com</span>
+                <span class="text-nowrap"> &bull; secretariat@mjcmauguiocarnon.fr</span>
             
             </p>
         

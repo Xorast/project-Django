@@ -12,9 +12,11 @@ def get_home_page(request):
     
     last_news    = News.objects.order_by('-published_date')[:3]
     
-    # return render(request, "views/initialization.html")
     return render(request, "views/index.html", {'last_news': last_news})
 
+
+def get_info_page(request):
+    return render(request, "views/info.html")
 
 
 def get_about_page(request):
