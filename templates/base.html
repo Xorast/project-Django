@@ -42,7 +42,20 @@
                 <ul class="navbar-nav ml-auto">
                     
                     <!-- About -->
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}" >L'ASSOCIATION</a></li>
+                    <li id="dropdown_1A" class="nav-item dropdown">
+                        
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        L'ASSOCIATION
+                        </a>
+                        
+                        <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        
+                            <a class="dropdown-item txt-white" href="{% url 'about' %}#mission">Qu'est-ce qu'une MJC ?</a>
+                            <a class="dropdown-item txt-white" href="{% url 'about' %}#team"   >L'Equipe              </a>
+                        
+                        </div>
+                        
+                    </li>
                     
                     <!-- News -->
                     <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}" >ACTU</a></li>
