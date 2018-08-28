@@ -13,6 +13,7 @@ def get_home_page(request):
     last_news    = News.objects.order_by('-published_date')[:3]
     
     return render(request, "views/index.html", {'last_news': last_news})
+    # return render(request, "views/test.html")
 
 
 
@@ -38,6 +39,16 @@ def get_rate_and_registration_activities_page(request):
 
 def get_rate_and_registration_workshop_page(request):
     return render(request, "views/rate_and_registration_workshops.html")
+
+
+
+def get_youth_mauguio_page(request):
+    return render(request, "views/youth_mauguio.html")
+
+
+
+def get_youth_carnon_page(request):
+    return render(request, "views/youth_carnon.html")
 
 
 

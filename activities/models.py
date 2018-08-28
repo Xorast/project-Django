@@ -122,6 +122,9 @@ class Host(models.Model):
     
     def __str__(self):
         return '%s %s' % (self.firstname, self.lastname)
+    
+    class Meta:
+        unique_together = ["firstname", "lastname"]
 
     class Meta:
             verbose_name = "Animateur"

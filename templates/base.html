@@ -6,9 +6,9 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport"       content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"    content="">
-    <meta name="author"         content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <!-- CSS -->
     <!--<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">-->
@@ -17,9 +17,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!-- SPECIFIC SCRIPTS -->
-    {% block    specific_js %}
-    {% endblock specific_js %}
-    
+    {% block specific_js %} {% endblock specific_js %}
+
     <!-- TITLE BLOC TO IMPLEMENT -->
     <title>MJC MC</title>
 
@@ -29,235 +28,253 @@
 
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top pb-0">
-        
+
         <div class="container">
-            
+
             <a class="navbar-brand pb-3" href="/">MJC Mauguio Carnon</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                
+
                 <ul class="navbar-nav ml-auto">
-                    
+
                     <!-- About -->
                     <li id="dropdown_1A" class="nav-item dropdown">
-                        
+
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         L'ASSOCIATION
                         </a>
-                        
+
                         <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                        
+
                             <a class="dropdown-item txt-white" href="{% url 'about' %}#mission">Qu'est-ce qu'une MJC ?</a>
-                            <a class="dropdown-item txt-white" href="{% url 'about' %}#team"   >L'Equipe              </a>
-                        
+                            <a class="dropdown-item txt-white" href="{% url 'about' %}#team">L'Equipe              </a>
+
                         </div>
-                        
+
                     </li>
-                    
+
                     <!-- News -->
-                    <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}" >ACTU</a></li>
-                    
+                    <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}">ACTU</a></li>
+
                     <!-- Activities -->
                     <li id="dropdown_1A" class="nav-item dropdown">
-                        
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <a class="nav-link dropdown-toggle" href="{% url 'a_list_of_animations_types' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ACTIVITÉS
                         </a>
-                        
+
                         <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          
-                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}"                >Toutes                </a>
-                          
-                            {% for n in animations_types_activities  %}
-                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations' n.animation_type %}" >{{ n.animation_type }} </a>  
-                            {% endfor %}
-                            
+
+                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}">Voir toutes les activités            </a> {% for n in animations_types_activities %}
+                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations' n.animation_type %}">{{ n.animation_type }} </a> {% endfor %}
+
                             <div class="dropdown-divider"></div>
-                            
+
                             <a class="dropdown-item txt-white" href="{% url 'rate_and_registration_activities' %}">Adhésion, Inscription & Tarifs </a>
-                            <a class="dropdown-item txt-white" href="{% url 'calendar_activities' %}"             >Calendrier des activités </a>
+                            <a class="dropdown-item txt-white" href="{% url 'calendar_activities' %}">Calendrier des activités </a>
                             <a class="dropdown-item txt-white" href="{% url 'venues_list'                      %}">Lieux & Salles        </a>
-                        
+
                         </div>
-                        
+
                     </li>
-                    
+
                     <!-- Workshops -->
                     <li id="dropdown_2A" class="nav-item dropdown">
-                        
+
                         <a class="nav-link dropdown-toggle" href="{% url 'w_list_of_animations_types' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ATELIERS
                         </a>
-                        
+
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          
-                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations_types' %}"             >Tous        </a>
-                             
-                            {% for n in animations_types_workshops  %}
-                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations' n.animation_type %}" >{{ n.animation_type }}</a>  
-                            {% endfor %}
-                            
+
+                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations_types' %}">Voir tous les ateliers        </a> {% for n in animations_types_workshops %}
+                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations' n.animation_type %}">{{ n.animation_type }}</a> {% endfor %}
+
                             <div class="dropdown-divider"></div>
-                            
+
                             <a class="dropdown-item txt-white" href="{% url 'rate_and_registration_workshops' %}">Inscription & Tarifs  </a>
                             <a class="dropdown-item txt-white" href="{% url 'venues_list'                     %}">Lieux & Salles        </a>
-                            
+
                         </div>
-                        
-                        
+
+
                     </li>
-                    
+
                     <!-- Events -->
                     <li id="dropdown_3A" class="nav-item dropdown">
-                        
+
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ÉVÈNEMENTS
                         </a>
-                        
+
                         <div id="dropdown_3B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          
-                            <a class="dropdown-item txt-white" href="">Tous                              </a>
-                          
-                            {% for n in event_subtypes_EVENT  %}
-                            <a class="dropdown-item txt-white" href="">{{ n.event_subtype }} </a>  
-                            {% endfor %}
-                        
+
+                            <a class="dropdown-item txt-white disabled" href="">Tous                              </a> {% for n in event_subtypes_EVENT %}
+                            <a class="dropdown-item txt-white" href="">{{ n.event_subtype }} </a> {% endfor %}
+
                         </div>
-                        
+
                     </li>
-                    
+
                     <!-- Youth -->
-                    <li id="dropdown_1A" class="nav-item dropdown">
-                        
+                    <li class="nav-item dropdown">
+
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         JEUNESSE
                         </a>
-                        
+
                         <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          
-                            <a class="dropdown-item txt-white" href="">Centre de Loisirs A </a>
-                            <a class="dropdown-item txt-white" href="">Centre de Loisirs B </a>
-                            <a class="dropdown-item txt-white" href="">Local Jeunes        </a>
+                            
+                            <ul class="px-0 list-no-bullet">
+                                
+                                <li class="nav-item dropdown-menu-2">
+        
+                                    <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}">
+                                    Mauguio
+                                    </a>
+
+                                    <div id="" class="dropdown-submenu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+        
+                                        <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}#educationalsupport">Accompagnement scolaire </a>
+                                        <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}#leisureactivities">Loisirs Jeunes           </a>
+                                        <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}#locale">Local Jeunes                        </a>
+        
+                                    </div>
+                                
+                                </li>
+                                
+                                <li class="nav-item dropdown-menu-2">
+                                
+                                    <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}">
+                                    Carnon   
+                                    </a>
+
+                                    <div id="" class="dropdown-submenu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+        
+                                        <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}#servicefamille">Service Famille        </a>
+                                        <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}#educationalsupport-carnon">Accompagnement scolaire </a>
+                                        <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}#leisureactivities">ALSH : BRICOLO’ RIGOLOS </a>
+        
+                                    </div>
+                                    
+                                </li>
+                            
+                            </ul>
                             
                         </div>
-                        
+
+
                     </li>
-                    
+
                     <!-- Solidarity -->
                     <li id="dropdown_1A" class="nav-item dropdown">
-                        
+
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         VIVRE ENSEMBLE
                         </a>
-                        
+
                         <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          
-                            <a class="dropdown-item txt-white" href="">Espace de vie sociale</a>
-                            <a class="dropdown-item txt-white" href="">Texte 2              </a>
-                            <a class="dropdown-item txt-white" href="">Texte 3              </a>
-                        
+
+                            <a class="dropdown-item txt-white disabled" href="">Espace de vie sociale</a>
+
                         </div>
-                        
+
                     </li>
-                    
+
                     <!-- Info -->
                     <li id="dropdown_4A" class="nav-item dropdown">
-                        
+
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           INFOS PRATIQUES
                         </a>
-                        
+
                         <div id="dropdown_4B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          
-                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#contact"      >Nous Contacter             </a>
-                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#openinghours" >Nos Horaires               </a>
-                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#findus"       >Nous Trouver               </a>
-                          
+
+                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#contact">Nous Contacter             </a>
+                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#openinghours">Nos Horaires               </a>
+                            <a class="dropdown-item txt-white" href="{% url 'info'    %}#findus">Nous Trouver               </a>
+
                         </div>
-                        
+
                     </li>
-                    
-                    
+
+
                     <!--Login features -->
                     {% if user.is_authenticated %}
-                        
-                        <!--Profile: to put back again when client is ready -->
-                        <!--<li class="nav-item"><a class="nav-link"    href=""><svg class="svg-white svg-mini-1"-->
-                        <!--                                                                            enable-background="new 0 0 128 128"-->
-                        <!--                                                                            viewBox="0 0 128 128">-->
-                        <!--                                                                            <circle  class="userprofile" id="userProfileCircle" fill="#DD5600" cx="64" cy="64"  id="circle" r="64"/>-->
-                        <!--                                                                            <g id="icon">-->
-                        <!--                                                                                <path class="userprofile" id="userProfileUser" fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35"/>-->
-                        <!--                                                                                <path fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 " id="right"/>-->
-                        <!--                                                                                <path fill="white" d="M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35" id="left"/>-->
-                                                                                                    
-                        <!--                                                                            </g>-->
-                        <!--                                                                        </svg>-->
-                        <!--                                                                        </a>-->
-                                                                                                
-                        <!--</li>-->
-                        
-                        <!--Logout -->
-                        <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Déconnexion</span></a>-->
-                        <!--</li>-->
-                        
-                        {% if user.is_superuser %}
-                        <!--Admin panel -->
-                        <!--<li class="nav-item"><a class="nav-link"    href="{% url 'admin_panel'   %}" target="_blank" ><span class="badge-nav-hover-danger badge badge-pill badge-light">Admin</span></a>                                                                                                </a>-->
-                        <!--</li>-->
-                        {% endif %}
-                        
-                    {% else %}
-                        
-                        <!--Login -->
-                        <!--<li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Se connecter</span></a>-->
-                        <!--</li>-->
-                        
-                        <!--Register: to put back again when client is ready -->
-                        <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">S'enregistrer</span></a>-->
-                        <!--</li>-->
-                    
+
+                    <!--Profile: to put back again when client is ready -->
+                    <!--<li class="nav-item"><a class="nav-link"    href=""><svg class="svg-white svg-mini-1"-->
+                    <!--                                                                            enable-background="new 0 0 128 128"-->
+                    <!--                                                                            viewBox="0 0 128 128">-->
+                    <!--                                                                            <circle  class="userprofile" id="userProfileCircle" fill="#DD5600" cx="64" cy="64"  id="circle" r="64"/>-->
+                    <!--                                                                            <g id="icon">-->
+                    <!--                                                                                <path class="userprofile" id="userProfileUser" fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35"/>-->
+                    <!--                                                                                <path fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 " id="right"/>-->
+                    <!--                                                                                <path fill="white" d="M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35" id="left"/>-->
+
+                    <!--                                                                            </g>-->
+                    <!--                                                                        </svg>-->
+                    <!--                                                                        </a>-->
+
+                    <!--</li>-->
+
+                    <!--Logout -->
+                    <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Logout'   %}" ><span class="badge-nav-hover-danger badge badge-pill badge-danger">Déconnexion</span></a>-->
+                    <!--</li>-->
+
+                    {% if user.is_superuser %}
+                    <!--Admin panel -->
+                    <!--<li class="nav-item"><a class="nav-link"    href="{% url 'admin_panel'   %}" target="_blank" ><span class="badge-nav-hover-danger badge badge-pill badge-light">Admin</span></a>                                                                                                </a>-->
+                    <!--</li>-->
+                    {% endif %} {% else %}
+
+                    <!--Login -->
+                    <!--<li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Se connecter</span></a>-->
+                    <!--</li>-->
+
+                    <!--Register: to put back again when client is ready -->
+                    <!--<li class="nav-item"><a class="nav-link"    href="{% url 'Register' %}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">S'enregistrer</span></a>-->
+                    <!--</li>-->
+
                     {% endif %}
-                    
+
                 </ul>
-                
+
             </div>
-            
+
         </div>
-        
+
     </nav>
 
     <!-- Messages -->
     {% for message in messages %}
     <p class="text-center lead alert alert-dismissible alert-{{ message.tags }} my-0">{{ message }}</p>
     {% endfor %}
-    
+
     <!-- Header -->
     <header>
-    {% block header %}
-    {% endblock %}
+        {% block header %} {% endblock %}
     </header>
-    
+
     <!-- Section / Content -->
     <section>
-    {% block content %}
-    {% endblock %}
+        {% block content %} {% endblock %}
     </section>
-    
-    
+
+
     <!-- Footer -->
     <footer class="footer-bottom py-4 bg-dark">
-        
+
         <div class="container">
-            
+
             <p class="m-0 text-center text-white">
-                
+
                 <!-- Name -->
                 <strong>MJC Mauguio Carnon &copy; 2018</strong> </br>
-                
+
                 <!-- Adress -->
                 <span class="text-nowrap">527 Avenue du 8 Mai 1945,</span>
                 <span class="text-nowrap">34130 Mauguio, France
@@ -278,28 +295,28 @@
                                         </svg></a>
                                         
                 </span>
-                 
+
                 <!-- Phone -->
                 <span class="text-nowrap"> &bull; Tel. 04.67.29.34.99 </span>
-                 
+
                 <!-- Mail -->
                 <span class="text-nowrap"> &bull; secretariat@mjcmauguiocarnon.fr</span>
-            
+
             </p>
-        
+
         </div>
         <!-- /.container -->
-        
+
     </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
-    
+
     <!-- Custom scripts -->
     <script src="{% static 'js/ux.js' %}"></script>
-    
-    
-</body>
-</html>
 
+
+</body>
+
+</html>
