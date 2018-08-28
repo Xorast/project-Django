@@ -134,7 +134,7 @@ class Host(models.Model):
 
 class Age_Class(models.Model):
     
-    age_class    = models.CharField("Classe d'age", max_length=100, null=False)
+    age_class    = models.CharField("Classe d'age", max_length=100, null=False, unique=True)
     
     def __str__(self):
         return self.age_class
@@ -153,7 +153,10 @@ class Age_Group(models.Model):
     
     def __str__(self):
         return '%s - %s / %s' % (self.age_class, str(self.age_min), str(self.age_max))
-
+    
+    class Meta:
+        unique_together = ["age_class", "age_min", "age_max"]
+    
     class Meta:
             verbose_name = "Age - Groupe d'ages"
             verbose_name_plural = "C. Age - Groupes d'ages"
@@ -162,7 +165,7 @@ class Age_Group(models.Model):
 
 class Level(models.Model):
     
-    level           = models.CharField("Niveau", max_length=100, null=False)
+    level           = models.CharField("Niveau", max_length=100, null=False, unique=True)
     
     def __str__(self):
         return self.level
@@ -175,7 +178,7 @@ class Level(models.Model):
 
 class City(models.Model):
     
-    city            = models.CharField("Ville", max_length=100, null=False)
+    city            = models.CharField("Ville", max_length=100, null=False, unique=True)
 
     def __str__(self):
         return self.city
@@ -188,7 +191,7 @@ class City(models.Model):
 
 class Venue(models.Model):
     
-    name            = models.CharField("Nom", max_length=100, null=False)
+    name            = models.CharField("Nom", max_length=100, null=False, unique=True)
     street_nb       = models.CharField("N°", max_length=20,  null=False, blank=True)
     street_name     = models.CharField("Rue", max_length=200, null=False)
     city            = models.ForeignKey(City, related_name="Venue", on_delete=models.SET_NULL, null=True)
