@@ -29,13 +29,13 @@ def get_elements_types(request):
     try:
         activity = Elements_Type.objects.get(element_type__exact="ACTIVITY")
         workshop = Elements_Type.objects.get(element_type__exact="WORKSHOP")
-        # event    = Elements_Type.objects.get(element_type__exact="EVENT")
+        event    = Elements_Type.objects.get(element_type__exact="EVENT")
     except:
         activity = "Your admin need to fix that! =)"
         workshop = "Your admin need to fix that! =)"
-        # event    = "You need to enter event    types input in the database."
+        event    = "Your admin need to fix that! =)"
     
-    return {'activity':activity, 'workshop':workshop}
+    return {'activity':activity, 'workshop':workshop, 'event':event}
    
    
    

@@ -112,14 +112,14 @@
                 <div class="card h-100">
                     
                     <div class="row m-0">
-                        <div class="img rounded-top" onclick="goTo('/')" style="background-image:url('{{ MEDIA_URL }}')"></div>    
+                        <div class="img rounded-top" onclick="goTo('/')" style="background-image:url('{{ MEDIA_URL }}{{ event.image }}')"></div>    
                     </div>
                         
                     <div class="card-body">
                         <h4 class="card-title text-capitalize">
-                            <a href="/"></a>
+                            <a href="/">{{ event.title }}</a>
                         </h4>
-                        <p class="card-text"></p>
+                        <p class="card-text">{{ event.description|truncatewords:30 }}</p>
                     </div>
                     
                 </div>
