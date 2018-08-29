@@ -31,7 +31,7 @@
                 </div>
                 
                 <!-- Animation description -->
-                <h1 class="mt-4 mb-3 text-center">{{ animation.name             }}</h1><br>
+                <h1 class="mt-4 mb-3 text-center text-capitalize">{{ animation.name             }}</h1><br>
                 <h4 class="text-center text-black"> avec </h4>
                 <h4 class="mt-4 mb-3 text-center">{% for h in hosts %}{% if forloop.first %}{% elif forloop.last %} & {% else %}, {% endif %}<span class="text-capitalize">{{ h.firstname }}</span> <span class="text-uppercase">{{ h.lastname }}</span>{% endfor %}</h4>
                 
@@ -78,7 +78,7 @@
                                 <td>{{ slot.level                    }}</td>        
                                 
                                 <!-- Day & Time -->
-                                <td>{{ slot.dates                    }}</td>        
+                                <td>{{ slot.dates|linebreaks                    }}</td>        
                                 
                                 <!-- Hosts-->
                                 <td>{% for host in slot.host.all %}
@@ -101,8 +101,8 @@
                 
                 
                 <!-- Notes - Animation -->
-                <p class="mt-4 mb-3"><strong>Information générale :</strong></p>
-                <p>{{ animation.notes      }}</p>
+                <!--<p class="mt-4 mb-3"><strong>Information générale :</strong></p>-->
+                <!--<p>{{ animation.notes      }}</p>-->
                 
                 
                 <!-- Info -->
@@ -116,7 +116,7 @@
                             {% if slot.description|length > 0 %}
                             <tr>
                                 <td class="table-text"><i class="text-nowrap">Présentation :</i></td>
-                                <td>{{ slot.description }}</td> 
+                                <td>{{ slot.description|linebreaks }}</td> 
                             </tr>
                             {% endif %}
                             {% if slot.notes|length > 0 %}

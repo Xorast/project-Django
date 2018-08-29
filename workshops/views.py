@@ -25,7 +25,7 @@ def get_animation_details(request, animation_type, animation, animation_id):
     slots           = Workshop_Animation_Slot.objects.filter(workshop_animation=animation) #.order_by('')
     
     hosts = []
-    [[hosts.append(h) for h in Host.objects.filter(Slot = slot.id)] for slot in slots]
+    [[hosts.append(h) for h in Host.objects.filter(Workshop = slot.id)] for slot in slots]
     hosts = list(set(hosts))
     
     return render(request, "workshops/animation_details.html", {'animation':animation,'slots':slots, 'hosts':hosts})
