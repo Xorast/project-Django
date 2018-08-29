@@ -26,7 +26,7 @@
                     
                     <div class="card h-100">
                         
-                        <h4 class="card-header"> {{ animation_type.animation_type }}</h4>
+                        <h4 class="card-header text-capitalize"> {{ animation_type.animation_type }}</h4>
                         
                         <div class="row m-0">    
                             <div class="col-md-12 img" onclick="goTo('{% url 'w_list_of_animations' animation_type.animation_type %}')"  style="background-image:url('{{ MEDIA_URL }}{{ animation_type.image }}')"></div>    
