@@ -1,5 +1,4 @@
 from django.db                      import models
-from django.contrib.postgres.fields import ArrayField
 from activities.models              import Host, Age_Group, Room
 
 
@@ -48,6 +47,7 @@ class Workshop_Animation_Slot(models.Model):
     age_group                 = models.ForeignKey(Age_Group,  related_name="Workshop",  on_delete=models.SET_NULL, null=True)
     level                     = models.CharField("Niveau",max_length=50,                                           null=True, blank=True)
     dates                     = models.TextField("Dates & Horaires",                                               null=True, blank=True)
+    date_of_the_first_day     = models.DateField("Date du premier jour",                                           null=True)
     date_of_the_last_day      = models.DateField("Date du dernier jour")
     description               = models.TextField("Présentation générale",                                          null=True, blank=True)
     notes                     = models.TextField("Notes particulières",                                            null=True, blank=True)

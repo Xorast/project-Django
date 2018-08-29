@@ -62,7 +62,7 @@
                     <!-- Activities -->
                     <li id="dropdown_1A" class="nav-item dropdown">
 
-                        <a class="nav-link dropdown-toggle" href="{% url 'a_list_of_animations_types' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'a_list_of_animations_types' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ACTIVITÉS
                         </a>
 
@@ -104,26 +104,30 @@
                     </li>
 
                     <!-- Events -->
-                    <li id="dropdown_3A" class="nav-item dropdown">
+                     <li class="nav-item"><a class="nav-link" href="{% url 'list-of-all-events' %}">EVENEMENTS</a></li>
+                    
+                    <!--<li id="dropdown_3A" class="nav-item dropdown">-->
 
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ÉVÈNEMENTS
-                        </a>
+                        <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                        <!--ÉVÉNEMENTS-->
+                        <!--</a>-->
 
-                        <div id="dropdown_3B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <!--<div id="dropdown_3B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">-->
 
-                            <a class="dropdown-item txt-white disabled" href="">Tous                              </a> {% for n in event_subtypes_EVENT %}
-                            <a class="dropdown-item txt-white" href="">{{ n.event_subtype }} </a> {% endfor %}
+                            <!--<a class="dropdown-item txt-white disabled" href="{% url 'list-of-all-events' %}">Evénements à venir</a> -->
+                            <!--{% for n in event_family %} context processor !!!!!!-->
+                            <!--<a class="dropdown-item txt-white" href="">-->
+                            <!--{{ n.event_subtype }} </a> {% endfor %}-->
 
-                        </div>
+                        <!--</div>-->
 
-                    </li>
+                    <!--</li>-->
 
                     <!-- Youth -->
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        JEUNESSE
+                        ESPACE JEUNES
                         </a>
 
                         <div id="" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -139,8 +143,8 @@
                                     <div id="" class="dropdown-submenu bg-dark" aria-labelledby="navbarDropdownMenuLink">
         
                                         <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}#educationalsupport">Accompagnement scolaire </a>
-                                        <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}#leisureactivities">Loisirs Jeunes           </a>
                                         <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}#locale">Local Jeunes                        </a>
+                                        <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}#leisureactivities">Vacances Jeunes          </a>
         
                                     </div>
                                 
@@ -154,9 +158,9 @@
 
                                     <div id="" class="dropdown-submenu bg-dark" aria-labelledby="navbarDropdownMenuLink">
         
-                                        <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}#servicefamille">Service Famille        </a>
                                         <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}#educationalsupport-carnon">Accompagnement scolaire </a>
                                         <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}#leisureactivities">ALSH : BRICOLO’ RIGOLOS </a>
+                                        <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}#servicefamille">Service Famille        </a>
         
                                     </div>
                                     
@@ -201,10 +205,9 @@
 
                     </li>
 
-
+                    
                     <!--Login features -->
                     {% if user.is_authenticated %}
-
                     <!--Profile: to put back again when client is ready -->
                     <!--<li class="nav-item"><a class="nav-link"    href=""><svg class="svg-white svg-mini-1"-->
                     <!--                                                                            enable-background="new 0 0 128 128"-->
@@ -308,18 +311,18 @@
             
                 
                 <p class="text-white mt-4 text-center"><strong>Affiliations & Partenaires</strong></p>
-            <div class="row text-center">
-                <div class="col-xs-6 col-sm-3 px-3 py-3"><img class="footer-logo-1" alt="" src="{{ STATIC_URL }}legal/logo FRMJC.jpg"></div>    
-                <div class="col-xs-6 col-sm-3 px-3 py-3"><img class="footer-logo-1" alt="" src="{{ STATIC_URL }}legal/logo_jeunesse_et_sport.jpg"></div>    
-                <div class="col-xs-6 col-sm-3 px-3 py-3"><img class="footer-logo-1" alt="" src="{{ STATIC_URL }}legal/Logo_Ca_du_Pays_de_lOr.png"></div>    
-                <div class="col-xs-6 col-sm-3 px-3 py-3"><img class="footer-logo-1" alt="" src="{{ STATIC_URL }}legal/logo_ca_ herault.jpg"></div>    
-            </div>
+                <div class="row text-center">
+                    <div class="col-xs-6 col-sm-3 px-3 py-3"><img class="footer-logo-1" alt="" src="{{ STATIC_URL }}legal/logo FRMJC.jpg"></div>    
+                    <div class="col-xs-6 col-sm-3 px-3 py-3"><img class="footer-logo-1" alt="" src="{{ STATIC_URL }}legal/logo_jeunesse_et_sport.jpg"></div>    
+                    <div class="col-xs-6 col-sm-3 px-3 py-3"><img class="footer-logo-1" alt="" src="{{ STATIC_URL }}legal/Logo_Ca_du_Pays_de_lOr.png"></div>    
+                    <div class="col-xs-6 col-sm-3 px-3 py-3"><img class="footer-logo-1" alt="" src="{{ STATIC_URL }}legal/logo_ca_ herault.jpg"></div>    
+                </div>
             
             
                 <p class="text-white mt-4 text-center"><strong>Accessible handicap</strong></p>
-            <div class="row">
-                <div class="col-xs-12 px-3 py-3 atcha"><img class="footer-logo-2 img-fluid" alt="" src="{{ STATIC_URL }}legal/MJC- logos-handicap.jpg"></div>    
-            </div>
+                <div class="row">
+                    <div class="col-xs-12 px-3 py-3 atcha"><img class="footer-logo-2 img-fluid" alt="" src="{{ STATIC_URL }}legal/MJC- logos-handicap.jpg"></div>    
+                </div>
                 
                 
                 <!--<table width="100%" class="table text-center">-->
@@ -327,7 +330,7 @@
                 <!--        <td><img class="footer-logo-2 img-rounded" alt="" src="{{ STATIC_URL }}legal/MJC- logos-handicap.jpg"></td>-->
                 <!--    </tr>-->
                 <!--</table>-->
-            </div>
+        </div>
             
             
 
