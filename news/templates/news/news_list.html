@@ -30,7 +30,7 @@
                     
                     <div class="col-lg-6">
                         <h2 class="card-title">{{ n.title    }}</h2>
-                        <p class="card-text">  {{ n.content|truncatewords:100  }}</p>
+                        <p class="card-text">  {{ n.content|truncatewords:100|linebreaks  }}</p>
                         <a href="{% url 'news_details' n.id %}" class="btn btn-primary">Lire &rarr;</a>
                     </div>
                     

@@ -119,7 +119,7 @@
                         <h4 class="card-title text-capitalize">
                             <a href="/">{{ event.title }}</a>
                         </h4>
-                        <p class="card-text">{{ event.description|truncatewords:30 }}</p>
+                        <p class="card-text">{{ event.description|linebreaks|truncatewords:30 }}</p>
                     </div>
                     
                 </div>
