@@ -33,7 +33,7 @@
                 <!-- Animation description -->
                 <h1 class="mt-4 mb-3 text-center text-capitalize">{{ animation.name             }}</h1><br>
                 <h4 class="text-center text-black"> avec </h4>
-                <h4 class="mt-4 mb-3 text-center">{% for h in hosts %}{% if forloop.first %}{% elif forloop.last %} & {% else %}, {% endif %}<span class="text-capitalize">{{ h.firstname }}</span> <span class="text-uppercase">{{ h.lastname }}</span>{% endfor %}</h4>
+                <h4 class="mt-4 mb-3 text-center">{% for h in hosts %}{% if forloop.first %}{% elif forloop.last %} & {% else %}, {% endif %}<a href="{% url 'host' h.id %}"><span class="text-capitalize">{{ h.firstname }}</span> <span class="text-uppercase">{{ h.lastname }}</span></a>{% endfor %}</h4>
                 
                 <p class="mt-4 mb-3 lead text-center"      >{{ animation.description      }}</p>
                 
