@@ -68,8 +68,10 @@
 
                         <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}">Voir toutes les activités            </a> {% for n in animations_types_activities %}
-                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations' n.animation_type %}">{{ n.animation_type }} </a> {% endfor %}
+                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}">Voir toutes les activités            </a> 
+                            {% for n in animations_types_activities %}
+                            <a class="dropdown-item txt-white text-capitalize" href="{% url 'a_list_of_animations' n.animation_type %}">{{ n.animation_type }} </a> 
+                            {% endfor %}
 
                             <div class="dropdown-divider"></div>
 
@@ -90,8 +92,10 @@
 
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations_types' %}">Voir tous les ateliers        </a> {% for n in animations_types_workshops %}
-                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations' n.animation_type %}">{{ n.animation_type }}</a> {% endfor %}
+                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations_types' %}">Voir tous les ateliers        </a> 
+                            {% for n in animations_types_workshops %}
+                            <a class="dropdown-item txt-white text-capitalize" href="{% url 'w_list_of_animations' n.animation_type %}">{{ n.animation_type }}</a> 
+                            {% endfor %}
 
                             <div class="dropdown-divider"></div>
 

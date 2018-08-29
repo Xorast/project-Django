@@ -13,7 +13,7 @@
     Voici ce qui vous est proposé prochainement !</p>
     
     <!-- Evenement -->
-    {% for event in events %}
+    {% for event in events_coming %}
         <div class="card mb-4">
             
             <div class="card-body">
@@ -39,6 +39,35 @@
             
         </div>
     {% endfor %}
+    
+    <h1 class="mt-5 mb-3">Evénements passés<br><small></small></h1>
+    {% for event in events_past %}
+        <div class="card mb-4">
+            
+            <div class="card-body">
+                
+                <div class="row">
+                    
+                    <div class="rounded col-md-5"  onclick="goTo('{% url 'event_details' event.id %}')"> 
+                    
+                            <img class="rounded img-tumbnail-event" src="{{MEDIA_URL}}{{ event.image }}" alt="">
+                    </div>
+                    
+                    <div class="col-md-7">
+                        <h2 class="mt-0 card-title text-danger"><i>{{ event.family          }}</i></h2>
+                        <h2 class="mt-0 card-title">{{ event.title           }}</h2>
+                        <p class="card-text">  {{ event.date_and_time  }}</p>
+                        <p class="card-text lead">  {{ event.subtitle        }}</p>
+                        <a href="{% url 'event_details' event.id %}" class="btn btn-warning">En savoir + </a>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+    {% endfor %}
+    
 
   </div>
   <!-- /.container -->
