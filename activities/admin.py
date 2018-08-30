@@ -8,7 +8,7 @@ class Age_ClassAdmin(admin.ModelAdmin):
     ordering        = ('age_class',)
     
 class Age_GroupAdmin(admin.ModelAdmin):  
-    list_display    = ['age_class']
+    list_display    = ['age_class', 'age_min', 'age_max']
     ordering        = ('age_class', 'age_min', 'age_max')
 
 class RoomAdmin(admin.ModelAdmin):  
