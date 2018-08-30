@@ -147,8 +147,8 @@
                 
                         <div class="col-md-6">
                             <h2 class="card-title">{{ news.title }}</h2>
-                            <p class="card-text">{{ news.content|truncatewords:60 }}</p>
-                            <a href="{% url 'news_details' news.id %}" class="btn btn-primary">Lire →</a>
+                            <p class="card-text">{{ news.content|linebreaks|truncatewords:60 }}</p>
+                            <a href="{% url 'news_details' news.id %}" class="btn btn-outline-danger">Lire →</a>
                         </div>
                 
                     </div>
@@ -156,8 +156,8 @@
                 </div>
                 
                 <div class="card-footer text-muted">
-                      Posted on {{ news.created_date }} by
-                      <a href="{% url 'about'    %}#team">a loving Team !</a>
+                      Publié le {{ news.created_date|date:" d.m.Y" }} par
+                      <a href="{% url 'about'    %}#team">l'Equipe !</a>
                 </div>
                 
             </div>
