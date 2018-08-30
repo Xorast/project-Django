@@ -18,24 +18,24 @@
              <!-- Slide One - Set the background image for this slide in the line below -->
             <div class="carousel-item active" style="background-image: url('{{ STATIC_URL }}images/caroussel-1.jpg')">
                 <div class="carousel-caption d-none d-md-block">
-                  <h3 class="txt-white">Enfants, Ados et Adultes</h3>
-                  <p>La MJC propose tout un panel d'activités : Art, Sport, Relaxation, etc !</p>
-                </div>
-            </div>
-              
-            <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('{{ STATIC_URL }}images/caroussel-2.jpg')">
-                <div class="carousel-caption d-none d-md-block">
-                  <h3 class="txt-white">Art</h3>
-                  <p>De la danse au dessin, développez votre créativité !</p>
+                  <h3 class="txt-white"></h3>
+                  <p></p>
                 </div>
             </div>
               
             <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('{{ STATIC_URL }}images/caroussel-2.jpg')">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 class="txt-white text-uppercase">La MJC vous souhaite une bonne rentrée !</h3>
+                  <p class="text-uppercase">Les inscriptions sont ouvertes ! Découvrez nos activités & stages !</p>
+                </div>
+            </div>
+            
+            <!-- Slide Two - Set the background image for this slide in the line below -->
             <div class="carousel-item" style="background-image: url('{{ STATIC_URL }}images/caroussel-3.jpg')">
                 <div class="carousel-caption d-none d-md-block">
-                  <h3 class="txt-white">Sport</h3>
-                  <p>Possibilité de vous enregistrer pour une ou plusieurs activités sportives!</p>
+                  <h3 class="txt-white text-uppercase">Forum des Assos - Partez à la découverte de vos passions !</h3>
+                  <p class="text-uppercase">Samedi 8 Septembre - 10H/18H - Port de Carnon</p>
                 </div>
             </div>
             
@@ -148,7 +148,7 @@
                         <div class="col-md-6">
                             <h2 class="card-title">{{ news.title }}</h2>
                             <p class="card-text">{{ news.content|linebreaks|truncatewords:60 }}</p>
-                            <a href="{% url 'news_details' news.id %}" class="btn btn-outline-danger">Lire →</a>
+                            <a href="{% url 'news_details' news.id %}" class="btn btn-outline-danger">LIRE →</a>
                         </div>
                 
                     </div>
@@ -157,7 +157,7 @@
                 
                 <div class="card-footer text-muted">
                       Publié le {{ news.created_date|date:" d.m.Y" }} par
-                      <a href="{% url 'about'    %}#team">l'Equipe !</a>
+                      <a href="{% url 'about'    %}#team">l'équipe !</a>
                 </div>
                 
             </div>
