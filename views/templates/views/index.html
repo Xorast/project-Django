@@ -114,15 +114,15 @@
                 <div class="card card-list h-100">
                     
                     <div class="row m-0">
-                        <div class="img rounded-top" onclick="goTo('/')" style="background-image:url('{{ MEDIA_URL }}{{ event.image }}')"></div>    
+                        <div class="img rounded-top" onclick="goTo('{% url 'list-of-all-events' %}')" style="background-image:url('{{ MEDIA_URL }}{{ event.image }}')"></div>    
                     </div>
                         
                     <h4 class="card-header text-capitalize">
-                        <a href="/">{{ event.title }}</a>
+                        <a href="{% url 'list-of-all-events' %}">{{ event.title }}</a>
                     </h4>
                         
                     <div class="card-body">
-                        <p class="card-text">{{ event.description|linebreaks|truncatewords:30 }}</p>
+                        <p class="card-text">{{ event.description|truncatewords:30 }}</p>
                     </div>
                     
                 </div>
