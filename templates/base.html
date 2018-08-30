@@ -87,12 +87,12 @@
                     <li id="dropdown_2A" class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle" href="{% url 'w_list_of_animations_types' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ATELIERS
+                        STAGES
                         </a>
 
                         <div id="dropdown_2B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations_types' %}">Voir tous les ateliers        </a> 
+                            <a class="dropdown-item txt-white" href="{% url 'w_list_of_animations_types' %}">Voir tous les stages        </a> 
                             {% for n in animations_types_workshops %}
                             <a class="dropdown-item txt-white text-capitalize" href="{% url 'w_list_of_animations' n.animation_type %}">{{ n.animation_type }}</a> 
                             {% endfor %}
