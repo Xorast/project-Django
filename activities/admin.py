@@ -8,7 +8,7 @@ class Age_ClassAdmin(admin.ModelAdmin):
     ordering        = ('age_class',)
     
 class Age_GroupAdmin(admin.ModelAdmin):  
-    list_display    = ['age_class', 'age_min', 'age_max']
+    list_display    = ['age_class']
     ordering        = ('age_class', 'age_min', 'age_max')
 
 class RoomAdmin(admin.ModelAdmin):  
@@ -28,7 +28,7 @@ admin.site.register(Weekday)
 admin.site.register(Period)
 admin.site.register(Host, HostAdmin)
 admin.site.register(Age_Class, Age_ClassAdmin)
-admin.site.register(Age_Group)
+admin.site.register(Age_Group, Age_GroupAdmin)
 admin.site.register(Level)
 admin.site.register(City)
 admin.site.register(Venue)
