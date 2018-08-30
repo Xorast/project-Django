@@ -31,7 +31,7 @@
                     <div class="col-lg-6">
                         <h2 class="card-title">{{ n.title    }}</h2>
                         <p class="card-text">  {{ n.content|truncatewords:100|linebreaks  }}</p>
-                        <a href="{% url 'news_details' n.id %}" class="btn btn-primary">Lire &rarr;</a>
+                        <a href="{% url 'news_details' n.id %}" class="btn btn-outline-danger">Lire &rarr;</a>
                     </div>
                     
                 </div>
@@ -39,7 +39,8 @@
             </div>
           
             <div class="card-footer text-muted">
-                {{ n.published_date  }}
+                Publié le {{ n.published_date|date:" d.m.Y" }} par
+                      <a href="{% url 'about'    %}#team">l'équipe !</a>
             </div>
             
         </div>

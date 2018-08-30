@@ -9,7 +9,7 @@
         
         <div class="col-md-8 offset-md-2"> 
         
-            <a class="btn btn-primary mt-3" href="{% url 'news_list' %}">Tous les articles</a>
+            <a class="btn btn-outline-danger mt-5" href="{% url 'news_list' %}">Tous les articles</a>
         
             <h1 class="mt-4 mb-3">{{ news.title        }}</h1>
         
@@ -31,7 +31,7 @@
             <hr>
         
             <!-- Date/Time -->
-            <p class="mx-3">{{ news.created_date }}</p>
+            <p class="mx-3 text-center">Publié le {{ news.published_date|date:" d.m.Y" }}</p>
         
             <hr>
         
