@@ -69,16 +69,17 @@
             <!-- Activities -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
-                <div class="card h-100">
+                <div class="card card-list h-100">
                     
                     <div class="row m-0">    
                         <div class="img rounded-top" onclick="goTo('{% url 'a_list_of_animations_types' %}')" style="background-image:url('{{ MEDIA_URL }}{{ activity.image }}')"></div>    
                     </div>
                         
+                    <h4 class="card-header text-capitalize">
+                        <a href="{% url 'a_list_of_animations_types' %}">{{ activity.title }}</a>
+                    </h4>
+                    
                     <div class="card-body">
-                        <h4 class="card-title text-capitalize">
-                            <a href="{% url 'a_list_of_animations_types' %}">{{ activity.title }}</a>
-                        </h4>
                         <p class="card-text">{{ activity.description|truncatewords:30 }}</p>
                     </div>
                     
@@ -89,16 +90,17 @@
             <!-- Workshops -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
-                <div class="card h-100">
+                <div class="card card-list h-100">
                     
                     <div class="row m-0">    
                         <div class="img rounded-top" onclick="goTo('{% url 'w_list_of_animations_types' %}')" style="background-image:url('{{ MEDIA_URL }}{{ workshop.image }}')"></div>    
                     </div>
                         
+                    <h4 class="card-header text-capitalize">
+                        <a href="{% url 'w_list_of_animations_types' %}">{{ workshop.title }}</a>
+                    </h4>
+                        
                     <div class="card-body">
-                        <h4 class="card-title text-capitalize">
-                            <a href="{% url 'w_list_of_animations_types' %}">{{ workshop.title }}</a>
-                        </h4>
                         <p class="card-text">{{ workshop.description|truncatewords:30 }}</p>
                     </div>
                     
@@ -109,16 +111,17 @@
             <!-- Event -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
-                <div class="card h-100">
+                <div class="card card-list h-100">
                     
                     <div class="row m-0">
                         <div class="img rounded-top" onclick="goTo('/')" style="background-image:url('{{ MEDIA_URL }}{{ event.image }}')"></div>    
                     </div>
                         
+                    <h4 class="card-header text-capitalize">
+                        <a href="/">{{ event.title }}</a>
+                    </h4>
+                        
                     <div class="card-body">
-                        <h4 class="card-title text-capitalize">
-                            <a href="/">{{ event.title }}</a>
-                        </h4>
                         <p class="card-text">{{ event.description|linebreaks|truncatewords:30 }}</p>
                     </div>
                     

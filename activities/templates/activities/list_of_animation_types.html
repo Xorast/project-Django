@@ -24,20 +24,20 @@
             {% for animation_type in animations_types_activities %}
                 <div class="col-lg-4 mb-4">
                     
-                    <div class="card h-100">
-                        
-                        <h4 class="card-header"> {{ animation_type.animation_type }}</h4>
+                    <div class="card card-list h-100">
                         
                         <div class="row m-0">    
                             <div class="col-md-12 img" onclick="goTo('{% url 'a_list_of_animations' animation_type.animation_type %}')"  style="background-image:url('{{ MEDIA_URL }}{{ animation_type.image }}')"></div>    
                         </div>
+                        
+                        <h4 class="card-header text-capitalize"> {{ animation_type.animation_type }}</h4>
                         
                         <div class="card-body">
                             <p class="card-text">{{ animation_type.description|truncatewords:40 }}</p>
                         </div>
                         
                         <div class="card-footer">
-                            <a href="{% url 'a_list_of_animations' animation_type.animation_type %}" class="btn btn-primary">Découvrir</a>
+                            <a href="{% url 'a_list_of_animations' animation_type.animation_type %}" class="btn btn-outline-danger">Découvrir</a>
                         </div>
                         
                     </div>

@@ -13,7 +13,7 @@
             <!-- Content Column -->
             <div class="col-md-12">
             
-                <button class="btn btn-primary mt-3" onclick="goBack()">Retour</button>
+                <button class="btn btn-outline-danger mt-5 text-uppercase" onclick="goBack()">Retour</button>
                 
                 <!-- Image -->
                 <div class="row m-0 mt-3">    
@@ -33,7 +33,7 @@
                 <!-- Animation description -->
                 <h1 class="mt-4 mb-3 text-center">{{ animation.name             }}</h1><br>
                 <h4 class="text-center text-black"> avec </h4>
-                <h4 class="mt-4 mb-3 text-center">{% for h in hosts %}{% if forloop.first %}{% elif forloop.last %} & {% else %}, {% endif %}<span class="text-capitalize">{{ h.firstname }}</span> <span class="text-uppercase">{{ h.lastname }}</span>{% endfor %}</h4>
+                <h4 class="mt-4 mb-3 text-center">{% for h in hosts %}{% if forloop.first %}{% elif forloop.last %} & {% else %}, {% endif %}<a href="{% url 'host' h.id %}"><span class="text-capitalize">{{ h.firstname }}</span> <span class="text-uppercase">{{ h.lastname }}</span></a>{% endfor %}</h4>
                 
                 <p class="mt-4 mb-3 text-center"           >{{ animation.period           }}</p>
                 
@@ -162,7 +162,7 @@
 
                 <!-- Registration information -->
                 <a href="{% url 'rate_and_registration_activities' %}">
-                <button id="register_button" type="button" class="nounderline btn btn-outline-primary btn-lg btn-block mt-5 text-uppercase">Comment s'inscrire ?</button>
+                <button id="register_button" type="button" class="nounderline btn btn-outline-danger btn-lg btn-block mt-5 text-uppercase">Comment s'inscrire ?</button>
                 </a>
                 
             </div>
