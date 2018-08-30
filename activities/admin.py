@@ -18,7 +18,16 @@ class RoomAdmin(admin.ModelAdmin):
 class HostAdmin(admin.ModelAdmin):
     list_display    = ['firstname', 'lastname', 'image', 'resume']
     ordering        = ('firstname', 'lastname')
-
+    
+# class Activity_Animation_SlotAdmin(admin.ModelAdmin):
+#     list_display    = ['firstname', 'lastname', 'image', 'resume']
+#     ordering        = ('firstname', 'lastname')
+# animation
+# age_group
+# name
+# day
+# time_start
+# time_end
 
 
 admin.site.register(Elements_Type)
