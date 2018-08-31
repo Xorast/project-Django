@@ -145,7 +145,7 @@
                 <!-- Notes - Animation -->
                 <p class="mt-4 mb-3"><strong>Informations :</strong></p>
                 {% if animation.notes|length > 0 %}
-                <p>{{ animation.notes      }}</p>
+                <p>{{ animation.notes|linebreaks      }}</p>
                 {% else %}
                 - 
                 {% endif %}
@@ -158,7 +158,7 @@
                     <tr>
                         {% if slot.description|length > 0 or slot.notes|length > 0 %}
                             <td class="table-text"><i class="text-nowrap">{{ slot.name }} :</i></td>
-                            <td>{{ slot.description }}{% if slot.description is not None %}<br>{% endif %}{{ slot.notes }}</td> 
+                            <td>{{ slot.description|linebreaks }}{% if slot.description is not None %}<br>{% endif %}{{ slot.notes|linebreaks }}</td> 
                         {% endif %}
                     </tr>
                     {% endfor %}

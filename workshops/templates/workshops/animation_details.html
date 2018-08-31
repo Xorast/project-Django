@@ -122,7 +122,7 @@
                             {% if slot.notes|length > 0 %}
                             <tr>
                                 <td class="table-text"><i class="text-nowrap">Notes :       </i></td> 
-                                <td>{{ slot.notes       }}</td>
+                                <td>{{ slot.notes|linebreaks       }}</td>
                             </tr>
                             {% endif %}
                         </table>

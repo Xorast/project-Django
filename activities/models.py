@@ -251,7 +251,7 @@ class Activity_Animation_Slot(models.Model):
     class Meta:
         verbose_name = 'Animation - Créneau'
         verbose_name_plural = '3. Animations - Créneaux'
-        
+   
         
 # Model deleted
 # class Event(models.Model):
