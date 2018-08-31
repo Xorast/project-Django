@@ -22,7 +22,7 @@ def get_list_of_animations(request, animation_type):
 def get_animation_details(request, animation_type, animation, animation_id):
 
     animation       = get_object_or_404(Workshop_Animation, id=animation_id)
-    slots           = Workshop_Animation_Slot.objects.filter(workshop_animation=animation) #.order_by('')
+    slots           = Workshop_Animation_Slot.objects.filter(workshop_animation=animation).order_by('date_of_the_first_day','age_group__age_min','age_group__age_max')
     
     hosts = []
     [[hosts.append(h) for h in Host.objects.filter(Workshop = slot.id)] for slot in slots]
