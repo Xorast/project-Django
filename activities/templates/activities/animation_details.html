@@ -158,8 +158,8 @@
                     <tr>
                         {% if slot.description|length > 0 or slot.notes|length > 0 %}
                             <td class="table-text"><i class="text-nowrap">
-                                {% if slot.name|length > 0 %}{{ slot.name }}{% else %}{{slot.day}} - {{slot.time_start}} /{{ slot.time_end }}{% endif %} :</i></td>
-                            <td>{{ slot.description|linebreaks }}{% if slot.description|length == 0 %}<br>{% endif %}{{ slot.notes|linebreaks }}</td> 
+                                {% if slot.name|length > 0 %}{{ slot.name }}{% else %}{{slot.day}} - {{slot.time_start}} / {{ slot.time_end }}{% endif %} :</i></td>
+                            <td>{{ slot.description|linebreaks }}{% if slot.description|length > 0 %}<br>{% endif %}{{ slot.notes|linebreaks }}</td> 
                         {% endif %}
                     </tr>
                     {% endfor %}
