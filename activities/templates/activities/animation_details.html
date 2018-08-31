@@ -81,7 +81,7 @@
                                 <td>{% if slot.new %}<span class="badge badge-pill badge-success">N</span>{% endif %}</td>        
                                 
                                 <!-- Slot name-->
-                                <td>{{ slot.name                     }}</td>        
+                                <td>{% if slot.name|length > 0%}{{ slot.name                    }}{% else%}-{% endif %}</td>   
                                 
                                 <!-- Age -->
                                 <td><span class="text-nowrap">
@@ -90,7 +90,7 @@
                                     </span>                            </td>        
                                 
                                 <!-- Level -->
-                                <td>{{ slot.level                    }}</td>        
+                                <td>{% if slot.level|length > 0%}{{ slot.level                    }}{% else%}-{% endif %}</td>        
                                 
                                 <!-- Day -->
                                 <td>{{ slot.day                      }}</td>        
