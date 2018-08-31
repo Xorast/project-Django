@@ -18,13 +18,13 @@
 
     <!-- Blog Post -->
     {% for n in news %}
-        <div class="card mb-4">
+        <div class="card card-list mb-4 cursor" onclick="goTo('{% url 'news_details' n.id %}')">
             
             <div class="card-body">
                 
                 <div class="row">
                     
-                    <div class="rounded col-lg-6"  onclick="goTo('{% url 'news_details' n.id %}')">
+                    <div class="rounded col-lg-6">
                             <img class="img-fluid rounded" src="{{MEDIA_URL}}{{ n.image }}" alt="">
                     </div>
                     

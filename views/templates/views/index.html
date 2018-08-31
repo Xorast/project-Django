@@ -69,10 +69,10 @@
             <!-- Activities -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
-                <div class="card card-list h-100">
+                <div class="card card-list card-list-hover h-100" onclick="goTo('{% url 'a_list_of_animations_types' %}')">
                     
                     <div class="row m-0">    
-                        <div class="img rounded-top" onclick="goTo('{% url 'a_list_of_animations_types' %}')" style="background-image:url('{{ MEDIA_URL }}{{ activity.image }}')"></div>    
+                        <div class="img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ activity.image }}')"></div>    
                     </div>
                         
                     <h4 class="card-header text-capitalize">
@@ -90,10 +90,10 @@
             <!-- Workshops -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
-                <div class="card card-list h-100">
+                <div class="card card-list card-list-hover h-100" onclick="goTo('{% url 'w_list_of_animations_types' %}')">
                     
                     <div class="row m-0">    
-                        <div class="img rounded-top" onclick="goTo('{% url 'w_list_of_animations_types' %}')" style="background-image:url('{{ MEDIA_URL }}{{ workshop.image }}')"></div>    
+                        <div class="img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ workshop.image }}')"></div>    
                     </div>
                         
                     <h4 class="card-header text-capitalize">
@@ -111,10 +111,10 @@
             <!-- Event -->
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 
-                <div class="card card-list h-100">
+                <div class="card card-list card-list-hover h-100" onclick="goTo('{% url 'list-of-all-events' %}')">
                     
                     <div class="row m-0">
-                        <div class="img rounded-top" onclick="goTo('{% url 'list-of-all-events' %}')" style="background-image:url('{{ MEDIA_URL }}{{ event.image }}')"></div>    
+                        <div class="img rounded-top" style="background-image:url('{{ MEDIA_URL }}{{ event.image }}')"></div>    
                     </div>
                         
                     <h4 class="card-header text-capitalize">
@@ -137,13 +137,13 @@
         
         {% for news in last_news %}
         
-            <div class="card mb-4">
+            <div class="card card-list-hover mb-4" onclick="goTo('{% url 'news_details' news.id %}')">
                 
                 <div class="card-body">
                     
                     <div class="row">
                         
-                        <div class="col-md-6 img rounded cursor" onclick="goTo('{% url 'news_details' news.id %}')" style="background-image:url('{{ MEDIA_URL }}{{ news.image }}')"></div></a>
+                        <div class="col-md-6 img rounded" style="background-image:url('{{ MEDIA_URL }}{{ news.image }}')"></div></a>
                 
                         <div class="col-md-6">
                             <h2 class="card-title">{{ news.title }}</h2>

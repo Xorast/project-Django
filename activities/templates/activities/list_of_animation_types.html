@@ -24,10 +24,10 @@
             {% for animation_type in animations_types_activities %}
                 <div class="col-lg-4 mb-4">
                     
-                    <div class="card card-list h-100">
+                    <div class="card card-list card-list-hover h-100" onclick="goTo('{% url 'a_list_of_animations' animation_type.animation_type %}')" >
                         
                         <div class="row m-0">    
-                            <div class="col-md-12 img" onclick="goTo('{% url 'a_list_of_animations' animation_type.animation_type %}')"  style="background-image:url('{{ MEDIA_URL }}{{ animation_type.image }}')"></div>    
+                            <div class="col-md-12 img" style="background-image:url('{{ MEDIA_URL }}{{ animation_type.image }}')"></div>    
                         </div>
                         
                         <h4 class="card-header text-capitalize"> {{ animation_type.animation_type }}</h4>

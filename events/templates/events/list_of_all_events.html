@@ -14,13 +14,13 @@
     
     <!-- Evenement -->
     {% for event in events_coming %}
-        <div class="card mb-4">
+        <div class="card mb-4 card-list-hover" onclick="goTo('{% url 'event_details' event.id %}')">
             
             <div class="card-body">
                 
                 <div class="row">
                     
-                    <div class="rounded col-md-5"  onclick="goTo('{% url 'event_details' event.id %}')"> 
+                    <div class="rounded col-md-5"> 
                     
                             <img class="rounded img-tumbnail-event" src="{{MEDIA_URL}}{{ event.image }}" alt="">
                     </div>
@@ -40,9 +40,11 @@
         </div>
     {% endfor %}
     
+    
     <h1 class="mt-5 mb-3">Evénements passés<br><small></small></h1>
+    
     {% for event in events_past %}
-        <div class="card mb-4">
+        <div class="card mb-4 card-list-hover" onclick="goTo('{% url 'event_details' event.id %}')">
             
             <div class="card-body">
                 
