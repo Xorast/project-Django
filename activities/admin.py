@@ -18,6 +18,16 @@ class RoomAdmin(admin.ModelAdmin):
 class HostAdmin(admin.ModelAdmin):
     list_display    = ['firstname', 'lastname', 'image', 'resume']
     ordering        = ('firstname', 'lastname')
+ 
+
+class Activity_Animation_TypeAdmin(admin.ModelAdmin):
+    list_display    = ['animation_type',]
+    ordering        = ('animation_type',)
+
+class Activity_AnimationAdmin(admin.ModelAdmin):
+    list_display    = ['name',]
+    ordering        = ('name',)
+    
     
 # class Activity_Animation_SlotAdmin(admin.ModelAdmin):
 #     list_display    = ['firstname', 'lastname', 'image', 'resume']
@@ -31,8 +41,8 @@ class HostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Elements_Type)
-admin.site.register(Activity_Animation_Type)
-admin.site.register(Activity_Animation)
+admin.site.register(Activity_Animation_Type, Activity_Animation_TypeAdmin)
+admin.site.register(Activity_Animation, Activity_AnimationAdmin)
 admin.site.register(Weekday)
 admin.site.register(Period)
 admin.site.register(Host, HostAdmin)
