@@ -144,7 +144,11 @@
                 
                 <!-- Notes - Animation -->
                 <p class="mt-4 mb-3"><strong>Informations :</strong></p>
+                {% if animation.notes|length > 0 %}
                 <p>{{ animation.notes      }}</p>
+                {% else %}
+                - 
+                {% endif %}
                 
                 
                 <!-- Notes - For each slot -->
