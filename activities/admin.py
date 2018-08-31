@@ -23,6 +23,12 @@ class HostAdmin(admin.ModelAdmin):
 class Activity_Animation_TypeAdmin(admin.ModelAdmin):
     list_display    = ['animation_type',]
     ordering        = ('animation_type',)
+    
+
+class WeekdayAdmin(admin.ModelAdmin):
+    list_display    = ['day','id']
+    ordering        = ('-id',)
+    
 
 class Activity_AnimationAdmin(admin.ModelAdmin):
     list_display    = ['name',]
@@ -37,7 +43,7 @@ class Activity_Animation_SlotAdmin(admin.ModelAdmin):
 admin.site.register(Elements_Type)
 admin.site.register(Activity_Animation_Type, Activity_Animation_TypeAdmin)
 admin.site.register(Activity_Animation, Activity_AnimationAdmin)
-admin.site.register(Weekday)
+admin.site.register(Weekday,WeekdayAdmin)
 admin.site.register(Period)
 admin.site.register(Host, HostAdmin)
 admin.site.register(Age_Class, Age_ClassAdmin)
