@@ -13,6 +13,7 @@ def get_list_of_animation_types(request):
     return render(request, "activities/list_of_animation_types.html")
 
 
+
 def get_list_of_animations(request, animation_type):
     
     animations_type = get_object_or_404(Activity_Animation_Type, animation_type=animation_type)
@@ -21,10 +22,11 @@ def get_list_of_animations(request, animation_type):
     return render(request, "activities/list_of_animations.html", {'animations_type':animations_type,'animations':animations})
 
 
+
 def get_animation_details(request, animation_type, animation, animation_id):
 
     animation       = get_object_or_404(Activity_Animation, id=animation_id)
-    slots           = Activity_Animation_Slot.objects.filter(animation=animation) #.order_by('')
+    slots           = Activity_Animation_Slot.objects.filter(animation=animation).order_by('age_group__age_min','age_group__age_max','day','time_start')
     
     hosts = []
     # for slot in slots:
