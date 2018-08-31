@@ -236,7 +236,7 @@ class Activity_Animation_Slot(models.Model):
     room                      = models.ForeignKey(Room,       related_name="Slot",          on_delete=models.SET_NULL, null=True)
     description               = models.TextField("Présentation (spécifique à ce crénau)",                              null=True, blank=True)
     rate_resident_1_name      = models.CharField("MC - Tarif 1 - Désignation ", max_length=50,                           null=True, blank=True)
-    rate_resident_1           = models.PositiveSmallIntegerField("Tarif 1 MC - €",                                     null=True, blank=True)
+    rate_resident_1           = models.PositiveSmallIntegerField("MC - Tarif 1 - €",                                     null=True, blank=True)
     rate_resident_2_name      = models.CharField("MC - Tarif 2  - Désignation ", max_length=50,                           null=True, blank=True)
     rate_resident_2           = models.PositiveSmallIntegerField("MC - Tarif 2 - €",                                     null=True, blank=True)
     rate_non_resident_1_name  = models.CharField("Hors MC - Tarif 1 - Désignation ", max_length=50,                      null=True, blank=True)

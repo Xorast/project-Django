@@ -113,12 +113,12 @@
                                 <td><span class="text-nowrap tooltip">
                                        
                                             {% if slot.rate_resident_1 is None %}{% else %}{{ slot.rate_resident_1 }} € {% endif %}<svg class="svg-mini-05 svg-blue" data-name="Layer 1" viewBox="0 0 32 32"><path class="cls-1" d="M16,1A15,15,0,1,0,31,16,15,15,0,0,0,16,1Zm2,22a2,2,0,0,1-4,0V16a2,2,0,0,1,4,0ZM16,12.19A2.19,2.19,0,1,1,18.19,10,2.19,2.19,0,0,1,16,12.19Z"/></svg>
-                                            <span class="tooltiptext">- Tarif MC 1 -<br>{% if slot.rate_resident_1 is None and slot.rate_resident_1_name is None %}{{ unmentionned_rate_text }}{% elif slot.rate_resident_1 is not None and slot.rate_resident_1_name is None %}{% else %}{{ slot.rate_resident_1_name }}{% endif %}</span>
+                                            <span class="tooltiptext">- Tarif 1 MC -<br>{% if slot.rate_resident_1 is None and slot.rate_resident_1_name is None %}{{ unmentionned_rate_text }}{% elif slot.rate_resident_1 is not None and slot.rate_resident_1_name is None %}{% else %}{{ slot.rate_resident_1_name }}{% endif %}</span>
                                       
                                     </span><br><span class="text-nowrap tooltip">
                                   
                                             {% if slot.rate_resident_2 is None %}{% else %}{{ slot.rate_resident_2 }} € <svg class="svg-mini-05 svg-blue" data-name="Layer 1" viewBox="0 0 32 32"><path class="cls-1" d="M16,1A15,15,0,1,0,31,16,15,15,0,0,0,16,1Zm2,22a2,2,0,0,1-4,0V16a2,2,0,0,1,4,0ZM16,12.19A2.19,2.19,0,1,1,18.19,10,2.19,2.19,0,0,1,16,12.19Z"/></svg>{% endif %}
-                                            <span class="tooltiptext">- Tarif MC 2 -<br>{% if slot.rate_resident_2 is None and slot.rate_resident_2_name is None %}{{ unmentionned_rate_text }}{% elif slot.rate_resident_1 is not None and slot.rate_resident_2_name is None %}{{ two_rates_no_info_on_second_rate }}{% else %}{{ slot.rate_resident_2_name }}{% endif %}</span>
+                                            <span class="tooltiptext">- Tarif 2 MC -<br>{% if slot.rate_resident_2 is None and slot.rate_resident_2_name is None %}{{ unmentionned_rate_text }}{% elif slot.rate_resident_1 is not None and slot.rate_resident_2_name is None %}{{ two_rates_no_info_on_second_rate }}{% else %}{{ slot.rate_resident_2_name }}{% endif %}</span>
                                     </span>
                                   
                                                                        </td>  
@@ -126,11 +126,11 @@
                                 <!-- Rate - Non Residents -->
                                 <td><span class="text-nowrap tooltip">
                                             {% if slot.rate_non_resident_1 is None %}{% else %}{{ slot.rate_non_resident_1 }} € {% endif %}<svg class="svg-mini-05 svg-blue" data-name="Layer 1" viewBox="0 0 32 32"><path class="cls-1" d="M16,1A15,15,0,1,0,31,16,15,15,0,0,0,16,1Zm2,22a2,2,0,0,1-4,0V16a2,2,0,0,1,4,0ZM16,12.19A2.19,2.19,0,1,1,18.19,10,2.19,2.19,0,0,1,16,12.19Z"/></svg>
-                                            <span class="tooltiptext">- Tarif Hors MC 1 -<br>{% if slot.rate_resident_1 is None and slot.rate_non_resident_1_name is None %}{{ unmentionned_rate_text }}{% elif slot.rate_non_resident_1 is not None and slot.rate_non_resident_1_name is None %}{% else %}{{ slot.rate_non_resident_1_name }}{% endif %}</span>
+                                            <span class="tooltiptext">- Tarif 1 Hors MC -<br>{% if slot.rate_resident_1 is None and slot.rate_non_resident_1_name is None %}{{ unmentionned_rate_text }}{% elif slot.rate_non_resident_1 is not None and slot.rate_non_resident_1_name is None %}{% else %}{{ slot.rate_non_resident_1_name }}{% endif %}</span>
                                     </span><br><span class="text-nowrap tooltip">
                                    
                                             {% if slot.rate_non_resident_2 is None %}{% else %}{{ slot.rate_non_resident_2 }} € <svg class="svg-mini-05 svg-blue" data-name="Layer 1" viewBox="0 0 32 32"><path class="cls-1" d="M16,1A15,15,0,1,0,31,16,15,15,0,0,0,16,1Zm2,22a2,2,0,0,1-4,0V16a2,2,0,0,1,4,0ZM16,12.19A2.19,2.19,0,1,1,18.19,10,2.19,2.19,0,0,1,16,12.19Z"/></svg>{% endif %}
-                                            <span class="tooltiptext">- Tarif Hors MC 2 -<br>{% if slot.rate_non_resident_2 is None and slot.rate_non_resident_2_name is None %}{{ unmentionned_rate_text }}{% elif slot.rate_non_resident_1 is not None and slot.rate_non_resident_2_name is None %}{{ two_rates_no_info_on_second_rate }}{% else %}{{ slot.rate_non_resident_2_name }}{% endif %}</span>
+                                            <span class="tooltiptext">- Tarif 2 Hors MC -<br>{% if slot.rate_non_resident_2 is None and slot.rate_non_resident_2_name is None %}{{ unmentionned_rate_text }}{% elif slot.rate_non_resident_1 is not None and slot.rate_non_resident_2_name is None %}{{ two_rates_no_info_on_second_rate }}{% else %}{{ slot.rate_non_resident_2_name }}{% endif %}</span>
                                         </span>
                                                                        </td>  
                             </tr>
