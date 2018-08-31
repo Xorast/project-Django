@@ -85,8 +85,11 @@
                                 
                                 <!-- Age -->
                                 <td><span class="text-nowrap">
-                                    {{ slot.age_group.age_min        }} /
-                                    {{ slot.age_group.age_max        }}
+                                    {% if slot.age_group.age_min == slot.age_group.age_max %}
+                                    {{ slot.age_group.age_min }}
+                                    {% else %}
+                                    {{ slot.age_group.age_min        }} / {{ slot.age_group.age_max        }}
+                                    {% endif %}
                                     </span>                            </td>        
                                 
                                 <!-- Level -->
