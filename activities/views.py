@@ -17,7 +17,7 @@ def get_list_of_animation_types(request):
 def get_list_of_animations(request, animation_type):
     
     animations_type = get_object_or_404(Activity_Animation_Type, animation_type=animation_type)
-    animations      = Activity_Animation.objects.filter(animation_type=animations_type.id)
+    animations      = Activity_Animation.objects.filter(animation_type=animations_type.id).order_by('name')
     
     return render(request, "activities/list_of_animations.html", {'animations_type':animations_type,'animations':animations})
 

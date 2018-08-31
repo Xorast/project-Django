@@ -14,7 +14,7 @@ def get_list_of_animation_types(request):
 def get_list_of_animations(request, animation_type):
     
     animations_type = get_object_or_404(Workshop_Animation_Type, animation_type=animation_type)
-    animations      = Workshop_Animation.objects.filter(animation_type=animations_type.id)
+    animations      = Workshop_Animation.objects.filter(animation_type=animations_type.id).order_by('name')
     
     return render(request, "workshops/list_of_animations.html", {'animations_type':animations_type,'animations':animations})
 
