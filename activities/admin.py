@@ -6,14 +6,22 @@ from .models            import Elements_Type, Activity_Animation_Type, Activity_
 class Age_ClassAdmin(admin.ModelAdmin):  
     list_display    = ['age_class',]
     ordering        = ('age_class',)
+   
     
 class Age_GroupAdmin(admin.ModelAdmin):  
     list_display    = ['age_class', 'age_min', 'age_max']
     ordering        = ('age_class', 'age_min', 'age_max')
 
+
+class LevelAdmin(admin.ModelAdmin):  
+    list_display    = ['level',]
+    ordering        = ('level', )
+    
+
 class RoomAdmin(admin.ModelAdmin):  
     list_display    = ['venue', 'room_nb','room_name']
     ordering        = ('venue','room_nb','room_name')
+
 
 class HostAdmin(admin.ModelAdmin):
     list_display    = ['firstname', 'lastname', 'image', 'resume']
@@ -27,12 +35,13 @@ class Activity_Animation_TypeAdmin(admin.ModelAdmin):
 
 class WeekdayAdmin(admin.ModelAdmin):
     list_display    = ['day','id']
-    ordering        = ('-id',)
+    ordering        = ('id',)
     
 
 class Activity_AnimationAdmin(admin.ModelAdmin):
     list_display    = ['name',]
     ordering        = ('name',)
+
 
 class Activity_Animation_SlotAdmin(admin.ModelAdmin):
     list_display    = ['animation','age_group','day','time_start','time_end','room','level','name']
@@ -48,7 +57,7 @@ admin.site.register(Period)
 admin.site.register(Host, HostAdmin)
 admin.site.register(Age_Class, Age_ClassAdmin)
 admin.site.register(Age_Group, Age_GroupAdmin)
-admin.site.register(Level)
+admin.site.register(Level, LevelAdmin)
 admin.site.register(City)
 admin.site.register(Venue)
 admin.site.register(Room, RoomAdmin)
