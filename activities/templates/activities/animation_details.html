@@ -93,7 +93,7 @@
                                 <td>{% if slot.level|length > 0%}{{ slot.level                    }}{% else%}-{% endif %}</td>        
                                 
                                 <!-- Day -->
-                                <td>{{ slot.day                      }}</td>        
+                                <td>{{ slot.day                      }}{% if slot.notes|length > 0 %} *{% endif %}</td>        
                                 
                                 <!-- Hours -->
                                 <td><span class="text-nowrap">{{ slot.time_start|time:"H:i"}} /</span>
