@@ -90,7 +90,7 @@
                                     </span>                            </td>        
                                 
                                 <!-- Level -->
-                                <td>{% if slot.level|length > 0%}{{ slot.level                    }}{% else%}-{% endif %}</td>        
+                                <td>{% if slot.level is not None %}{{ slot.level                    }}{% else%}-{% endif %}</td>        
                                 
                                 <!-- Day -->
                                 <td>{{ slot.day                      }}{% if slot.notes|length > 0 %} *{% endif %}</td>        
