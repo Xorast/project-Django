@@ -27,17 +27,22 @@ class Activity_Animation_TypeAdmin(admin.ModelAdmin):
 class Activity_AnimationAdmin(admin.ModelAdmin):
     list_display    = ['name',]
     ordering        = ('name',)
-    
-    
-# class Activity_Animation_SlotAdmin(admin.ModelAdmin):
-#     list_display    = ['firstname', 'lastname', 'image', 'resume']
-#     ordering        = ('firstname', 'lastname')
+
+class Activity_Animation_SlotAdmin(admin.ModelAdmin):
+    list_display    = ['animation','name','age_group','day']
+    ordering        = ('animation','name','age_group','day')
+
 # animation
 # age_group
+# level
 # name
+# new
+# host
 # day
 # time_start
 # time_end
+# room
+# description
 
 
 admin.site.register(Elements_Type)
@@ -52,4 +57,4 @@ admin.site.register(Level)
 admin.site.register(City)
 admin.site.register(Venue)
 admin.site.register(Room, RoomAdmin)
-admin.site.register(Activity_Animation_Slot)
+admin.site.register(Activity_Animation_Slot, Activity_Animation_SlotAdmin)
