@@ -29,20 +29,9 @@ class Activity_AnimationAdmin(admin.ModelAdmin):
     ordering        = ('name',)
 
 class Activity_Animation_SlotAdmin(admin.ModelAdmin):
-    list_display    = ['animation','age_group','name','day']
-    ordering        = ('animation','age_group','name','day')
+    list_display    = ['animation','age_group','day','time_start','time_end','room','level','name']
+    ordering        = ('animation','age_group','day','time_start','time_end','room','level','name')
 
-# animation
-# age_group
-# level
-# name
-# new
-# host
-# day
-# time_start
-# time_end
-# room
-# description
 
 
 admin.site.register(Elements_Type)
