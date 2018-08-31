@@ -41,9 +41,9 @@
                 <ul class="navbar-nav ml-auto">
 
                     <!-- About -->
-                    <li id="dropdown_1A" class="nav-item dropdown">
+                    <li id="dropdown_1A" class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'about' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         L'ASSOCIATION
                         </a>
 
@@ -84,9 +84,9 @@
                     </li>
 
                     <!-- Workshops -->
-                    <li id="dropdown_2A" class="nav-item dropdown">
+                    <li id="dropdown_2A" class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" href="{% url 'w_list_of_animations_types' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'w_list_of_animations_types' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         STAGES
                         </a>
 
@@ -128,9 +128,9 @@
                     <!--</li>-->
 
                     <!-- Youth -->
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'youth_mauguio' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ESPACE JEUNES
                         </a>
 
@@ -193,9 +193,9 @@
                     </li>
 
                     <!-- Info -->
-                    <li id="dropdown_4A" class="nav-item dropdown">
+                    <li id="dropdown_4A" class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'info' %}')" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           INFOS PRATIQUES
                         </a>
 
