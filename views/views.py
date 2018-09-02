@@ -87,7 +87,7 @@ def edit_activity(request, activity_slot_id):
     
 
 def edit_workshop(request, workshop_slot_id):
-    return redirect("/admin/activities/workshop_animation_slot/" + str(workshop_slot_id) + "/change")
+    return redirect("/admin/workshops/workshop_animation_slot/" + str(workshop_slot_id) + "/change")
     
     
     
