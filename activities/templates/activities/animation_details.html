@@ -144,7 +144,7 @@
                                 <!-- Admin -->
                                 {% if user.is_superuser %}
                                 <td>
-                                    <a href="{% url 'admin_edit_activity' slot.id %}">Modifier</a>
+                                    <a href="{% url 'admin_edit_activity' slot.id %}" target="_blank">Modifier</a>
                                 </td>
                                 {% endif %}
                             </tr>
