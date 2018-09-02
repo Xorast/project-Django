@@ -81,6 +81,16 @@ def get_admin_panel(request):
     
     
     
+def edit_activity(request, activity_slot_id):
+    return redirect("/admin/activities/activity_animation_slot/" + str(activity_slot_id) + "/change")
+    
+    
+
+def edit_workshop(request, workshop_slot_id):
+    return redirect("/admin/activities/workshop_animation_slot/" + str(workshop_slot_id) + "/change")
+    
+    
+    
 # To be deleted :
 # 
 # activities   = get_object_or_404(Event_Type, event_type="ACTIVITY")
