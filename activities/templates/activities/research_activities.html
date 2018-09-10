@@ -13,7 +13,7 @@
             <!-- Content Column -->
             <div class="col-md-12">
                 
-                {% regroup activities by animation.animation_type as animation_by_type_list %}
+                {% regroup activities by animation.Activity_Animation.animation_type as animation_by_type_list %}
                 
                 {% for animation_type in animation_by_type_list %}
                     <h1 class="mt-4 mb-3">{{ animation_type.grouper }}</h1>

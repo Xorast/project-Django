@@ -16,7 +16,7 @@ def get_list_of_animation_types(request):
 
 def research(request):
     
-    activities = Activity_Animation_Slot.objects.all()
+    activities = Activity_Animation_Slot.objects.all() #.order_by('animation','animation')
     
     return render(request, "activities/research_activities.html", {'activities':activities})
 
