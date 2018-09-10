@@ -19,34 +19,6 @@
     <!-- Blog Post -->
     {% for n in news %}
         
-        <!-- To be suppressed (replaced by following block) -->
-        <!--<div class="card card-list mb-4 cursor" onclick="goTo('{% url 'news_details' n.id %}')">-->
-            
-        <!--    <div class="card-body">-->
-                
-        <!--        <div class="row">-->
-                    
-        <!--            <div class="rounded col-lg-6">-->
-        <!--                    <img class="img-fluid rounded" src="{{MEDIA_URL}}{{ n.image }}" alt="">-->
-        <!--            </div>-->
-                    
-        <!--            <div class="col-lg-6">-->
-        <!--                <h2 class="card-title">{{ n.title    }}</h2>-->
-        <!--                <p class="card-text">  {{ n.content|linebreaks|truncatewords:100  }}</p>-->
-        <!--                <a href="{% url 'news_details' n.id %}" class="btn btn-outline-danger">Lire &rarr;</a>-->
-        <!--            </div>-->
-                    
-        <!--        </div>-->
-                
-        <!--    </div>-->
-          
-        <!--    <div class="card-footer text-muted">-->
-        <!--        Publié le {{ n.published_date|date:" d.m.Y" }} par-->
-        <!--              <a href="{% url 'about'    %}#team">l'équipe !</a>-->
-        <!--    </div>-->
-            
-        <!--</div>-->
-        
         <div class="card card-list-hover mb-4" onclick="goTo('{% url 'news_details' n.id %}')">
                 
                 <div class="card-body">
