@@ -14,6 +14,14 @@ def get_list_of_animation_types(request):
 
 
 
+def research(request):
+    
+    activities = Activity_Animation_Slot.objects.all()
+    
+    return render(request, "activities/research_activities.html", {'activities':activities})
+
+
+
 def get_list_of_animations(request, animation_type):
     
     animations_type = get_object_or_404(Activity_Animation_Type, animation_type=animation_type)
