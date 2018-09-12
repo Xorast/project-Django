@@ -3,7 +3,6 @@
 
 {% block content %}
 
-
     <!-- Page Content -->
     <div class="container">
         
@@ -13,6 +12,69 @@
             <!-- Content Column -->
             <div class="col-md-12">
                 
+                <h2>Toggle Switch</h2>
+                
+                {% for c in cities %}
+                
+                    <label id="FilterToggle_city_{{ c|lower }}_label" class="switch label-round bg-filter-off text-center text-uppercase">
+                      <input type="checkbox" id="FilterToggle_city_{{ c|lower }}_input" onclick="FilterActivities('city_{{ c|lower }}', '{{ c|lower }}','data')" >
+                      <span class="slider round"></span> {{ c }}
+                    </label>
+                    
+                {% endfor %}
+                
+                <br>
+                
+                {% for d in days %}
+                
+                    <label id="FilterToggle_day_{{ d|lower }}_label" class="switch label-round bg-filter-off text-center text-uppercase">
+                      <input type="checkbox" id="FilterToggle_day_{{ d|lower }}_input" onclick="FilterActivities('day_{{ d|lower }}', '{{ d|lower }}', 'data')" >
+                      <span class="slider round"></span> {{ d }}
+                    </label>
+                    
+                {% endfor %}
+                
+                <br>
+                
+                {% for type in animation_types %}
+                
+                    <label id="FilterToggle_type_{{ type|lower|cut:" " }}_label" class="switch label-round bg-filter-off text-center text-uppercase">
+                      <input type="checkbox" id="FilterToggle_type_{{ type|lower|cut:" " }}_input" onclick="FilterActivities('type_{{ type|lower|cut:" " }}', '{{ type|lower|cut:" " }}','data')" >
+                      <span class="slider round"></span> {{ type }}
+                    </label>
+                    
+                {% endfor %}
+                
+                <br>
+                
+                <!-- Time filters -->
+                
+                    <!-- Morning -->
+                    <label id="FilterToggle_time_morning_label" class="switch label-round bg-filter-off text-center text-uppercase">
+                      <input type="checkbox" id="FilterToggle_time_morning_input" onclick="FilterActivities('time_morning', '8','time')" >
+                      <span class="slider round"></span> Matin
+                    </label>
+                    
+                    <!-- Lunch time -->
+                    <label id="FilterToggle_time_lunch_label" class="switch label-round bg-filter-off text-center text-uppercase">
+                      <input type="checkbox" id="FilterToggle_time_lunch_input" onclick="FilterActivities('time_lunch', '11','time')" >
+                      <span class="slider round"></span> Midi
+                    </label>
+                    
+                    <!-- Afternoon -->
+                    <label id="FilterToggle_time_afternoon_label" class="switch label-round bg-filter-off text-center text-uppercase">
+                      <input type="checkbox" id="FilterToggle_time_afternoon_input" onclick="FilterActivities('time_afternoon', '13','time')" >
+                      <span class="slider round"></span> Après-Midi
+                    </label>
+                    
+                    <!-- Evening -->
+                    <label id="FilterToggle_time_evening_label" class="switch label-round bg-filter-off text-center text-uppercase">
+                      <input type="checkbox" id="FilterToggle_time_evening_input" onclick="FilterActivities('time_evening', '17','time')" >
+                      <span class="slider round"></span> Soirée
+                    </label>
+                    
+                    
+                    
                 {% regroup activities by animation.animation_type as animation_by_type_list %}
                 
                 {% for animation_type in animation_by_type_list %}
@@ -52,7 +114,8 @@
                                 
                                     {% for slot in animation.list %}
                                     
-                                        <tr class={% if slot.room.venue.city.id == 2 %}"table-warning"{% endif %}>
+                                        <tr data-filter-activated="" data-filter="{{ slot.room.venue.city|lower }} {{ slot.day|lower }} {{ slot.animation.animation_type|lower|cut:" " }}" data-filter-time-start="{{ slot.time_start|time:"H" }}" 
+                                            class="filter-initialisation {% if slot.room.venue.city.id == 2 %} table-warning{% endif %}">
                                             
                                             <!--Badge - New -->
                                             <!--<td>{% if slot.new %}<span class="badge badge-pill badge-success">N</span>{% endif %}</td>        -->
@@ -135,5 +198,6 @@
         <!-- /.row -->
         
     </div>
+
             
 {% endblock %}

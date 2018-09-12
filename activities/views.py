@@ -1,5 +1,5 @@
 from django.shortcuts               import render, redirect, get_object_or_404, HttpResponse
-from .models                        import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot, Elements_Type, Host
+from .models                        import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot, Elements_Type, Host, City, Weekday
 from django.contrib.auth.decorators import login_required
 # from .models                        import EventRegistration
 
@@ -16,9 +16,15 @@ def get_list_of_animation_types(request):
 
 def research(request):
     
+    # filters
+    cities            = City.objects.all().order_by('city')
+    days              = Weekday.objects.all().order_by('id')
+    animation_types   = Activity_Animation_Type.objects.all().order_by('animation_type')
+    
+    # activities data
     activities = Activity_Animation_Slot.objects.all().order_by('animation__animation_type__animation_type','animation__name','age_group__age_min','age_group__age_max','day_id','time_start')
     
-    return render(request, "activities/research_activities.html", {'activities':activities})
+    return render(request, "activities/research_activities.html", {'cities':cities, 'days':days, 'animation_types':animation_types, 'activities':activities})
 
 
 
