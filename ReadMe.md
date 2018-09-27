@@ -3,7 +3,7 @@
 MJC association's website (2,800 members).
 
 ## OVERVIEW
-The MJC - Maison des Jeunes et de la Culture (french) - is a public organisation that offers a large panels of activities (sports, arts, ...) and workshop (cooking, science, ...) and organises events for kids, families.
+The MJC is a public organisation that offers a large panels of activities (sports, arts, ...) and workshop (cooking, science, ...) and organises events for kids, families.
 
 This application is the organisation's website.
 
