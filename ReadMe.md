@@ -1,6 +1,7 @@
 # PROJECT MJC - YOUTH & COMMUNITY CENTER
 
 MJC association's website (2,800 members).
+
 [https://mjcmauguiocarnon.herokuapp.com/](https://mjcmauguiocarnon.herokuapp.com/)
 
 ## OVERVIEW
@@ -42,7 +43,7 @@ The following frameworks and librairies have been used:
 * [Bootstrap](https://getbootstrap.com/) version 4.1.1
 
 ## CREDITS
-* [Bootswatch](https://bootswatch.com/) - Used theme [here](https://bootswatch.com/cerulean/)
+* Theme: [Bootswatch](https://bootswatch.com/) - Used theme [here](https://bootswatch.com/cerulean/)
 
 ## UPCOMMING DEVELOPMENT
 The next steps in the development are :
