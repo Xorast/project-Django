@@ -11,15 +11,15 @@ The aim of this website is to display the whole panels of activities, workshop a
 Any information should be at 3 clicks away maximum from the user position.
 
 The MVP - Minimum Viable Product - has been delivered for the Back-To-School day (where 90% of the registrations happens).
-The development is still undergoing for extra features: research tool, profile page for members, ...
+The development is still undergoing for extra features: research tool, profile page for members,...
 
-The application can be divided into four subapplications :
+The application can be divided into four subapplications:
 * Views (Information sections)
 * Activities
 * Workshops
-* Events
-* News
-* Accounts
+* Events (posts "events")
+* News (posts "news")
+* Accounts (user space)
 * Checkout (online payment) - Deactivated (waiting for client to be ready)
 
     
