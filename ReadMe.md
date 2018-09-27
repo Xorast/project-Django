@@ -2,7 +2,8 @@
 
 MJC association's website (2,800 members).
 
-[https://mjcmauguiocarnon.herokuapp.com/](https://mjcmauguiocarnon.herokuapp.com/)
+Temporary domain: [https://mjcmauguiocarnon.herokuapp.com/](https://mjcmauguiocarnon.herokuapp.com/)  
+Long term domain: [http://www.mjcmauguiocarnon.fr/](http://www.mjcmauguiocarnon.fr/) - Redirects towards the temporary domain for now.
 
 ## OVERVIEW
 The MJC is a public organisation that offers a large panels of activities (sports, arts, ...) and workshop (cooking, science, ...) and organises events for kids, families.
@@ -16,13 +17,13 @@ The MVP - Minimum Viable Product - has been delivered for the Back-To-School day
 The development is still undergoing for extra features: research tool, profile page for members,...
 
 The application can be divided into four subapplications:
-* Views (Information sections)
-* Activities
-* Workshops
-* Events (posts "events")
-* News (posts "news")
-* Accounts (user space)
-* Checkout (online payment) - Deactivated (waiting for client to be ready)
+* Views - Information sections
+* Activities - Handles the "Activités" section of the website
+* Workshops - Handles the "Stage" section of the website
+* Events - Handles the "Evénement" section of the website
+* News - Handles the "Evénement" section of the website
+* Accounts - Login / User space
+* Checkout - Handles online payment for registrations to activities / workshop / events. Deactivated (waiting for client to be ready).
 
     
 ## AUTHOR(S)
