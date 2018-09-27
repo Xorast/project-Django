@@ -1,61 +1,41 @@
-# PROJECT TRINITY
+# PROJECT MJC - YOUTH & COMMUNITY CENTER
 
-## OVERVIEW - WHAT IS THIS APPLICATION FOR ?
+## OVERVIEW
+The MJC - Maison des Jeunes et de la Culture (french) - is a public organisation that offers a large panels of activities (sports, arts, ...) and workshop (cooking, science, ...) and organises events for kids, families.
 
-Trinity College has a desktop application that is shared locally. They want to make this tool available to all researchers and engineers worldwide and they decided to create this web app to do so.
+This application is this organisation's website.
 
-This tool enables mainly to determine one important characteristic of a karst (underground water) system : its base flow (output data) from data uploaded (input data) to the website, such as date/flow/rain/...
+The aim of this website is to display the whole panels of activities, workshop and events that the MJC offers.
+Any information should be at 3 clicks away maximum from the user position.
 
-Several methods are used to determine the base flow and can be compared. 
+The MVP - Minimum Viable Product - has been delivered for the Back-To-School day (where 90% of the registrations happens).
+The development is still undergoing for extra features: research tool, profile page for members, ...
 
-Other outputs are made available.
+The application can be divided into four parts :
+* Information sections (static)
+* Activities section (template & data base)
+* Workshops section (template & data base)
+* Events section (template & data base)
 
-The application consists of two parts : 
-   * Calculations [Test Driven Development]
-   * Presentation of the outputs : data visualisation with dynamics charts [DC/Crossfilter/D3]
-   
-## WHO IS THIS APPLICATION FOR ?
-
-This application is made available publicly for hydrologists from universities as well as private companies.
-
-## HOW TO USE IT ?
-
-Once on the website [website url & link] landing page, the user is walked through the following steps:
-
-* Making sure the input data format is correct (csv format, order of the data: 1. rain, 2. flow, ...))
-* Uploading the data file
-* Then, the application processes the data and generates :
-  * Output data in a downloadable csv file
-  * Dynamic charts
     
 ## AUTHOR(S)
+* Xorast
 
-   * Xorast
-   
-With the help of the Code Institute Staff.
 
 ## BUILT WITH
 ### LANGUAGES
-
-  * JavaScript
-  * HTML5 
-  * CSS3
+* Python 3  (3.4.3)
+* JavaScript
+* HTML5 
+* CSS3
 
 ### FRAMEWORK & LIBRAIRIES
-   * Bootstrap version X.Y (Link to be supplied)
-   * Crossfilter / DC / D3 (Links to be supplied)
-
-### TDD
-   * Jasmine (Link to be supplied)
-
-## TESTING
-  * See this link for the test table
+* Django 2.0
+* Bootstrap version 4.0
 
 ## CREDITS
-### MEDIAS
-### INFORMATION
-
-## LICENSE
+* Bootswatch
+* Stack Overflow
 
 ## FEATURES
 ### FEATURES - IMPLEMENTED 
