@@ -48,7 +48,7 @@
                     <!-- About -->
                     <li id="dropdown_1A" class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'about' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goToNavbar('{% url 'about' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         L'ASSOCIATION
                         </a>
 
@@ -67,7 +67,7 @@
                     <!-- Activities -->
                     <li id="dropdown_1A" class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'a_list_of_animations_types' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goToNavbar('{% url 'a_list_of_animations_types' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ACTIVITÉS
                         </a>
 
@@ -91,7 +91,7 @@
                     <!-- Workshops -->
                     <li id="dropdown_2A" class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'w_list_of_animations_types' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goToNavbar('{% url 'w_list_of_animations_types' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         STAGES
                         </a>
 
@@ -118,7 +118,7 @@
                     <!-- Youth -->
                     <li class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'youth_mauguio' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goToNavbar('{% url 'youth_mauguio' %}')" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         JEUNESSE
                         </a>
 
@@ -128,7 +128,7 @@
                                 
                                 <li class="nav-item dropdown-menu-2">
         
-                                    <a class="dropdown-item txt-white" href="{% url 'youth_mauguio' %}">
+                                    <a class="dropdown-item txt-white" onclick="goToNavbar('{% url 'youth_mauguio' %}')">
                                     Mauguio
                                     </a>
 
@@ -144,7 +144,7 @@
                                 
                                 <li class="nav-item dropdown-menu-2">
                                 
-                                    <a class="dropdown-item txt-white" href="{% url 'youth_carnon' %}">
+                                    <a class="dropdown-item txt-white"  onclick="goToNavbar('{% url 'youth_carnon' %}')">
                                     Carnon   
                                     </a>
 
@@ -169,7 +169,7 @@
                     <!-- Solidarity -->
                     <li id="dropdown_1A" class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" onclick="goTo('#')" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goToNavbar('#')" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         VIVRE ENSEMBLE
                         </a>
 
@@ -184,7 +184,7 @@
                     <!-- Info -->
                     <li id="dropdown_4A" class="nav-item dropdown cursor">
 
-                        <a class="nav-link dropdown-toggle" onclick="goTo('{% url 'info' %}')" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" onclick="goToNavbar('{% url 'info' %}')" id="navbarDropdownMenuLink" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           INFOS PRATIQUES
                         </a>
 
