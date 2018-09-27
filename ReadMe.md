@@ -29,14 +29,22 @@ The application can be divided into four subapplications:
 
 ## BUILT WITH
 ### LANGUAGES
+The application is written in:
 * [Python 3](https://www.python.org/) (3.4.3) 
 * JavaScript
 * HTML5 
 * CSS3
 
 ### FRAMEWORKS & LIBRAIRIES
+The following frameworks and librairies have been used:
 * [Django 2.0](https://www.djangoproject.com/)
 * [Bootstrap](https://getbootstrap.com/) version 4.1.1
 
 ## CREDITS
 * [Bootswatch](https://bootswatch.com/) - Used theme [here](https://bootswatch.com/cerulean/)
+
+## UPCOMMING DEVELOPMENT
+The next steps in the development are :
+
+* Online payment for registrations to be activated
+* Research tool to be implemented
