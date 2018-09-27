@@ -21,7 +21,7 @@ The application can be divided into four subapplications:
 * Activities - Handles the "Activités" section of the website
 * Workshops - Handles the "Stage" section of the website
 * Events - Handles the "Evénement" section of the website
-* News - Handles the "Evénement" section of the website
+* News - Handles the "Actu" section of the website
 * Accounts - Login / User space
 * Checkout - Handles online payment for registrations to activities / workshop / events. Deactivated (waiting for client to be ready).
 
