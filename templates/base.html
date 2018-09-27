@@ -228,7 +228,21 @@
                     {% endif %} {% else %}
 
                     <!--Login -->
-                    <li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Se connecter</span></a>
+                    <!--Login - badge version -->
+                    <!--<li class="nav-item"><a class="nav-link" href="{% url 'Login'    %}?next={{ request.path }}" ><span class="badge-nav-hover-warning badge badge-pill badge-warning">Se connecter</span></a>-->
+                    <!--</li>-->
+                    
+                    <!--Login - icon version -->
+                    <li class="nav-item"><a class="nav-link"    href="{% url 'Login'    %}?next={{ request.path }}"><span class="tooltip"><svg class="svg-white svg-mini-2 ml-5"
+                                                                                                enable-background="new 0 0 128 128"
+                                                                                                viewBox="0 0 128 128">
+                                                                                                <circle  class="userprofile" id="userProfileCircle" fill="#DD5600" cx="64" cy="64"  id="circle" r="64"/>
+                                                                                                <g id="icon">
+                                                                                                    <path class="userprofile" id="userProfileUser" fill="white" d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20 M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35"/>
+                                                                                                </g>
+                                                                                            </svg><span class="tooltiptext-navbar text-nowrap">Log in</span></span>
+                                                                                            </a>
+
                     </li>
 
                     <!--Register: to put back again when client is ready -->
