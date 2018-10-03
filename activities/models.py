@@ -227,7 +227,7 @@ class Activity_Animation_Slot(models.Model):
     animation                 = models.ForeignKey(Activity_Animation,  related_name="Slot", on_delete=models.SET_NULL, null=True)
     age_group                 = models.ForeignKey(Age_Group,  related_name="Slot",          on_delete=models.SET_NULL, null=True)
     level                     = models.ForeignKey(Level,      related_name="Slot",          on_delete=models.SET_NULL, null=True, blank=True)
-    name                      = models.CharField("Nom/Désignation", max_length=50,                                                 null=True, blank=True)
+    name                      = models.CharField("Nom/Désignation", max_length=50,                                     null=True, blank=True)
     new                       = models.BooleanField("Nouveau",default=None)
     host                      = models.ManyToManyField(Host,  related_name="Slot",                                                blank=True)
     day                       = models.ForeignKey(Weekday,    related_name="Slot",          on_delete=models.SET_NULL, null=True, blank=True)
@@ -235,14 +235,14 @@ class Activity_Animation_Slot(models.Model):
     time_end                  = models.TimeField("Heure de fin",                                                       null=True, blank=True)
     room                      = models.ForeignKey(Room,       related_name="Slot",          on_delete=models.SET_NULL, null=True)
     description               = models.TextField("Présentation (spécifique à ce crénau)",                              null=True, blank=True)
-    rate_resident_1_name      = models.CharField("MC - Tarif 1 - Désignation ", max_length=50,                           null=True, blank=True)
-    rate_resident_1           = models.PositiveSmallIntegerField("MC - Tarif 1 - €",                                     null=True, blank=True)
-    rate_resident_2_name      = models.CharField("MC - Tarif 2  - Désignation ", max_length=50,                           null=True, blank=True)
-    rate_resident_2           = models.PositiveSmallIntegerField("MC - Tarif 2 - €",                                     null=True, blank=True)
-    rate_non_resident_1_name  = models.CharField("Hors MC - Tarif 1 - Désignation ", max_length=50,                      null=True, blank=True)
-    rate_non_resident_1       = models.PositiveSmallIntegerField("Hors MC - Tarif 1 - €",                                null=True, blank=True)
-    rate_non_resident_2_name  = models.CharField("Hors MC - Tarif 2 - Désignation ", max_length=50,                      null=True, blank=True)
-    rate_non_resident_2       = models.PositiveSmallIntegerField("Hors MC - Tarif 2 - €",                                null=True, blank=True)
+    rate_resident_1_name      = models.CharField("MC - Tarif 1 - Désignation ", max_length=50,                         null=True, blank=True)
+    rate_resident_1           = models.PositiveSmallIntegerField("MC - Tarif 1 - €",                                   null=True, blank=True)
+    rate_resident_2_name      = models.CharField("MC - Tarif 2  - Désignation ", max_length=50,                        null=True, blank=True)
+    rate_resident_2           = models.PositiveSmallIntegerField("MC - Tarif 2 - €",                                   null=True, blank=True)
+    rate_non_resident_1_name  = models.CharField("Hors MC - Tarif 1 - Désignation ", max_length=50,                    null=True, blank=True)
+    rate_non_resident_1       = models.PositiveSmallIntegerField("Hors MC - Tarif 1 - €",                              null=True, blank=True)
+    rate_non_resident_2_name  = models.CharField("Hors MC - Tarif 2 - Désignation ", max_length=50,                    null=True, blank=True)
+    rate_non_resident_2       = models.PositiveSmallIntegerField("Hors MC - Tarif 2 - €",                              null=True, blank=True)
     notes                     = models.TextField("Notes particulières (spécifique à ce crénau)",                       null=True, blank=True)
 
     def __str__(self):
@@ -253,39 +253,8 @@ class Activity_Animation_Slot(models.Model):
         verbose_name_plural = '3. Animations - Créneaux'
    
         
-# Model deleted
-# class Event(models.Model):
     
-    # event_type        = models.ForeignKey(Event_Type, related_name="Event",          on_delete=models.SET_NULL, null=True)
-    # animation         = models.ForeignKey(Animation,  related_name="Event",          on_delete=models.SET_NULL, null=True)
-    # name              = models.CharField("Nom", max_length=100)
-    # period            = models.ForeignKey(Period,     related_name="Event",          on_delete=models.SET_NULL, null=True)
-    # host_1            = models.ForeignKey(Host,       related_name="Event_host_1",   on_delete=models.SET_NULL, null=True)
-    # host_2            = models.ForeignKey(Host,       related_name="Event_host_2",   on_delete=models.SET_NULL, null=True)
-    # host_3            = models.ForeignKey(Host,       related_name="Event_host_3",   on_delete=models.SET_NULL, null=True)
-    # host_4            = models.ForeignKey(Host,       related_name="Event_host_4",   on_delete=models.SET_NULL, null=True)
-    # host_5            = models.ForeignKey(Host,       related_name="Event_host_5",   on_delete=models.SET_NULL, null=True)
-    # day               = models.ForeignKey(Weekday,    related_name="Event",          on_delete=models.SET_NULL, null=True)
-    # time_start        = models.TimeField("Heure de début", null=True)
-    # time_end          = models.TimeField("Heure de fin",   null=True)
-    # # dates             = ArrayField(models.DateTimeField(auto_now=False, auto_now_add=False))
-    # age_group         = models.ForeignKey(Age_Group,  related_name="Event",          on_delete=models.SET_NULL, null=True)
-    # level             = models.ForeignKey(Level,      related_name="Event",          on_delete=models.SET_NULL, null=True)
-    # room              = models.ForeignKey(Room,       related_name="Event",          on_delete=models.SET_NULL, null=True)
-    # number_max        = models.PositiveSmallIntegerField("Nb max participants", null=True)
-    # number_available  = models.PositiveSmallIntegerField("Nb places libres", null=True)
-    # rate_resident     = models.DecimalField("Tarif MC", max_digits=6, decimal_places=2, null=True)
-    # rate_non_resident = models.DecimalField("Tarif hors MC", max_digits=6, decimal_places=2, null=True)
-    
-    # def __str__(self):
-    #     return self.name
-    
-    # class Meta:
-    #     verbose_name = 'Elément'
-    #     verbose_name_plural = 'Eléments'
-        
-        
-# Feature must be deactivated 
+# Feature deactivated 
 # class EventRegistration(models.Model):
     
 #     participant         = models.ForeignKey(User, related_name="RegistrationList",  on_delete=models.PROTECT, null=False)
@@ -300,14 +269,3 @@ class Activity_Animation_Slot(models.Model):
 #     class Meta:
 #         verbose_name = 'Inscription'
 #         verbose_name_plural = 'Inscriptions'
-        
-# ----------------------------------------------------------------------
-    # Notes : 
-    # It's possible to define a function to automatically fill a field : 
-    # @property
-    # def banana_1(self):
-    #     return "This is the value"
-    
-    # @property
-    # def banana_2(self):
-    #     return "This is the value"

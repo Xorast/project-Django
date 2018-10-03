@@ -23,7 +23,7 @@ The application can be divided into four subapplications:
 * Events - Handles the "Evénement" section of the website
 * News - Handles the "Actu" section of the website
 * Accounts - Login / User space
-* Checkout - Handles online payment for registrations to activities / workshop / events. Deactivated (waiting for client to be ready).
+* Checkout - Handles online payment for registrations to activities / workshop / events. DEACTIVATED - Waiting for client to be ready.
 
     
 ## AUTHOR(S)
