@@ -1,7 +1,7 @@
 import os
 from django.conf.urls.static    import static
 from django.conf                import settings
-from djangoapp.settings.local   import MEDIA_URL
+from djangoapp.settings.prod    import MEDIA_URL
 from django.shortcuts           import render, redirect, get_object_or_404, HttpResponse
 from django.http                import FileResponse, Http404
 from .models                    import Event_Family, Event
