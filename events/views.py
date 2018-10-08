@@ -25,10 +25,11 @@ def get_event_details(request, event_id):
 
 def get_event_file(request, event_id):
     
-    event = get_object_or_404(Event, id=event_id)
+    event   = get_object_or_404(Event, id=event_id)
+    url     = "media/" + str(event.file)
     
     try:
-        return FileResponse(open('media/files/events/JourDelaNuit.pdf', 'rb'), content_type='application/pdf')
+        return FileResponse(open(url, 'rb'), content_type='application/pdf')
     
     except FileNotFoundError:
         raise Http404()
