@@ -45,7 +45,7 @@
                 </div>
                 
                 <div class="col-md-9">
-                    <a href="{% url 'event_file' event.id %}" target="_blank">
+                    <a href="{{ MEDIA_URL }}{{ event.file }}" target="_blank">
                         <button class="btn btn-outline-warning text-uppercase">PLAQUETTE DE L'EVENEMENT (PDF)</button>
                     </a>
                 </div>
