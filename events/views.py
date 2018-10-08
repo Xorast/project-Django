@@ -1,8 +1,8 @@
-from django.shortcuts       import render, redirect, get_object_or_404, HttpResponse
-from django.http            import FileResponse, Http404
-from .models                import Event_Family, Event
-from datetime               import datetime, timedelta
-
+from django.shortcuts           import render, redirect, get_object_or_404, HttpResponse
+from django.http                import FileResponse, Http404
+from .models                    import Event_Family, Event
+from datetime                   import datetime, timedelta
+from djangoapp.settings.prod    import MEDIA_URL
 
 
 
@@ -26,7 +26,7 @@ def get_event_details(request, event_id):
 def get_event_file(request, event_id):
     
     event   = get_object_or_404(Event, id=event_id)
-    url     = "media/" + str(event.file)
+    url     = MEDIA_URL + str(event.file)
     
     try:
         return FileResponse(open(url, 'rb'), content_type='application/pdf')
