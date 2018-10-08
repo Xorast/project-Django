@@ -2,7 +2,7 @@ from django.conf.urls.static    import static
 from django.views.static        import serve
 from django.conf                import settings
 from django.urls                import path
-from .views                     import get_home_page, get_about_page, get_info_page, get_calendar_activities_page, get_youth_mauguio_page, get_youth_carnon_page, get_venue, get_venues_list, get_host, get_admin_panel, get_rate_and_registration_activities_page, get_rate_and_registration_workshop_page, edit_activity, edit_workshop   
+from .views                     import get_home_page, get_about_page, get_info_page, get_calendar_activities_page, get_youth_mauguio_page, get_youth_carnon_page, get_venue, get_venues_list, get_host, get_admin_panel, get_rate_and_registration_activities_page, get_rate_and_registration_workshop_page, edit_activity, edit_workshop #, get_pdf_file   
 
 
 # For the featuring of subtypes : instead of 3 URL : make only one with a variable. Like djangoblog.
@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin_panel', get_admin_panel, name='admin_panel'),
     path('admin/activity/<activity_slot_id>', edit_activity, name='admin_edit_activity'),
     path('admin/workshop/<workshop_slot_id>', edit_workshop, name='admin_edit_workshop'),
-    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT})
+    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
+    # path('testingpdf', get_pdf_file, name='pdf')
 ]

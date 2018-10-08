@@ -1,10 +1,19 @@
 from django.shortcuts       import render, redirect, get_object_or_404
+from django.http            import FileResponse, Http404
 from activities.models      import Venue, Host
 from news.models            import News
 
 
 
 
+# Testing PDF file
+# def get_pdf_file(request, filename):
+    
+#     try:
+#         return FileResponse(open('media/files-download/' + str(filename), 'rb'), content_type='application/pdf')
+    
+#     except FileNotFoundError:
+#         raise Http404()
 
 
 

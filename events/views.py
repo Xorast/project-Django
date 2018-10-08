@@ -1,4 +1,5 @@
 from django.shortcuts       import render, redirect, get_object_or_404, HttpResponse
+from django.http            import FileResponse, Http404
 from .models                import Event_Family, Event
 from datetime               import datetime, timedelta
 
@@ -19,3 +20,15 @@ def get_event_details(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     
     return render(request, "events/event_details.html", {'event':event})
+    
+
+
+def get_event_file(request, event_id):
+    
+    event = get_object_or_404(Event, id=event_id)
+    
+    try:
+        return FileResponse(open('media/files/events/JourDelaNuit.pdf', 'rb'), content_type='application/pdf')
+    
+    except FileNotFoundError:
+        raise Http404()

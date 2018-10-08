@@ -35,6 +35,23 @@
                     <strong>{{ event.bubble_info}}</strong>
             </div>
             {% endif %}
+         
+            
+            {% if event.file %}
+            <div class="mt-3 row">
+                            
+                <div class="col-md-3">
+                    <strong><span class="text-nowrap"></span></strong>
+                </div>
+                
+                <div class="col-md-9">
+                    <a href="{% url 'event_file' event.id %}" target="_blank">
+                        <button class="btn btn-outline-warning text-uppercase">PLAQUETTE DE L'EVENEMENT (PDF)</button>
+                    </a>
+                </div>
+                            
+            </div>
+            {% endif %}
             
             <div class="mt-3 row">
                             
@@ -47,6 +64,7 @@
                 </div>
                             
             </div>
+                                
             
             {% if event.venue|length > 0 %}
             <div class="mt-3 row">
