@@ -27,8 +27,17 @@ def get_event_details(request, event_id):
 def get_event_file(request, event_id):
     
     event   = get_object_or_404(Event, id=event_id)
+    # url     = os.path.join(settings.MEDIA_ROOT, str(event.file))
     url     = os.path.join(settings.MEDIA_ROOT, str(event.file))
+    print(" ")
+    print("***- START -***")
+    print(settings.MEDIA_ROOT)
+    print("***")
+    print(event.file)
+    print("***")
     print(url)
+    print("***- END -***")
+    print(" ")
  
     try:
         return FileResponse(open(url, 'rb'), content_type='application/pdf')
