@@ -39,6 +39,7 @@ def get_list_of_animations(request, animation_type):
 
 def get_animation_details(request, animation_type, animation, animation_id):
 
+    animation_type  = animation_type
     animation       = get_object_or_404(Activity_Animation, id=animation_id)
     slots           = Activity_Animation_Slot.objects.filter(animation=animation).order_by('age_group__age_min','age_group__age_max','name','day_id','time_start')
     
@@ -53,10 +54,37 @@ def get_animation_details(request, animation_type, animation, animation_id):
     unmentionned_rate_text = "Si le tarif n'est pas indiqué dans les notes, contacter la MJC."
     two_rates_no_info_on_second_rate = "Contacter la MJC pour connaitre les conditions du deuxième tarif."
     
-    return render(request, "activities/animation_details.html", {'animation':animation,'slots':slots, 'hosts':hosts, 'unmentionned_rate_text':unmentionned_rate_text, 'two_rates_no_info_on_second_rate':two_rates_no_info_on_second_rate})
+    return render(request, "activities/animation_details.html", {'animation_type':animation_type, 'animation':animation,'slots':slots, 'hosts':hosts, 'unmentionned_rate_text':unmentionned_rate_text, 'two_rates_no_info_on_second_rate':two_rates_no_info_on_second_rate})
 
 
 
+@login_required
+def register_to_animation_slot(request, animation_type, animation, animation_id, slot_id):
+    
+    animation_type  = animation_type
+    animation       = get_object_or_404(Activity_Animation, pk=animation_id)
+    slot            = get_object_or_404(Activity_Animation_Slot, pk=slot_id)
+    
+#     if event.number_available > 0 :
+    
+#         check   = EventRegistration.objects.filter(participant=request.user,event=event).count()
+        
+#         if check == 0:
+            
+    return render(request, "activities/animation_registration.html", {"animation_type":animation_type,"animation":animation, "slot": slot})
+            
+#         else:
+            
+#             error = "You are already registered to this event. If you want to register someone else, please login under with his/her session."
+#             return render(request, "activities/event_registration_request_failed.html", {"error":error})
+            
+#     else:
+        
+#         error = "There are no place available."
+        # return render(request, "activities/event_registration_request_failed.html", {"error":error})
+
+
+# ------------------------------------------------------------------------------
 
 # To be deleted
 # def get_type_subtypes(request, event_type):
@@ -83,28 +111,3 @@ def get_animation_details(request, animation_type, animation, animation_id):
 #     event           = get_object_or_404(Event, pk=event_id)
     
 #     return render(request, "activities/event_details.html", {"event": event})
-
-
-# To be deleted
-# @login_required
-# def register_to_event(request, event_type, event_subtype, event_id):
-    
-#     event   = get_object_or_404(Event, pk=event_id)
-    
-#     if event.number_available > 0 :
-    
-#         check   = EventRegistration.objects.filter(participant=request.user,event=event).count()
-        
-#         if check == 0:
-            
-#             return render(request, "activities/event_registration.html", {"event": event})
-            
-#         else:
-            
-#             error = "You are already registered to this event. If you want to register someone else, please login under with his/her session."
-#             return render(request, "activities/event_registration_request_failed.html", {"error":error})
-            
-#     else:
-        
-#         error = "There are no place available."
-#         return render(request, "activities/event_registration_request_failed.html", {"error":error})

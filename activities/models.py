@@ -254,18 +254,17 @@ class Activity_Animation_Slot(models.Model):
    
         
     
-# Feature deactivated 
-# class EventRegistration(models.Model):
+class Activity_Registration(models.Model):
     
-#     participant         = models.ForeignKey(User, related_name="RegistrationList",  on_delete=models.PROTECT, null=False)
-#     event               = models.ForeignKey(Event, related_name="RegistrationList", on_delete=models.PROTECT, null=False)
+    participant         = models.ForeignKey(User, related_name="RegistrationList",  on_delete=models.SET_NULL, null=True)
+    activity_slot       = models.ForeignKey(Activity_Animation_Slot, related_name="RegistrationList", on_delete=models.SET_NULL, null=True)
     
-#     class Meta:
-#         unique_together = ["participant", "event"]
+    class Meta:
+        unique_together = ["participant", "activity_slot"]
     
-#     def __str__(self):
-#         return 'Event Registration N° %s' % (self.id)
+    def __str__(self):
+        return 'Activity Slot Registration N° %s' % (self.id)
     
-#     class Meta:
-#         verbose_name = 'Inscription'
-#         verbose_name_plural = 'Inscriptions'
+    class Meta:
+        verbose_name = 'Inscription'
+        verbose_name_plural = 'Inscriptions'

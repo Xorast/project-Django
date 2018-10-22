@@ -22,7 +22,7 @@ from accounts       import urls as accounts_urls
 from activities     import urls as activities_urls
 from workshops      import urls as workshops_urls
 from events         import urls as events_urls
-# from checkout       import urls as checkout_urls
+from checkout       import urls as checkout_urls
 
 urlpatterns = [
     path('admin/',      admin.site.urls),
@@ -32,5 +32,5 @@ urlpatterns = [
     path('activities/', include(activities_urls)),
     path('workshops/',  include(workshops_urls)),
     path('events/',     include(events_urls)),
-    # path('checkout/',   include(checkout_urls))
+    path('checkout/',   include(checkout_urls))
 ]
