@@ -44,21 +44,6 @@
         <div class="row mt-3">
             <div class="col-md-12 text-center">
 
-                <h4>Type(s) d'animation</h4>
-
-                {% for type in animation_types %}
-
-                <label id="FilterToggle_type_{{ type|lower|cut:" " }}_label" class="switch label-round bg-filter-off text-center text-uppercase">
-                          <input type="checkbox" id="FilterToggle_type_{{ type|lower|cut:" " }}_input" onclick="FilterActivities('type_{{ type|lower|cut:" " }}', '{{ type|lower|cut:" " }}','animation_type')" >
-                          <span class="slider round"></span> {{ type }}
-                        </label> {% endfor %}
-
-            </div>
-        </div>
-
-        <div class="row mt-3">
-            <div class="col-md-12 text-center">
-
                 <h4>Moment(s) de la journée</h4>
                 <!-- Time filters -->
 
@@ -85,6 +70,21 @@
                           <input type="checkbox" id="FilterToggle_time_evening_input" onclick="FilterActivities('time_evening', '17','time')" >
                           <span class="slider round"></span> Soirée
                         </label>
+
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+
+                <h4>Type(s) d'animation</h4>
+
+                {% for type in animation_types %}
+
+                <label id="FilterToggle_type_{{ type|lower|cut:" " }}_label" class="switch label-round bg-filter-off text-center text-uppercase">
+                          <input type="checkbox" id="FilterToggle_type_{{ type|lower|cut:" " }}_input" onclick="FilterActivities('type_{{ type|lower|cut:" " }}', '{{ type|lower|cut:" " }}','animation_type')" >
+                          <span class="slider round"></span> {{ type }}
+                        </label> {% endfor %}
 
             </div>
         </div>
@@ -140,7 +140,7 @@
                         
                                                 {% for slot in animation.list %}
                         
-                                                <tr data-filter-activated="" data-filter-day="{{ slot.day|lower }} {{ slot.animation.animation_type|lower|cut:" " }}" data-filter-city="{{ slot.room.venue.city|lower }}" data-filter-time-start="{{ slot.time_start|time:" H " }}" class="filter-initialisation {% if slot.room.venue.city.id == 2 %} table-warning{% endif %}">
+                                                <tr data-filter-activated="" data-filter-day="{{ slot.day|lower }} {{ slot.animation.animation_type|lower|cut:" " }}" data-filter-city="{{ slot.room.venue.city|lower }}" data-filter-time-start="{{ slot.time_start|time:"H" }}" class="filter-initialisation {% if slot.room.venue.city.id == 2 %} table-warning{% endif %}">
                         
                                                     <!--Badge - New -->
                                                     <!--<td>{% if slot.new %}<span class="badge badge-pill badge-success">N</span>{% endif %}</td>        -->
