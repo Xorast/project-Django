@@ -72,8 +72,12 @@
                         </a>
 
                         <div id="dropdown_1B" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-
-                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}">Voir toutes les activités            </a> 
+                            
+                            <a class="dropdown-item txt-white" href="{% url 'a_research' %}">Rechercher des activités            </a> 
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <a class="dropdown-item txt-white" href="{% url 'a_list_of_animations_types' %}">Toutes les activités            </a> 
                             {% for n in animations_types_activities %}
                             <a class="dropdown-item txt-white text-capitalize" href="{% url 'a_list_of_animations' n.animation_type %}">{{ n.animation_type }} </a> 
                             {% endfor %}
