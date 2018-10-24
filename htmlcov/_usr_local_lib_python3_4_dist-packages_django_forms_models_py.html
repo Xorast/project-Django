@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for /usr/local/lib/python3.4/dist-packages/django/forms/models.py: 33%</title>
+    <title>Coverage for /usr/local/lib/python3.4/dist-packages/django/forms/models.py: 34%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>/usr/local/lib/python3.4/dist-packages/django/forms/models.py</b> :
-            <span class="pc_cov">33%</span>
+            <span class="pc_cov">34%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             696 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">230 run</span>
-            <span class="mis shortkey_m button_toggle_mis">466 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">234 run</span>
+            <span class="mis shortkey_m button_toggle_mis">462 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -513,22 +513,22 @@
 <p id="n444" class="pln"><a href="#n444">444</a></p>
 <p id="n445" class="pln"><a href="#n445">445</a></p>
 <p id="n446" class="pln"><a href="#n446">446</a></p>
-<p id="n447" class="stm mis"><a href="#n447">447</a></p>
+<p id="n447" class="stm run hide_run"><a href="#n447">447</a></p>
 <p id="n448" class="stm mis"><a href="#n448">448</a></p>
 <p id="n449" class="pln"><a href="#n449">449</a></p>
 <p id="n450" class="pln"><a href="#n450">450</a></p>
 <p id="n451" class="pln"><a href="#n451">451</a></p>
 <p id="n452" class="pln"><a href="#n452">452</a></p>
 <p id="n453" class="pln"><a href="#n453">453</a></p>
-<p id="n454" class="stm mis"><a href="#n454">454</a></p>
+<p id="n454" class="stm run hide_run"><a href="#n454">454</a></p>
 <p id="n455" class="pln"><a href="#n455">455</a></p>
 <p id="n456" class="stm mis"><a href="#n456">456</a></p>
 <p id="n457" class="stm mis"><a href="#n457">457</a></p>
 <p id="n458" class="pln"><a href="#n458">458</a></p>
 <p id="n459" class="pln"><a href="#n459">459</a></p>
 <p id="n460" class="pln"><a href="#n460">460</a></p>
-<p id="n461" class="stm mis"><a href="#n461">461</a></p>
-<p id="n462" class="stm mis"><a href="#n462">462</a></p>
+<p id="n461" class="stm run hide_run"><a href="#n461">461</a></p>
+<p id="n462" class="stm run hide_run"><a href="#n462">462</a></p>
 <p id="n463" class="pln"><a href="#n463">463</a></p>
 <p id="n464" class="stm run hide_run"><a href="#n464">464</a></p>
 <p id="n465" class="pln"><a href="#n465">465</a></p>
@@ -1874,22 +1874,22 @@
 <p id="t444" class="pln"><span class="str">        a save_m2m() method to the form which can be called after the instance</span><span class="strut">&nbsp;</span></p>
 <p id="t445" class="pln"><span class="str">        is saved manually at a later time. Return the model instance.</span><span class="strut">&nbsp;</span></p>
 <p id="t446" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
-<p id="t447" class="stm mis">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">errors</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t447" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">errors</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t448" class="stm mis">            <span class="key">raise</span> <span class="nam">ValueError</span><span class="op">(</span><span class="strut">&nbsp;</span></p>
 <p id="t449" class="pln">                <span class="str">"The %s could not be %s because the data didn't validate."</span> <span class="op">%</span> <span class="op">(</span><span class="strut">&nbsp;</span></p>
 <p id="t450" class="pln">                    <span class="nam">self</span><span class="op">.</span><span class="nam">instance</span><span class="op">.</span><span class="nam">_meta</span><span class="op">.</span><span class="nam">object_name</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t451" class="pln">                    <span class="str">'created'</span> <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">instance</span><span class="op">.</span><span class="nam">_state</span><span class="op">.</span><span class="nam">adding</span> <span class="key">else</span> <span class="str">'changed'</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t452" class="pln">                <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t453" class="pln">            <span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t454" class="stm mis">        <span class="key">if</span> <span class="nam">commit</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t454" class="stm run hide_run">        <span class="key">if</span> <span class="nam">commit</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t455" class="pln">            <span class="com"># If committing, save the instance and the m2m data immediately.</span><span class="strut">&nbsp;</span></p>
 <p id="t456" class="stm mis">            <span class="nam">self</span><span class="op">.</span><span class="nam">instance</span><span class="op">.</span><span class="nam">save</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t457" class="stm mis">            <span class="nam">self</span><span class="op">.</span><span class="nam">_save_m2m</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t458" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t459" class="pln">            <span class="com"># If not committing, add a method to the form to allow deferred</span><span class="strut">&nbsp;</span></p>
 <p id="t460" class="pln">            <span class="com"># saving of m2m data.</span><span class="strut">&nbsp;</span></p>
-<p id="t461" class="stm mis">            <span class="nam">self</span><span class="op">.</span><span class="nam">save_m2m</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_save_m2m</span><span class="strut">&nbsp;</span></p>
-<p id="t462" class="stm mis">        <span class="key">return</span> <span class="nam">self</span><span class="op">.</span><span class="nam">instance</span><span class="strut">&nbsp;</span></p>
+<p id="t461" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">save_m2m</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_save_m2m</span><span class="strut">&nbsp;</span></p>
+<p id="t462" class="stm run hide_run">        <span class="key">return</span> <span class="nam">self</span><span class="op">.</span><span class="nam">instance</span><span class="strut">&nbsp;</span></p>
 <p id="t463" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t464" class="stm run hide_run">    <span class="nam">save</span><span class="op">.</span><span class="nam">alters_data</span> <span class="op">=</span> <span class="key">True</span><span class="strut">&nbsp;</span></p>
 <p id="t465" class="pln"><span class="strut">&nbsp;</span></p>
@@ -2796,7 +2796,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-10-23 18:40
+            created at 2018-10-24 13:37
         </p>
     </div>
 </div>
