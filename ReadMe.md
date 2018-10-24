@@ -28,6 +28,7 @@ This application used by members of the association or people that are not membe
 The content and the UI is straightforward: you look for an information by accessing the sections throught the navbar and then click your way to more and more specific pages/information. 
 
 ## AUTHOR(S)
+
 * Xorast
 
 ## ARCHITECTURE
@@ -56,7 +57,20 @@ To deploy this application, you'll need to:
 * Set a Stripe account and set tokens.
 
 ## TESTING
+
+CI - Continuous Integration has been used :
+Test are written in a file for each tested file (test_models.py to test the models.py file).
+The application is tested with [Travis](https://travis-ci.org/) and the host service (Heroku) wait for CI to pass before deploy.
+
+There are two types of files that are tested : those created for this application and those coming from libraries.
+Tests have been developed only to test the files created for this application.
+
+The first focus is testing that each page is responding (tests_views.py) and that forms processing is working.
+More specific test to be developed (checking links in pages, checking content, ...).
+
 ## WIREFRAME
+
+/
 
 ## BUILT WITH
 ### LANGUAGES
@@ -76,6 +90,7 @@ The following frameworks and librairies have been used:
 ### SERVICES
 * Online Database : [Postgres](https://www.heroku.com/postgres)
 * AWS Storage : [S3](https://aws.amazon.com/s3/)
+* Continuous Integration : [Travis](https://travis-ci.org/)
 * Host : [Heroku](https://heroku.com)
 * Scheduler : [Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler)
 
