@@ -63,6 +63,14 @@
             {% endif %}
             {% endfor %}
             
+            {% for d in documents %}
+            {% if d.file_code == "0001" %}
+            <a href="{{ MEDIA_URL }}{{ d.file }}" target="_blank">
+                <button class="btn btn-outline-warning btn-block text-uppercase mb-3">PROGRAMME</button>
+            </a>
+            {% endif %}
+            {% endfor %}
+            
             <!-- Info -->
             <div class="alert alert-success text-center">
                 <p>J’ai envie de m’impliquer dans les actions Jeunes de la MJC<br>(financer des projets de voyage et d’activité) : j’apporte mon aide lors des évènements <br>REVELATIONS JEUNES TALENTS, FESTIJEUN’S, ROMERIA,…</p>
