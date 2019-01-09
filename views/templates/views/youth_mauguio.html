@@ -52,7 +52,7 @@
             <p>Réservation indispensable auprès de Mathias. Les Loisirs Jeunes bénéficient de l’agrément ministériel Jeunesse et Sports et des tarifs conventionnés avec la CAF.</p>
             
             {% for d in documents %}
-            {% if d.file_code == "0001" %}
+            {% if d.file_code == "0001" and d.file %}
             <a href="{{ MEDIA_URL }}{{ d.file }}" target="_blank">
                 <button class="btn btn-outline-warning btn-block text-uppercase mb-3">PROGRAMME</button>
             </a>

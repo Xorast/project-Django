@@ -1,5 +1,5 @@
 from django.contrib     import admin
-# from .models            import Files_Download
+from .models            import Slides
 
 
-# admin.site.register(Files_Download)
+admin.site.register(Slides)

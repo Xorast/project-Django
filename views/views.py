@@ -2,27 +2,17 @@ from django.shortcuts       import render, redirect, get_object_or_404
 from django.http            import FileResponse, Http404
 from activities.models      import Venue, Host
 from news.models            import News
+from .models                import Slides
 
-
-
-
-# Testing PDF file
-# def get_pdf_file(request, filename):
-    
-#     try:
-#         return FileResponse(open('media/files-download/' + str(filename), 'rb'), content_type='application/pdf')
-    
-#     except FileNotFoundError:
-#         raise Http404()
 
 
 
 def get_home_page(request):
     
+    carousel     = Slides.objects.order_by(id)[:3]
     last_news    = News.objects.order_by('-published_date')[:3]
     
-    return render(request, "views/index.html", {'last_news': last_news})
-    # return render(request, "views/test.html")
+    return render(request, "views/index.html", {'carousel':carousel, 'last_news': last_news})
 
 
 
@@ -97,11 +87,3 @@ def edit_activity(request, activity_slot_id):
 
 def edit_workshop(request, workshop_slot_id):
     return redirect("/admin/workshops/workshop_animation_slot/" + str(workshop_slot_id) + "/change")
-    
-    
-    
-# To be deleted :
-# 
-# activities   = get_object_or_404(Event_Type, event_type="ACTIVITY")
-# courses      = get_object_or_404(Event_Type, event_type="TRAININGCOURSE")
-# events       = get_object_or_404(Event_Type, event_type="EVENT")
