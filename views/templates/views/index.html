@@ -21,37 +21,12 @@
                 
                 <div class="carousel-item {% if forloop.first %} active {% endif %}" style="background-image: url('{{ MEDIA_URL }}{{ slide.image }}')">
                     <div class="carousel-caption d-none d-md-block">
-                      <h3 class="txt-white">{{ slide.slide_title }}</h3>
-                      <p>{{ slide.slide_subtitle }}</p>
+                      <h3 class="txt-white">{% if slide.slide_title is not None %}{{ slide.slide_title }}{% else %}{% endif %}</h3>
+                      <p>{% if slide.slide_subtitle is not None %}{{ slide.slide_subtitle }}{% else %}{% endif %}</p>
                     </div>
                 </div>
             
             {% endfor %}
-            
-                      
-            <!-- Slide One - Set the background image for this slide in the line below -->
-            <!--<div class="carousel-item active" style="background-image: url('')">-->
-            <!--    <div class="carousel-caption d-none d-md-block">-->
-            <!--      <h3 class="txt-white"></h3>-->
-            <!--      <p></p>-->
-            <!--    </div>-->
-            <!--</div>-->
-              
-            <!-- Slide Three - Set the background image for this slide in the line below -->
-            <!--<div class="carousel-item" style="background-image: url('{{ STATIC_URL }}images/caroussel-2.jpg')">-->
-            <!--    <div class="carousel-caption d-none d-md-block">-->
-            <!--      <h3 class="txt-white text-uppercase">La MJC vous souhaite une bonne rentrée !</h3>-->
-            <!--      <p class="text-uppercase">Les inscriptions sont ouvertes ! Découvrez nos activités & stages !</p>-->
-            <!--    </div>-->
-            <!--</div>-->
-            
-            <!-- Slide Two - Set the background image for this slide in the line below -->
-            <!--<div class="carousel-item" style="background-image: url('{{ STATIC_URL }}images/caroussel-3.jpg')">-->
-            <!--    <div class="carousel-caption d-none d-md-block">-->
-            <!--      <h3 class="txt-white text-uppercase">Forum des Assos - Partez à la découverte de vos passions !</h3>-->
-            <!--      <p class="text-uppercase">Samedi 8 Septembre - 10H/18H - Port de Carnon</p>-->
-            <!--    </div>-->
-            <!--</div>-->
             
         </div>
         
@@ -73,7 +48,7 @@
     <!-- Page Content -->
     <div class="container">
 
-        <h1 class="my-4">Bienvenue sur le nouveau site (en construction) de la MJC !</h1>
+        <h1 class="my-4">Bienvenue sur le site de la MJC !</h1>
     
         <!-- Annoucement -->
         <!--<div class="alert alert-success">-->

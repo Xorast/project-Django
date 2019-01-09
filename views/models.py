@@ -11,4 +11,4 @@ class Slides(models.Model):
         
     class Meta:
         verbose_name = "Diapositive"
-        verbose_name_plural = "Caroussel"
+        verbose_name_plural = "Caroussel (Bandeau défilant)"
