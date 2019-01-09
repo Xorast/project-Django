@@ -1,5 +1,6 @@
 from activities.models      import Activity_Animation_Type, Elements_Type
 from workshops.models       import Workshop_Animation_Type
+from files.models           import Files_Pseudostatic
 
 
 
@@ -36,6 +37,14 @@ def get_elements_types(request):
         event    = "Your admin need to fix that! =)"
     
     return {'activity':activity, 'workshop':workshop, 'event':event}
+    
+
+
+def get_documents(request):
+    
+    documents = Files_Pseudostatic.objects.all()
+    
+    return  {'documents':documents}
    
    
    
