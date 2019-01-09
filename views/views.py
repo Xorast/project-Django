@@ -9,11 +9,10 @@ from .models                import Slides
 
 def get_home_page(request):
     
-    # carousel     = Slides.objects.order_by(id)[:3]
+    carousel     = Slides.objects.all()
     last_news    = News.objects.order_by('-published_date')[:3]
     
-    # return render(request, "views/index.html", {'carousel':carousel, 'last_news': last_news})
-    return render(request, "views/index.html", {'last_news': last_news})
+    return render(request, "views/index.html", {'carousel':carousel, 'last_news': last_news})
 
 
 
