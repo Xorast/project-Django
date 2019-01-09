@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'activities',
     'workshops',
     'events',
-    'checkout'
+    'checkout',
+    'files'
 ]
 
 MIDDLEWARE = [
