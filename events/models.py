@@ -37,7 +37,7 @@ class Event(models.Model):
     bubble_info     = models.TextField("Bulle info", null=True, blank=True)
     contact         = models.CharField("Personne à contacter",  max_length=100, null=True, blank=True)
     rate            = models.CharField("Tarifs", max_length=100, null=True, blank=True)
-    file            = models.FileField(upload_to='files/events/', null=True, blank=True)
+    file            = models.FileField("PDF", upload_to='files/events/', null=True, blank=True)
         
     def __str__(self):
         return '%s - %s - %s' % (self.family, self.title, self.date_first_day)
