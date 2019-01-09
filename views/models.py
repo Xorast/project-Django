@@ -7,7 +7,7 @@ class Slides(models.Model):
     image            = models.ImageField("Diapo - Image", upload_to="images/carousel", blank=True, null=True)
     
     def __str__(self):
-            return 'Diapositive %s' % (str(self.id))
+            return 'Diapositive %s' % (self.slide_title)
         
     class Meta:
         verbose_name = "Diapositive"
