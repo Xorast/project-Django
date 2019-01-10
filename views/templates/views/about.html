@@ -120,7 +120,7 @@
     <!-- Documents à destinations des membres -->
     <h2 class="mt-4 mb-3">Documents à destinations des membres</h2>
   
-    <a class="anchor" id="team"></a>
+    <a class="anchor" id="documents"></a>
     
     <div class="row">
             
@@ -138,7 +138,7 @@
         <!-- Document Y -->
         <div class="col-md-3 mb-4">
       
-            <div class="card card-list-hover h-100 text-center" onclick="goTo('{{ STATIC_URL }}{{ d.file }}')">
+            <div class="card card-list-hover h-100 text-center" onclick="goTo('{{ MEDIA_URL }}{{ d.file }}')">
           
                 <div class="row m-0 p-2">
                     <div class="img-doc rounded-top" style="background-image:url('{{ STATIC_URL }}images/doc.png')"></div>    
