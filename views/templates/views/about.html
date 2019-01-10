@@ -115,7 +115,47 @@
         
     </div>
     <!-- /.row -->
-
+    
+    
+    <!-- Documents à destinations des membres -->
+    <h2 class="mt-4 mb-3">Documents à destinations des membres</h2>
+  
+    <a class="anchor" id="team"></a>
+    
+    <div class="row">
+            
+        <div class="col-md">
+            <p>Vous trouverez ci-dessous les documents tels que les comptes-rendu d'AG, les rapports d'activités et autres documents similaires.</p>    
+        </div>
+            
+    </div>
+    
+    
+    <div class="row">
+        
+        {% for d in documents %}
+        
+        <!-- Document Y -->
+        <div class="col-md-3 mb-4">
+      
+            <div class="card card-list-hover h-100 text-center" onclick="goTo('{{ STATIC_URL }}{{ d.file }}')">
+          
+                <div class="row m-0 p-2">
+                    <div class="img-doc rounded-top" style="background-image:url('{{ STATIC_URL }}images/doc.png')"></div>    
+                </div>
+                
+                <div class="card-footer">
+                    <p class="card-text">{{ d.file_name }}</p>
+                </div>
+              
+            </div>
+        
+        </div>
+        
+        {% endfor %}
+            
+    </div>
+    
 </div>
 <!-- /.container -->
 {% endblock %}

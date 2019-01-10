@@ -2,6 +2,7 @@ from django.shortcuts       import render, redirect, get_object_or_404
 from django.http            import FileResponse, Http404
 from activities.models      import Venue, Host
 from news.models            import News
+from files.models           import Files_CR
 from .models                import Slides
 
 
@@ -27,7 +28,10 @@ def get_calendar_activities_page(request):
 
 
 def get_about_page(request):
-    return render(request, "views/about.html")
+    
+    documents     = Files_CR.objects.all().order_by('order')
+    
+    return render(request, "views/about.html", {'documents':documents})
 
    
    
