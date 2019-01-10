@@ -11,12 +11,14 @@
         
             <a class="btn btn-outline-danger mt-5" href="{% url 'news_list' %}">Tous les articles</a>
         
-            <h1 class="mt-4 mb-3">{{ news.title        }}</h1>
-        
-            <!-- Exact same code works on other pages, but not here -->
-            <!--<div class="header rounded mt-4 mb-3" style="background-image:url({{MEDIA_URL}}{{ news.image }})"></div>-->
+            <h1 class="mt-4 mb-3 text-center">{{ news.title        }}</h1>
             
-            <img class="img-fluid rounded atcha" src="{{MEDIA_URL}}{{ news.image }}" alt="">
+            <!--<img class="img-fluid rounded atcha" src="{{MEDIA_URL}}{{ news.image }}" alt="">-->
+            
+            <div class="row">
+                <div class="col-xs-12 px-3 py-3 mt-3 atcha"><img class="img-fluid rounded height-max-1" alt="" src="{{ MEDIA_URL }}{{ news.image }}"></div>    
+            </div>
+            
             
             {% if user.is_superuser %}
              
