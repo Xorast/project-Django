@@ -16,6 +16,7 @@ class News(models.Model):
     published_date  = models.DateTimeField(blank=True, null=True, default=timezone.now)
     tag             = models.CharField(max_length=30, blank=True, null=True)
     image           = models.ImageField(upload_to=upload_path_handler, blank=True, null=True)
+    file            = models.FileField("PDF", upload_to='files/news/', null=True, blank=True)
     
     def __str__(self):
         return self.title
