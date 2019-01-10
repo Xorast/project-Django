@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'activities',
     'workshops',
     'events',
+    'social',
     'checkout',
     'files'
 ]
