@@ -49,15 +49,30 @@
             <a class="anchor" id="leisureactivities"></a>
             
             <p>Pendant les vacances scolaires, un programme de loisirs très varié et innovant vous est proposé, avec de nombreuses actions culturelles. L’accueil est organisé sur des journées. Avant chaque période de vacances, les programmes sont disponibles à l’accueil, sur le site internet MJC (ci-dessous) et Facebook.</p>
-            <p>Réservation indispensable auprès de Mathias. Les Loisirs Jeunes bénéficient de l’agrément ministériel Jeunesse et Sports et des tarifs conventionnés avec la CAF.</p>
             
             {% for d in documents %}
             {% if d.file_code == "0001" and d.file %}
-            <a href="{{ MEDIA_URL }}{{ d.file }}" target="_blank">
-                <button class="btn btn-outline-warning btn-block text-uppercase mb-3">PROGRAMME (PDF)</button>
-            </a>
+            
+            <!-- Document Y -->
+            <div class="col-md-4 offset-md-4 mb-4">
+          
+                <div class="card card-list-hover h-100 text-center" onclick="goTo('{{ MEDIA_URL }}{{ d.file }}')">
+              
+                    <div class="row m-0 p-2">
+                        <div class="img-doc rounded-top" style="background-image:url('{{ STATIC_URL }}images/doc.png')"></div>    
+                    </div>
+                    
+                    <div class="card-footer">
+                        <p class="card-text">{{ d.file_name }}</p>
+                    </div>
+                  
+                </div>
+            
+            </div>
             {% endif %}
             {% endfor %}
+            
+            <p>Réservation indispensable auprès de Mathias. Les Loisirs Jeunes bénéficient de l’agrément ministériel Jeunesse et Sports et des tarifs conventionnés avec la CAF.</p>
             
             <!-- Info -->
             <div class="alert alert-success text-center">
