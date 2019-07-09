@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
-
 {% block content %}
     
 <!-- Page Content -->
@@ -14,17 +13,19 @@
             <button class="btn btn-outline-danger mt-5" onclick="goBack()">Retour</button>
             
             <div class="row">
-                <div class="col-xs-12 px-3 py-3 atcha"><img class="img-fluid rounded height-max-1" alt="" src="{{ MEDIA_URL }}{{ social.image }}"></div>    
+                <div class="col-xs-12 px-3 py-3 atcha">
+                    <img class="img-fluid rounded height-max-1" alt="" src="{{ MEDIA_URL }}{{ social.image }}">
+                </div>
             </div>
             
             <hr>
             
             <!-- Animation description -->
-            <h1 class="mt-4 text-center text-danger">{{ social.family             }}</h1>
+            <h1 class="mt-4 text-center text-danger">{{ social.family }}</h1>
             
-            <h1 class="mt-4 text-center">{{ social.title             }}</h1>
+            <h1 class="mt-4 text-center">{{ social.title }}</h1>
             
-            <h2 class="mt-4 mb-3 text-center">{{ social.subtitle           }}</h2>
+            <h2 class="mt-4 mb-3 text-center">{{ social.subtitle }}</h2>
             
             <p class="mt-4 mb-4 lead text-center text-uppercase">{{ social.date_and_time }}</p>
         
@@ -32,11 +33,10 @@
             
             {% if social.bubble_info|length > 0 %}
             <div class="alert alert-success">
-                    <strong>{{ social.bubble_info}}</strong>
+                <strong>{{ social.bubble_info}}</strong>
             </div>
             {% endif %}
-         
-            
+
             <div class="mt-3 row">
                             
                 <div class="col-md-3">
@@ -44,7 +44,7 @@
                 </div>
                 
                 <div class="col-md-9">
-                    {{ social.description|linebreaks      }}
+                    {{ social.description|linebreaks }}
                 </div>
                             
             </div>
@@ -58,7 +58,7 @@
                     </div>
                     
                     <div class="col-md-9">
-                        {{ social.venue           }}
+                        {{ social.venue }}
                     </div>
             </div>
             {% endif %}
@@ -71,8 +71,9 @@
                     </div>
                     
                     <div class="col-md-9">
-                        {{ social.notes           }}
+                        {{ social.notes }}
                     </div>
+
             </div>
             {% endif %}
                     
@@ -84,7 +85,7 @@
                     </div>
                     
                     <div class="col-md-9">
-                        {{ social.rate           }}
+                        {{ social.rate }}
                     </div>
             </div>
             {% endif %}
@@ -97,7 +98,7 @@
                     </div>
                     
                     <div class="col-md-9">
-                        {{ social.contact           }}
+                        {{ social.contact }}
                     </div>
             </div>
             {% endif %}
