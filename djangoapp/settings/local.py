@@ -2,11 +2,8 @@ import os
 from .base import *
 
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get("SECRET_KEY")
 SECRET_KEY = 'luf*lin!+xg$hf2z-m*c9b)kaamk3xm$+xf@5@dxc3tw!t31mt'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['project-django-pangur.c9users.io']
@@ -21,9 +18,9 @@ DATABASES = {
     }
 }
 
-STATIC_URL       = '/static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATIC_ROOT      =  os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL        = '/media/'
-MEDIA_ROOT       =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
