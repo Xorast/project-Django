@@ -1,8 +1,8 @@
-from django.conf.urls.static    import static
-from django.views.static        import serve
-from django.conf                import settings
-from django.urls                import path
-from .views                     import get_news_list, create_news, news_details, edit_news, delete_news
+from django.conf.urls.static import static
+from django.views.static import serve
+from django.conf import settings
+from django.urls import path
+from .views import get_news_list, create_news, news_details, edit_news, delete_news
 
 
 urlpatterns = [

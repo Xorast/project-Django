@@ -1,9 +1,10 @@
-from django     import forms
-from .models    import News
+from django import forms
+from .models import News
+
 
 class NewsForm(forms.ModelForm):
     
     class Meta:
         
-        model  = News
+        model = News
         fields = ('title', 'content', 'image', 'tag', 'image')
