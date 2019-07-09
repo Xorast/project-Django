@@ -1,9 +1,8 @@
-from django.conf.urls.static    import static
-from django.views.static        import serve
-from django.conf                import settings
-from django.urls                import path
-from .views                     import get_list_of_all_events, get_event_details
-
+from django.conf.urls.static import static
+from django.views.static import serve
+from django.conf import settings
+from django.urls import path
+from .views import get_list_of_all_events, get_event_details
 
 
 urlpatterns = [
