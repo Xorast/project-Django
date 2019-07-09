@@ -30,7 +30,7 @@ class HostAdmin(admin.ModelAdmin):
 
 class Activity_Animation_TypeAdmin(admin.ModelAdmin):
     list_display = ['animation_type']
-    ordering = ('animation_type')
+    ordering = ('animation_type',)
     
 
 class WeekdayAdmin(admin.ModelAdmin):
