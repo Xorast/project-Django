@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
-
 {% block content %}
 
-        
     <!-- Page Content -->
     <div class="container">
 
@@ -16,11 +14,9 @@
             
             {% if edit == "True" %}
             <h1 class="mt-4 mb-3">Edit News</h1>
-            
             {% else %}
             <h1 class="mt-4 mb-3">Create News</h1>
             {% endif %}
-            
             
             <form method="POST" enctype="multipart/form-data">
             
@@ -34,6 +30,5 @@
 
     </div>
     <!-- /.container -->
-      
-    
+
 {% endblock %}

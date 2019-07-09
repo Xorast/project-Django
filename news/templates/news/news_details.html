@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
-
 {% block content %}
-
         
     <!-- Page Content -->
     <div class="container">
@@ -11,25 +9,29 @@
         
             <a class="btn btn-outline-danger mt-5" href="{% url 'news_list' %}">Tous les articles</a>
         
-            <h1 class="mt-4 mb-3 text-center">{{ news.title        }}</h1>
+            <h1 class="mt-4 mb-3 text-center">{{ news.title }}</h1>
             
             <!--<img class="img-fluid rounded atcha" src="{{MEDIA_URL}}{{ news.image }}" alt="">-->
             
             <div class="row">
-                <div class="col-xs-12 px-3 py-3 mt-3 atcha"><img class="img-fluid rounded height-max-1" alt="" src="{{ MEDIA_URL }}{{ news.image }}"></div>    
+                <div class="col-xs-12 px-3 py-3 mt-3 atcha">
+                    <img class="img-fluid rounded height-max-1" alt="" src="{{ MEDIA_URL }}{{ news.image }}">
+                </div>
             </div>
             
             
             {% if user.is_superuser %}
              
-              <a href="{% url 'edit_news' news.id %}" class="btn btn-info btn-lg btn-block mt-4 text-capitalize">Editer Article</a><br>
+            <a href="{% url 'edit_news' news.id %}" class="btn btn-info btn-lg btn-block mt-4 text-capitalize">Editer Article</a><br>
               
-              <!-- button - trigger modal - confirmation deletion -->
-              <button type="button" class="btn btn-danger btn-lg btn-block mt-2 text-capitalize" data-toggle="modal" data-target="#ModalFileSelection">
-              Supprimer Article
-              </button>
+            <!-- button - trigger modal - confirmation deletion -->
+            <button type="button" class="btn btn-danger btn-lg btn-block mt-2 text-capitalize"
+                    data-toggle="modal" data-target="#ModalFileSelection">
+                Supprimer Article
+            </button>
               
             {% endif %}
+
             <hr>
         
             <!-- Date/Time -->
@@ -60,9 +62,8 @@
                             <p>Votre navigateur n'affiche pas le PDF. Vous pouvez le télécharger si vous souhaitez le voir : <a href="{{ MEDIA_URL }}{{ news.file }}">Download PDF</a>.</p>
                         </embed>
                     </object>
-                </div>
-             
-                            
+               </div>
+
             </div>
             {% endif %}
         
@@ -76,7 +77,7 @@
                         <div class="modal-header">
                             <h5 class="modal-title text-uppercase" id="ModalFileSelection">DELETION CONFIRMATION</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         
