@@ -1,9 +1,8 @@
-from django.conf.urls.static    import static
-from django.views.static        import serve
-from django.conf                import settings
-from django.urls                import path
-from .views                     import get_list_of_animation_types, research, get_list_of_animations, get_animation_details, register_to_animation_slot
-
+from django.conf.urls.static import static
+from django.views.static import serve
+from django.conf import settings
+from django.urls import path
+from .views import get_list_of_animation_types, research, get_list_of_animations, get_animation_details, register_to_animation_slot
 
 
 urlpatterns = [

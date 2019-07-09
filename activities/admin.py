@@ -1,52 +1,50 @@
-from django.contrib     import admin
-from .models            import Elements_Type, Activity_Animation_Type, Activity_Animation, Weekday, Period, Host, Age_Class, Age_Group, Level, City, Venue, Room, Activity_Animation_Slot
-
+from django.contrib import admin
+from .models import Elements_Type, Activity_Animation_Type, Activity_Animation, Weekday, Period, Host, Age_Class, Age_Group, Level, City, Venue, Room, Activity_Animation_Slot
 
 
 class Age_ClassAdmin(admin.ModelAdmin):  
-    list_display    = ['age_class',]
-    ordering        = ('age_class',)
+    list_display = ['age_class']
+    ordering = ('age_class',)
    
     
 class Age_GroupAdmin(admin.ModelAdmin):  
-    list_display    = ['age_class', 'age_min', 'age_max']
-    ordering        = ('age_class', 'age_min', 'age_max')
+    list_display = ['age_class', 'age_min', 'age_max']
+    ordering = ('age_class', 'age_min', 'age_max')
 
 
 class LevelAdmin(admin.ModelAdmin):  
-    list_display    = ['level',]
-    ordering        = ('level', )
-    
+    list_display = ['level']
+    ordering = ('level', )
+
 
 class RoomAdmin(admin.ModelAdmin):  
-    list_display    = ['venue', 'room_nb','room_name']
-    ordering        = ('venue','room_nb','room_name')
+    list_display = ['venue', 'room_nb', 'room_name']
+    ordering = ('venue', 'room_nb', 'room_name')
 
 
 class HostAdmin(admin.ModelAdmin):
-    list_display    = ['firstname', 'lastname', 'image', 'resume']
-    ordering        = ('firstname', 'lastname')
+    list_display = ['firstname', 'lastname', 'image', 'resume']
+    ordering = ('firstname', 'lastname')
  
 
 class Activity_Animation_TypeAdmin(admin.ModelAdmin):
-    list_display    = ['animation_type',]
-    ordering        = ('animation_type',)
+    list_display = ['animation_type']
+    ordering = ('animation_type')
     
 
 class WeekdayAdmin(admin.ModelAdmin):
-    list_display    = ['day','id']
-    ordering        = ('id',)
+    list_display = ['day', 'id']
+    ordering = ('id',)
     
 
 class Activity_AnimationAdmin(admin.ModelAdmin):
-    list_display    = ['name',]
-    ordering        = ('name',)
+    list_display = ['name']
+    ordering = ('name',)
 
 
 class Activity_Animation_SlotAdmin(admin.ModelAdmin):
-    list_display    = ['animation','day','time_start','time_end','age_group','name',]
-    ordering        = ('animation','day','time_start','time_end','age_group','name')
-
+    list_display = ['animation', 'day', 'time_start', 'time_end', 'age_group', 'name']
+    ordering = ('animation', 'day', 'time_start', 'time_end', 'age_group', 'name')
 
 
 admin.site.register(Elements_Type)
