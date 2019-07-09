@@ -1,10 +1,9 @@
-from django.shortcuts    import render, redirect
-from django.http         import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib.auth import authenticate
-from django.contrib      import auth, messages
-from .forms              import UserLoginForm, UserRegistrationForm, ProfileRegistrationForm
+from django.contrib import auth, messages
+from .forms import UserLoginForm, UserRegistrationForm, ProfileRegistrationForm
 # from activities.models   import EventRegistration
-
 
 
 def login(request):
@@ -32,22 +31,21 @@ def login(request):
     return render(request, 'accounts/login.html', {'form': login_form})
 
 
-
 def register(request):
     
     if request.method == "POST":
-        user_form        = UserRegistrationForm(request.POST)
-        profile_form     = ProfileRegistrationForm(request.POST, request.FILES)
+        user_form = UserRegistrationForm(request.POST)
+        profile_form = ProfileRegistrationForm(request.POST, request.FILES)
         
         if user_form.is_valid() and profile_form.is_valid():
-            user            = user_form.save()
-            profile         = profile_form.save(commit=False)
-            profile.user    = user
+            user = user_form.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
             profile.save()
             
-            u       = user_form.cleaned_data['username']
-            p       = user_form.cleaned_data['password1']
-            user    = authenticate(username=u, password=p)
+            u = user_form.cleaned_data['username']
+            p = user_form.cleaned_data['password1']
+            user = authenticate(username=u, password=p)
             
             if user is not None:
                 auth.login(request, user)
@@ -62,7 +60,6 @@ def register(request):
     return render(request, "accounts/register.html", {'user_form': user_form, 'profile_form': profile_form})
     
 
-
 def logout(request):
     auth.logout(request)
     messages.warning(request, 'You are logged out.')
@@ -71,7 +68,5 @@ def logout(request):
  
 # Feature deactivated
 # def profile(request):
-    
 #     eventsRegisteredTo   = EventRegistration.objects.filter(participant=request.user).order_by('event__event_type','event__name')
-    
 #     return render(request, "accounts/profile.html", {'eventsRegisteredTo':eventsRegisteredTo})
