@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
-
 {% block content %}
     
     <!-- Page Content -->
@@ -11,11 +10,14 @@
             <h1 class="txt-white center text-uppercase"> {{ workshop.title }} </h1>
         </div>
         
-        <!-- Description -->
+
         <hr>
+
+        <!-- Description -->
         <div class="col-md-10 offset-md-1 col-md-8 p-2 text-center text-muted lead">
             <p class="">{{ workshop.description|linebreaks }}</p>
         </div>
+
         <hr>
     
         <!-- Data -->
@@ -46,7 +48,6 @@
             {% endfor %}
                 
         </div>
-        <!-- /.row -->
         
     </div>
     <!-- /.container -->
