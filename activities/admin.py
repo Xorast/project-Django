@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Elements_Type, Activity_Animation_Type, Activity_Animation, Weekday, Period, Host, Age_Class, Age_Group, Level, City, Venue, Room, Activity_Animation_Slot
+from .models import Elements_Type, Activity_Animation_Type, Activity_Animation, Weekday, Period, Host, \
+                    Age_Class, Age_Group, Level, City, Venue, Room, Activity_Animation_Slot
 
 
 class Age_ClassAdmin(admin.ModelAdmin):  

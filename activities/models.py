@@ -232,7 +232,9 @@ class Activity_Animation_Slot(models.Model):
     notes = models.TextField("Notes particulières (spécifique à ce crénau)", null=True, blank=True)
 
     def __str__(self):
-        return '%s - %s - %s/%s ans - %s - %s' % (self.age_group.age_class, self.animation, self.age_group.age_min, self.age_group.age_max, self.name, self.day)
+        return '%s - %s - %s/%s ans - %s - %s' % (self.age_group.age_class, self.animation,
+                                                  self.age_group.age_min, self.age_group.age_max,
+                                                  self.name, self.day)
     
     class Meta:
         verbose_name = 'Animation - Créneau'
@@ -242,7 +244,8 @@ class Activity_Animation_Slot(models.Model):
 class Activity_Registration(models.Model):
     
     participant = models.ForeignKey(User, related_name="RegistrationList", on_delete=models.SET_NULL, null=True)
-    activity_slot = models.ForeignKey(Activity_Animation_Slot, related_name="RegistrationList", on_delete=models.SET_NULL, null=True)
+    activity_slot = models.ForeignKey(Activity_Animation_Slot, related_name="RegistrationList",
+                                      on_delete=models.SET_NULL, null=True)
     
     class Meta:
         unique_together = ["participant", "activity_slot"]

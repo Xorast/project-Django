@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot, Elements_Type, Host, City, Weekday
-# from .models import EventRegistration
+from .models import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot, \
+                    Elements_Type, Host, City, Weekday  # EventRegistration
 
 
 def get_list_of_animation_types(request):
@@ -51,12 +51,13 @@ def get_animation_details(request, animation_type, animation, animation_id):
     unmentionned_rate_text = "Si le tarif n'est pas indiqué dans les notes, contacter la MJC."
     two_rates_no_info_on_second_rate = "Contacter la MJC pour connaitre les conditions du deuxième tarif."
     
-    return render(request, "activities/animation_details.html", {'animation_type': animation_type,
-                                                                 'animation': animation,
-                                                                 'slots': slots,
-                                                                 'hosts': hosts,
-                                                                 'unmentionned_rate_text': unmentionned_rate_text,
-                                                                 'two_rates_no_info_on_second_rate': two_rates_no_info_on_second_rate})
+    return render(request, "activities/animation_details.html",
+                  {'animation_type': animation_type,
+                   'animation': animation,
+                   'slots': slots,
+                   'hosts': hosts,
+                   'unmentionned_rate_text': unmentionned_rate_text,
+                   'two_rates_no_info_on_second_rate': two_rates_no_info_on_second_rate})
 
 
 @login_required
