@@ -14,27 +14,6 @@ from .utils import charge_card
 import stripe
 
 
-# @login_required
-# def register_confirm_request(request, event_type, event_subtype, event_id):
-#     event = get_object_or_404(Event, pk=event_id)
-#     ER = EventRegistration(participant=request.user,event=event)
-#     if event.number_available > 0 :
-#         try:
-#             # Constraint on the model : user / event combination must be unique
-#             # If the user is already registered : will throw an error
-#             ER.save()
-#             event.number_available += -1
-#             event.save()
-#         except:
-#             error = "E01"
-#             return render(request, "activities/event_registration_request_failed.html", {"error":error})
-#     else:
-#         error = "E02"
-#         return render(request, "activities/event_registration_request_failed.html", {"error":error})
-        
-#     return render(request, "activities/event_registration_request_successful.html")
-    
-
 @login_required
 def checkout(request):
     
@@ -45,7 +24,9 @@ def checkout(request):
 
         payment_form = MakePaymentForm()
             
-        return render(request, "checkout/checkout.html", {'slot': slot, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE_KEY })
+        return render(request, "checkout/checkout.html", {'slot': slot,
+                                                          'payment_form': payment_form,
+                                                          'publishable': settings.STRIPE_PUBLISHABLE_KEY})
         
     else:
         
@@ -89,7 +70,7 @@ def payment(request):
                 # Rework this : the message is not displayed on the rendered page.
                 # messages.error(request, "You have successfully paid")
                 
-                return render(request, "activities/animation_registration_successful.html", {'slot': slot })
+                return render(request, "activities/animation_registration_successful.html", {'slot': slot})
         
         else:   
             # Debug ==> Rework real case
@@ -97,3 +78,23 @@ def payment(request):
             
     else:
         return HttpResponseForbidden()
+
+# @login_required
+# def register_confirm_request(request, event_type, event_subtype, event_id):
+#     event = get_object_or_404(Event, pk=event_id)
+#     ER = EventRegistration(participant=request.user,event=event)
+#     if event.number_available > 0 :
+#         try:
+#             # Constraint on the model : user / event combination must be unique
+#             # If the user is already registered : will throw an error
+#             ER.save()
+#             event.number_available += -1
+#             event.save()
+#         except:
+#             error = "E01"
+#             return render(request, "activities/event_registration_request_failed.html", {"error":error})
+#     else:
+#         error = "E02"
+#         return render(request, "activities/event_registration_request_failed.html", {"error":error})
+
+#     return render(request, "activities/event_registration_request_successful.html")
