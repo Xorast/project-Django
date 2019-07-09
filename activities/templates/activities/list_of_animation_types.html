@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
-
 {% block content %}
     
     <!-- Page Content -->
@@ -13,9 +12,11 @@
         
         <!-- Description -->
         <hr>
+
         <div class="col-md-10 offset-md-1 col-md-8 p-2 text-center text-muted lead">
             <p class="">{{ activity.description|linebreaks }}</p>
         </div>
+
         <hr>
         
         <!-- Last minute note -->
@@ -33,18 +34,10 @@
                     <div class="card card-list card-list-hover h-100" onclick="goTo('{% url 'a_list_of_animations' animation_type.animation_type %}')" >
                         
                         <div class="row m-0">    
-                            <div class="col-md-12 img" style="background-image:url('{{ MEDIA_URL }}{{ animation_type.image }}')"></div>    
+                            <div class="col-md-12 img" style="background-image:url('{{ MEDIA_URL }}{{ animation_type.image }}')"></div>
                         </div>
                         
                         <h4 class="card-header text-capitalize"> {{ animation_type.animation_type }}</h4>
-                        
-                        <!--<div class="card-body">-->
-                        <!--    <p class="card-text">{{ animation_type.description|truncatewords:40 }}</p>-->
-                        <!--</div>-->
-                        
-                        <!--<div class="card-footer">-->
-                        <!--    <a href="{% url 'a_list_of_animations' animation_type.animation_type %}" class="btn btn-outline-danger">Découvrir</a>-->
-                        <!--</div>-->
                         
                     </div>
                     
