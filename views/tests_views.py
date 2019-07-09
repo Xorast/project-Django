@@ -1,19 +1,19 @@
-from django.test                    import TestCase
-from django.urls                    import reverse
-from activities.models              import Venue, City, Host
-from django.contrib.auth.models     import User
-# from django.test                    import Client
-
+from django.test import TestCase
+from django.urls import reverse
+from activities.models import Venue, City, Host
+from django.contrib.auth.models import User
+# from django.test import Client
 
 
 class TestViewsViews(TestCase):
     
     def setUp(self):
-        self.user     = User.objects.create_superuser(username='myuser', email="test@example.com", password='password')
+        self.user = User.objects.create_superuser(username='myuser', email="test@example.com", password='password')
         
-        self.city     = City.objects.create(city="mauguio")
-        self.venue    = Venue.objects.create(name="venue01", street_nb="101", street_name="rue", city = self.city, postcode="34130")
-        self.host     = Host.objects.create()
+        self.city = City.objects.create(city="mauguio")
+        self.venue = Venue.objects.create(name="venue01", street_nb="101", street_name="rue",
+                                          city=self.city, postcode="34130")
+        self.host = Host.objects.create()
     
     def test_index_page(self):
         page = self.client.get(reverse("home"))
