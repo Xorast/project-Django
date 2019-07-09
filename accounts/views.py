@@ -68,5 +68,6 @@ def logout(request):
  
 # Feature deactivated
 # def profile(request):
-#     eventsRegisteredTo   = EventRegistration.objects.filter(participant=request.user).order_by('event__event_type','event__name')
+#     eventsRegisteredTo = EventRegistration.objects.filter(participant=request.user).order_by('event__event_type',
+#                                                                                                'event__name')
 #     return render(request, "accounts/profile.html", {'eventsRegisteredTo':eventsRegisteredTo})

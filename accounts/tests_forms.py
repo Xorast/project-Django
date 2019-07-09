@@ -11,7 +11,8 @@ class TestAccountsForms(TestCase):
                                               'password1': 'password1234_*/',
                                               'password2': 'password1234_*/'
                                               })
-        self.user = User.objects.create_user(username='testuser9999', password='password1234_*/', email='test9999@gmail.com')
+        self.user = User.objects.create_user(username='testuser9999', password='password1234_*/',
+                                             email='test9999@gmail.com')
         self.profileform = ProfileRegistrationForm({'user': self.user,
                                                     'adherent_number': '1234',
                                                     'rate_coefficient': '1'})

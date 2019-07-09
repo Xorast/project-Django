@@ -1,7 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase  # Client
 from django.urls import reverse
 from django.contrib.auth.models import User
-# from django.test import Client
 from activities.models import Venue, City, Host
 from .models import Profile
 from .forms import UserRegistrationForm, ProfileRegistrationForm
