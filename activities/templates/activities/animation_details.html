@@ -36,10 +36,7 @@
 
                 <h4 class="mt-4 mb-3 text-center">
                     {% for h in hosts %}
-                        {% if forloop.first %}{% elif forloop.last %} & {% else %}, {% endif %}
-                        <a href="{% url 'host' h.id %}">
-                            <span class="text-capitalize">{{ h.firstname }}</span> <span class="text-uppercase">{{ h.lastname }}</span>
-                        </a>
+                        {% if forloop.first %}{% elif forloop.last %} & {% else %}, {% endif %}<a href="{% url 'host' h.id %}"><span class="text-capitalize">{{ h.firstname }}</span> <span class="text-uppercase">{{ h.lastname }}</span></a>
                     {% endfor %}
                 </h4>
                 
