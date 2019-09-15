@@ -5,7 +5,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['mjc-dev.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'mjc-dev.herokuapp.com']
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -31,3 +31,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}

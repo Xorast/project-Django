@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import cache_page
 from .models import Activity_Animation_Type, Activity_Animation, Activity_Animation_Slot, \
                     Elements_Type, Host, City, Weekday  # EventRegistration
 
@@ -9,6 +10,7 @@ def get_list_of_animation_types(request):
     return render(request, "activities/list_of_animation_types.html")
 
 
+@cache_page(60*60*24)
 def research(request):
     
     # filters
