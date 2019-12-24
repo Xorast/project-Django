@@ -1,6 +1,6 @@
 __pycache__
-db.sqlite3
 *idea
-launch.sh
 .project
+launch.sh
 db
+db.sqlite3
